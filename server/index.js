@@ -1,8 +1,8 @@
 require('dotenv').config();
 const express = require('express');
-const session = require('express');
+const session = require('express-session');
 const massive = require('massive');
-// const authorizer_ctrl = require('');
+const authie_ctrl = require('./controllers/authie_ctrl');
 const app = express();
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
 
@@ -25,3 +25,4 @@ massive(CONNECTION_STRING).then((database) => {
 })
 
 // endpoints
+app.post('/auth/register', authie_ctrl.register);
