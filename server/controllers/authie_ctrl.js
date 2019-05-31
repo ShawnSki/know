@@ -56,7 +56,7 @@ module.exports = {
                 lastname,
                 email,
                 company
-                // need to add a join in get_admin_info to pull in quiz detials
+                // need to add a join in get_admin_info to pull in quiz detials. reference bryans code here...
             })
         }
         return res.status(401).send('Please log in to access your dashboard.')
