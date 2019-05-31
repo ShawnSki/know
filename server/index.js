@@ -26,3 +26,4 @@ massive(CONNECTION_STRING).then((database) => {
 
 // endpoints
 app.post('/auth/register', authie_ctrl.register);
+app.post('/auth/login', authie_ctrl.login);
