@@ -1,55 +1,55 @@
-CREATE TABLE Admins (
-    ID SERIAL PRIMARY KEY,
-    firstName VARCHAR(50),
-    lastName VARCHAR(50),
+CREATE TABLE admins (
+    id SERIAL PRIMARY KEY,
+    firstname VARCHAR(50),
+    lastname VARCHAR(50),
     email VARCHAR(50),
     password TEXT,
     company VARCHAR(50)
 );
 
-CREATE TABLE Accounts (
-    ID SERIAL PRIMARY KEY,
-    Admins_ID INTEGER REFERENCES Admins(ID),
+CREATE TABLE accounts (
+    id SERIAL PRIMARY KEY,
+    admins_id INTEGER REFERENCES admins(id),
     freebie BOOLEAN,
-    freebieDate DATE ,
+    freebie_date DATE ,
     paid BOOLEAN,
     paidDate DATE
 );
 
-CREATE TABLE Quizzes (
-    ID SERIAL PRIMARY KEY,
-    Admins_ID INTEGER REFERENCES Admins(ID),
-    createDate DATE,
-    quizTitle VARCHAR(200),
-    quizIntro VARCHAR(500),
-    quizBGImg VARCHAR(800),
-    questionCount INTEGER,
-    quizSurvey1 VARCHAR(100), 
-    quizSurvey2 VARCHAR(100),
-    quizSurvey3 VARCHAR(100),
+CREATE TABLE quizzes (
+    id SERIAL PRIMARY KEY,
+    admins_id INTEGER REFERENCES admins(id),
+    create_date DATE,
+    quiz_title VARCHAR(200),
+    quiz_intro VARCHAR(500),
+    quiz_bg_img VARCHAR(800),
+    question_count INTEGER,
+    quiz_survey1 VARCHAR(100), 
+    quiz_survey2 VARCHAR(100),
+    quiz_survey3 VARCHAR(100)
 );
 
-CREATE TABLE Quiz_Questions (
-    ID SERIAL PRIMARY KEY,
-    Quizzes_ID INTEGER REFERENCES Quizzes(ID),
+CREATE TABLE quiz_questions (
+    id SERIAL PRIMARY KEY,
+    quizzes_id INTEGER REFERENCES quizzes(id),
     question VARCHAR(1000),
     remediation VARCHAR(1000)
 );
 
-CREATE TABLE Quiz_Answers (
-    ID SERIAL PRIMARY KEY,
-    Quiz_Questions_ID INTEGER REFERENCES Quiz_Questions(ID),
+CREATE TABLE quiz_answers (
+    id SERIAL PRIMARY KEY,
+    quiz_questions_id INTEGER REFERENCES quiz_questions(id),
     answers VARCHAR(500),
     correct VARCHAR(500)
 );
 
-CREATE TABLE Users (
-    ID SERIAL PRIMARY KEY,
+CREATE TABLE users (
+    id SERIAL PRIMARY KEY,
     username VARCHAR(100),
-    Quizzes_ID INTEGER REFERENCES Quizzes(ID),
-    quizTaken DATE,
-    quizPoints INTEGER,
-    surveyResponse1 VARCHAR(100),
-    surveyResponse2 VARCHAR(100),
-    surveyResponse3 VARCHAR(100)
+    quizzes_id INTEGER REFERENCES quizzes(id),
+    quiz_taken DATE,
+    quiz_points INTEGER,
+    survey_response1 VARCHAR(100),
+    survey_response2 VARCHAR(100),
+    survey_response3 VARCHAR(100)
 );

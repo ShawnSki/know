@@ -1,6 +1,6 @@
-INSERT INTO Accounts(freebie, freebieDate)
-VALUES (${freebie}, ${freebieDate});
+INSERT INTO accounts(freebie, freebie_date)
+VALUES (${freebie}, ${freebie_date});
 
-INSERT INTO Admins(firstName, lastName, email, password, company)
-VALUES (${firstName}, ${lastName}, ${email}, ${password}, ${company})
+INSERT INTO admins(firstname, lastname, email, password, company)
+VALUES (${firstname}, ${lastname}, ${email}, ${password}, ${company})
 returning email, ID;

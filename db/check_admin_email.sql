@@ -1,2 +1,2 @@
-SELECT * FROM Admins
+SELECT * FROM admins
 WHERE email = ${email};
