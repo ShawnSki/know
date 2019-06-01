@@ -1,3 +1,30 @@
 nav {
-    background: #ccc;
+    background: #202122;
+    height: 3.5em;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.linksCont ul {
+    margin-right: 2em;
+    display: flex;
+}
+.linksCont li {
+    font-size: 15px;
+    font-weight: 500;
+    list-style: none;
+    letter-spacing: .1em
+}
+.linksCont li:not(:last-child) {
+    padding-right: 1em;
+}
+.linksCont li a:link {
+    color: #878787;
+}
+.linksCont li a:visited {
+    color: #878787;
+} 
+.linksCont li a:hover {
+    color: #d1d1d1;
 }

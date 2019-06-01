@@ -1,20 +1,9 @@
 import React, { Component } from 'react';
+import { Link } from 'react-router-dom';
 import './Navbar.css';
 
 class Navbar extends Component {
-    constructor() {
-        super()
-        this.state = {
-            email: '',
-            password: ''
-        }
-    }
-
-    handleLoginInfoUpdate = (e) => {
-        this.setState({
-            [e.target.name]: e.target.value
-        })
-    }
+   
 
     render() {
         console.log(this.state)
@@ -23,12 +12,13 @@ class Navbar extends Component {
                 <div>
                     <h1>NAVBAR</h1>
                 </div>
-                <div>
-                    <form>
-                        <input type='text' name='email' placeholder='email' onChange={this.handleLoginInfoUpdate} />
-                        <input type='password' name='password' placeholder='password' onChange={this.handleLoginInfoUpdate} />
-                        <button>LOGIN</button>
-                    </form>
+                <div className='linksCont'>
+                    <ul>
+                        <li><Link to='/'>Home</Link></li>
+                        <li><Link to='/register'>Login</Link></li>
+                        <li><Link to='/dashboard'>Dashboard</Link></li>
+                        <li><Link to='/dashboard-override'>DashOver</Link></li>
+                    </ul>
                 </div>
             </nav>
         )
