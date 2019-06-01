@@ -1,10 +1,48 @@
-
-
 body {
   margin: 0;
-  font-family: Arial, Helvetica, sans-serif;
+  padding: 0;
+  background: #fff;
+  font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+h1 {
+  font-size: 2.2em;
+  color: #333e48;
+  font-weight: 100;
+  line-height: 1em;
+  margin-bottom: .3em;
+}
+h2 {
+  font-size: 1.5em;
+  color: #333e48;
+  font-weight: 100;
+  line-height: 1em;
+}
+h3 {
+  font-size: 1.2em;
+  color: #333e48;
+  font-weight: 700;
+  line-height: 1em;
+}
+p {
+  font-size: .8em;
+  color: #333e48;
+  font-weight: 400;
+  line-height: 1.2em;
+}
+button {
+  border: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: .9em;
+  background: #ccc;
+  padding: .7em 1.5em;
+}
+input {
+    height: 3em;
+    border: .1em solid #ccc;
+    margin-top: 1.5em;
 }
 
 code {
