@@ -14,6 +14,7 @@ class CreateQuiz extends Component {
                         <button>Create Quiz</button> <br />
                     </form>
                 </div>
+                <button onClick={this.props.handleToggleNewQuiz}>JK nevermind</button>
             </div>
         )
     }

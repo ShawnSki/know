@@ -3,6 +3,7 @@ const express = require('express');
 const session = require('express-session');
 const massive = require('massive');
 const authie_ctrl = require('./controllers/authie_ctrl');
+const quizzie_ctrl = require('./controllers/quizzie_ctrl');
 const app = express();
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
 
@@ -30,3 +31,5 @@ app.post('/auth/login', authie_ctrl.login);
 app.get('/auth/dashboard', authie_ctrl.accessDashboard);
 app.get('/auth/admin', authie_ctrl.getAdmin);
 app.get('/auth/logout', authie_ctrl.logout);
+
+app.post('/api/quiz', quizzie_ctrl.addQuiz);

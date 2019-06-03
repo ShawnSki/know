@@ -51,8 +51,7 @@ class Dashboard extends Component {
                             <button onClick={this.handleToggleNewQuiz}>Add New Quiz</button>
                         </div>) : (
                             <div>
-                                <CreateQuiz />
-                                <button onClick={this.handleToggleNewQuiz}>JK nevermind</button>
+                                <CreateQuiz handleToggleNewQuiz={this.handleToggleNewQuiz} />
                             </div>
                         )
                     }

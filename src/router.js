@@ -3,13 +3,11 @@ import { Switch, Route } from 'react-router-dom';
 import Home from './Components/Home/Home';
 import Dashboard from './Components/Dashboard/Dashboard';
 import Register from './Components/Register/Register';
-import CreateQuiz from './Components/CreateQuiz/CreateQuiz';
 
 export default (
     <Switch>
         <Route exact path='/' component={Home} />
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/register' component={Register} />
-        {/* <Route path='/create' component={CreateQuiz} /> */}
     </Switch>
 )
