@@ -4,7 +4,7 @@ class CreateQuiz extends Component {
     render() {
         return (
             <div>
-                <h1>CreateQuiz</h1>
+                <h1>Create Quiz</h1>
                 <div>
                     <form>
                         <h2>Create New</h2>

@@ -17,7 +17,7 @@ class Navbar extends Component {
                         <li><Link to='/'>Home</Link></li>
                         <li><Link to='/register'>Signup</Link></li>
                         <li><Link to='/dashboard'>Dashboard</Link></li>
-                        <li><Link to='/create'>Create Quiz</Link></li>
+                        {/* <li><Link to='/create'>Create Quiz</Link></li> */}
                     </ul>
                 </div>
             </nav>

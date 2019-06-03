@@ -10,6 +10,6 @@ export default (
         <Route exact path='/' component={Home} />
         <Route path='/dashboard' component={Dashboard} />
         <Route path='/register' component={Register} />
-        <Route path='/create' component={CreateQuiz} />
+        {/* <Route path='/create' component={CreateQuiz} /> */}
     </Switch>
 )

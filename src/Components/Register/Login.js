@@ -26,6 +26,7 @@ class Login extends Component {
         })
             .catch((err) => {
             console.log(err)
+                window.alert('Incorrect email or password.');
             })
         e.target.email.value = ''
         e.target.password.value = ''

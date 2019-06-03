@@ -31,6 +31,7 @@ class Signup extends Component {
             })
             .catch((err) => {
                 console.log(err)
+                window.alert('This email is already being used.');
             })
         e.target.email.value = ''
         e.target.password.value = ''

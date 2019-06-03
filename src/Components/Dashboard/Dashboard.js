@@ -2,8 +2,15 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { updateAdmin, clearAdmin } from '../../redux/adminReducer';
 import { connect } from 'react-redux';
+import CreateQuiz from '../CreateQuiz/CreateQuiz';
 
 class Dashboard extends Component {
+    constructor(props) {
+        super(props)
+        this.state = {
+            newQuiz: false
+        }
+    }
 
     componentDidMount() {
         axios.get('/auth/dashboard')
@@ -11,7 +18,7 @@ class Dashboard extends Component {
                 this.props.updateAdmin(res.data)
             })
             .catch((err) => {
-                this.props.history.push('/auth/register')
+                this.props.history.push('/register')
             })
     }
 
@@ -22,8 +29,14 @@ class Dashboard extends Component {
         })
     }
 
+    handleToggleNewQuiz = () => {
+        this.setState({
+            newQuiz: !this.state.newQuiz
+        })
+    }
+
     render() {
-        console.log(this.props)
+        // console.log(this.props)
         return (
             <div>
                 <h1>Dashboard</h1>
@@ -33,18 +46,16 @@ class Dashboard extends Component {
                 <h3>{this.props.company}</h3>
                 <button onClick={this.handleAdminLogout}>Logout</button>
                 <div>
-                    <h2>Create New Quiz</h2>
-                </div>
-                <div>
-                    <h2>Your Quizzes</h2>
-                    <ul>
-                        <li>Your Quiz Title Here (btns: edit, delete)</li>
-                        <li>Your Quiz Title Here (btns: edit, delete)</li>
-                        <li>Your Quiz Title Here (btns: edit, delete)</li>
-                        <li>Your Quiz Title Here (btns: edit, delete)</li>
-                        <li>Your Quiz Title Here (btns: edit, delete)</li>
-                        <li>Your Quiz Title Here (btns: edit, delete)</li>
-                    </ul>
+                    {(this.state.newQuiz === false)
+                        ? (<div>
+                            <button onClick={this.handleToggleNewQuiz}>Add New Quiz</button>
+                        </div>) : (
+                            <div>
+                                <CreateQuiz />
+                                <button onClick={this.handleToggleNewQuiz}>JK nevermind</button>
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         )
