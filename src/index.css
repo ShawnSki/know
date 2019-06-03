@@ -25,7 +25,19 @@ h3 {
   font-weight: 700;
   line-height: 1em;
 }
+h4 {
+  font-size: .7em;
+  color: #6d7780;
+  font-weight: 400;
+  line-height: 1.2em;
+}
 p {
+  font-size: .8em;
+  color: #333e48;
+  font-weight: 400;
+  line-height: 1.2em;
+}
+li {
   font-size: .8em;
   color: #333e48;
   font-weight: 400;
@@ -36,6 +48,7 @@ button {
   color: #fff;
   font-weight: 600;
   font-size: .9em;
+  text-transform: uppercase;
   background: #ccc;
   padding: .7em 1.5em;
 }
@@ -43,6 +56,14 @@ input {
     height: 3em;
     border: .1em solid #ccc;
     margin-top: 1.5em;
+    color: #333e48;
+    text-indent: .5em;
+    font-size: .8em;
+    font-weight: 500;
+}
+input::placeholder {
+  color: #a2a9ae;
+  font-weight: 400;
 }
 
 code {
@@ -53,16 +74,24 @@ code {
 /* setting defaults for all pages */
 a:link {
   text-decoration: none;
+  color: #1bb8ec;
 }
 
 a:visited {
   text-decoration: none;
+  color: #1bb8ec;
 }
 
 a:hover {
   text-decoration: none;
+  color: #1195c1;
 }
 
 a:active {
   text-decoration: none;
+  color: #1bb8ec;
+}
+
+hr {
+  border: red;
 }

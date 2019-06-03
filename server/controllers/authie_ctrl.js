@@ -60,6 +60,16 @@ module.exports = {
             })
         }
         return res.status(401).send('Please log in to access your dashboard.')
+    },
+    getAdmin: (req, res) => {
+        const { session } = req
+        if (session.admin) {
+            return res.status(200).send(session.admin)
+        }
+    },
+    logout: (req, res) => {
+        req.session.destroy()
+        res.sendStatus(200)
     }
 
 }
