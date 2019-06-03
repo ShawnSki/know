@@ -28,6 +28,9 @@ class Dashboard extends Component {
             <div>
                 <h1>Dashboard</h1>
                 <h3>{this.props.firstname}</h3>
+                <h3>{this.props.lastname}</h3>
+                <h3>{this.props.email}</h3>
+                <h3>{this.props.company}</h3>
                 <button onClick={this.handleAdminLogout}>Logout</button>
                 <div>
                     <h2>Create New Quiz</h2>

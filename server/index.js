@@ -29,4 +29,4 @@ app.post('/auth/register', authie_ctrl.register);
 app.post('/auth/login', authie_ctrl.login);
 app.get('/auth/dashboard', authie_ctrl.accessDashboard);
 app.get('/auth/admin', authie_ctrl.getAdmin);
-app.get('/logout', authie_ctrl.logout);
+app.get('/auth/logout', authie_ctrl.logout);

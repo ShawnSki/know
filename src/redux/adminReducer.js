@@ -26,7 +26,7 @@ export default function reducer(state = initialState, action) {
         case UPDATE_ADMIN:
             const { firstname, lastname, email, company } = action.payload
             return {...state, firstname, lastname, email, company}
-            case CLEAR_ADMIN:
+        case CLEAR_ADMIN:
                 return { ...initialState }
                 default:
                     return state
