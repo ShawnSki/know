@@ -8,7 +8,7 @@ class Dashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            newQuiz: false
+            addQuiz: false
         }
     }
 
@@ -29,9 +29,9 @@ class Dashboard extends Component {
         })
     }
 
-    handleToggleNewQuiz = () => {
+    handleToggleAddQuiz = () => {
         this.setState({
-            newQuiz: !this.state.newQuiz
+            addQuiz: !this.state.addQuiz
         })
     }
 
@@ -46,12 +46,12 @@ class Dashboard extends Component {
                 <h3>{this.props.company}</h3>
                 <button onClick={this.handleAdminLogout}>Logout</button>
                 <div>
-                    {(this.state.newQuiz === false)
+                    {(this.state.addQuiz === false)
                         ? (<div>
-                            <button onClick={this.handleToggleNewQuiz}>Add New Quiz</button>
+                            <button onClick={this.handleToggleAddQuiz}>Add New Quiz</button>
                         </div>) : (
                             <div>
-                                <CreateQuiz handleToggleNewQuiz={this.handleToggleNewQuiz} />
+                                <CreateQuiz handleToggleNewQuiz={this.handleToggleAddQuiz} />
                             </div>
                         )
                     }

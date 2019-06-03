@@ -33,3 +33,4 @@ app.get('/auth/admin', authie_ctrl.getAdmin);
 app.get('/auth/logout', authie_ctrl.logout);
 
 app.post('/api/quiz', quizzie_ctrl.addQuiz);
+app.get('/api/quizzes', quizzie_ctrl.allQuizzes);
