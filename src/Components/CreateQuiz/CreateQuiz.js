@@ -7,9 +7,23 @@ class CreateQuiz extends Component {
         this.state = {
             quiz_title: '',
             quiz_intro: '',
-            quiz_bg_img: ''
+            quiz_bg_img: '',
+            adminObj: {}
 
         }
+    }
+
+    componentDidMount() {
+        this.handleGetAdmin();
+    }
+
+    handleGetAdmin = () => {
+        axios.get('/auth/admin')
+            .then((res) => {
+                this.setState({
+                    adminObj: res.data
+                })
+            })
     }
 
     handleInfoUpdate = (e) => {
@@ -20,10 +34,11 @@ class CreateQuiz extends Component {
 
     handleAddQuiz = (e) => {
         e.preventDefault();
-        const { quiz_title, quiz_intro, quiz_bg_img } = this.state;
-        axios.post('/api/quiz', { quiz_title, quiz_intro, quiz_bg_img })
+        const { adminObj, quiz_title, quiz_intro, quiz_bg_img } = this.state;
+        
+        axios.post('/api/quiz', { admins_id: adminObj.id, quiz_title, quiz_intro, quiz_bg_img })
             .then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
                 // need to do something with the response... add to the list of quizzes
             })
         e.target.quiz_title.value = ''
@@ -32,6 +47,7 @@ class CreateQuiz extends Component {
     }
 
     render() {
+        // console.log(this.state.adminObj)
         return (
             <div>
                 <h1>Create Quiz</h1>

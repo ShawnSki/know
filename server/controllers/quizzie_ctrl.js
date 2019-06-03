@@ -2,8 +2,9 @@
 module.exports = {
     // creates new quiz
     addQuiz: (req, res) => {
-        const { quiz_title, quiz_intro, quiz_bg_img } = req.body;
+        const { admins_id, quiz_title, quiz_intro, quiz_bg_img } = req.body;
         req.app.get('db').create_quiz({
+            admins_id,
             quiz_title,
             quiz_intro,
             quiz_bg_img
