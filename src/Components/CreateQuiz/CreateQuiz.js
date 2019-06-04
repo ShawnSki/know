@@ -11,6 +11,7 @@ class CreateQuiz extends Component {
             quiz_intro: '',
             quiz_bg_img: '',
             admin: {},
+            quizzes_id: null,
             question: '',
             remediation: '',
             answer: '',
@@ -47,20 +48,23 @@ class CreateQuiz extends Component {
 
         axios.post('/api/quiz', { admins_id: admin.id, quiz_title, quiz_intro, quiz_bg_img })
             .then((res) => {
-                // console.log(res.data)
+                // console.log(res.data[0].id)
+                this.setState({
+                    quizzes_id: res.data[0].id
+                })
                 // need to do something with the response... add to the list of quizzes
             })
-        this.handleAddQuestionToggle();
-        e.target.quiz_title.value = ''
-        e.target.quiz_intro.value = ''
-        e.target.quiz_bg_img.value = ''
+            e.target.quiz_title.value = ''
+            e.target.quiz_intro.value = ''
+            e.target.quiz_bg_img.value = ''
+            this.handleAddQuestionToggle();
     }
 
     handleAddQuestion = (e) => {
         // needs to add new question to db and be ready to add another question
         e.preventDefault();
-        const { question, remediation, answer, distractor1, distractor2, distractor3 } = this.state;
-        axios.post('/api/question', { question, remediation, answer, distractor1, distractor2, distractor3 })
+        const { quizzes_id, question, remediation, answer, distractor1, distractor2, distractor3 } = this.state;
+        axios.post('/api/question', { quizzes_id, question, remediation, answer, distractor1, distractor2, distractor3 })
             .then((res) => {
             console.log(res.data)
             })

@@ -21,8 +21,9 @@ module.exports = {
             })
     },
     addQuestion: (req, res) => {
-        const { question, remediation, answer, distractor1, distractor2, distractor3 } = req.body;
-        req.app.get('db').createQuestion({
+        const { quizzes_id, question, remediation, answer, distractor1, distractor2, distractor3 } = req.body;
+        req.app.get('db').create_question({
+            quizzes_id,
             question,
             remediation,
             answer,
