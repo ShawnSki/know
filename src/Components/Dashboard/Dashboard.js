@@ -51,10 +51,20 @@ class Dashboard extends Component {
                         {(this.state.addQuiz === false)
                             ? (
                                 <div>
-                                    <h1>Create New Quiz</h1>
-                                    <p>Click the button below to create a quiz.</p>
-                                    <br />
-                                    <button onClick={this.handleToggleAddQuiz}>Add New Quiz</button>
+                                    <div>
+                                        <h1>Create New Quiz</h1>
+                                        <p>Click the button below to create a quiz.</p>
+                                        <br />
+                                        <button onClick={this.handleToggleAddQuiz}>Add New Quiz</button>
+                                    </div>
+                                    <div className='listCont'>
+                                        <h1>Quiz List</h1>
+                                        <ul>
+                                            <li>Quiz Title here</li>
+                                            <li>Quiz Title here</li>
+                                            <li>Quiz Title here</li>
+                                        </ul>
+                                    </div>
                                 </div>
                             ) : (
                                 <div>
@@ -63,14 +73,7 @@ class Dashboard extends Component {
                             )
                         }
                     </div>
-                    <div className='listCont'>
-                        <h1>Quiz List</h1>
-                        <ul>
-                            <li>Quiz Title here</li>
-                            <li>Quiz Title here</li>
-                            <li>Quiz Title here</li>
-                        </ul>
-                    </div>
+
                 </div>
             </div>
         )

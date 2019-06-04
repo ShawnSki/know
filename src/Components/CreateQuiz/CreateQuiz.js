@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import CreateQuestion from '../CreateQuestion/CreateQuestion';
 import './CreateQuiz.css';
 
 class CreateQuiz extends Component {
@@ -107,27 +108,14 @@ class CreateQuiz extends Component {
                                 </form>
                             </div>
                         ) : (
-                            <div>
-                                <h2>Add question to quiz: {this.state.quiz_title}</h2>
-                                {(this.state.questionInitialized === false)
-                                    ? (
-                                        <div>
-                                            <form onSubmit={this.handleAddQuestion}>
-                                                <div className='creatorFormItems'><h4>Question:</h4><input type='text' name='question' placeholder='question' onChange={this.handleInfoUpdate} /></div>
-                                                <div className='creatorFormItems'><h4>Remediation:</h4><input type='text' name='remediation' placeholder='remediation' onChange={this.handleInfoUpdate} /></div>
-                                                <div className='creatorFormItems'><h4>Answer:</h4><input type='text' name='answer' placeholder='answer' onChange={this.handleInfoUpdate} /></div>
-                                                <div className='creatorFormItems'><h4>Distractor1:</h4><input type='text' name='distractor1' placeholder='distractor1' onChange={this.handleInfoUpdate} /></div>
-                                                <div className='creatorFormItems'><h4>Distractor2:</h4><input type='text' name='distractor2' placeholder='distractor2' onChange={this.handleInfoUpdate} /></div>
-                                                <div className='creatorFormItems'><h4>Distractor3:</h4><input type='text' name='distractor3' placeholder='distractor3' onChange={this.handleInfoUpdate} /></div>
-                                                <button>Next</button> <br />
-                                            </form>
-                                        </div>
-                                    ) : (
-                                        <div>
-                                            <button onClick={this.handleQuestionAddedToggle}>add another question</button>
-                                        </div>
-                                    )}
-                            </div>
+                            
+                            <CreateQuestion
+                                questionInitialized={this.state.questionInitialized}
+                                quiz_title={this.state.quiz_title}
+                                handleAddQuestion={this.handleAddQuestion}
+                                handleInfoUpdate={this.handleInfoUpdate}
+                                handleQuestionAddedToggle={this.handleQuestionAddedToggle}
+                            />
                         )
                     }
                 </div>
