@@ -1,9 +1,8 @@
 import React from 'react';
 
 const CreateQuestion = props => (
-
     <div>
-        <h2>Add question to quiz: {props.quiz_title}</h2>
+        <h2>Add question to quiz</h2>
         {(props.questionInitialized === false)
             ? (
                 <div>

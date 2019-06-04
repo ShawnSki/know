@@ -37,14 +37,9 @@ class Dashboard extends Component {
     }
 
     render() {
-        // console.log(this.props)
         return (
             <div>
-                <h1>Dashboard</h1>
-                <h3>{this.props.firstname}</h3>
-                <h3>{this.props.lastname}</h3>
-                <h3>{this.props.email}</h3>
-                <h3>{this.props.company}</h3>
+                <h1>{this.props.firstname}'s Dashboard</h1>
                 <button onClick={this.handleAdminLogout}>Logout</button>
                 <div className='dashCont'>
                     <div className='createQCont'>

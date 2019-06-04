@@ -33,11 +33,13 @@ class Signup extends Component {
                 console.log(err)
                 window.alert('This email is already being used.');
             })
-        e.target.email.value = ''
-        e.target.password.value = ''
-        e.target.firstname.value = ''
-        e.target.lastname.value = ''
-        e.target.company.value = ''
+            this.setState({
+                email: '',
+                password: '',
+                firstname: '',
+                lastname: '',
+                company: ''
+            })
     }
 
     render() {
@@ -47,13 +49,13 @@ class Signup extends Component {
                     <form onSubmit={this.handleAdminRegister}>
                         <h1>Create an account</h1>
                         <p>Already have an account? <a href='/login'> Log in ></a></p>
-                        <input type='text' name='email' placeholder='email' onChange={this.handleLoginInfoUpdate} />
-                        <input type='password' name='password' placeholder='password' onChange={this.handleLoginInfoUpdate} />
+                        <input type='text' name='email' placeholder='email' value={this.state.email} onChange={this.handleLoginInfoUpdate} />
+                        <input type='password' name='password' placeholder='password' value={this.state.password} onChange={this.handleLoginInfoUpdate} />
                         <div className='inputCont'>
-                            <input type='text' name='firstname' placeholder='first name' onChange={this.handleLoginInfoUpdate} />
-                            <input type='text' name='lastname' placeholder='last name' onChange={this.handleLoginInfoUpdate} />
+                            <input type='text' name='firstname' placeholder='first name' value={this.state.firstname} onChange={this.handleLoginInfoUpdate} />
+                            <input type='text' name='lastname' placeholder='last name' value={this.state.lastname} onChange={this.handleLoginInfoUpdate} />
                         </div>
-                        <input type='text' name='company' placeholder='company' onChange={this.handleLoginInfoUpdate} />
+                        <input type='text' name='company' placeholder='company' value={this.state.company} onChange={this.handleLoginInfoUpdate} />
                         <button>Create Account</button> <br />
                     </form>
                 </div>

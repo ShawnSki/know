@@ -28,18 +28,20 @@ class Login extends Component {
             console.log(err)
                 window.alert('Incorrect email or password.');
             })
-        e.target.email.value = ''
-        e.target.password.value = ''
+        this.setState({
+            email: '',
+            password: ''
+        })
     }
-
+    
     render() {
         return (
             <div className='mainCont'>
                 <div className='signupCont'>
                     <form onSubmit={this.handleAdminLogin}>
                         <h1>login to account</h1>
-                        <input type='text' name='email' placeholder='email' onChange={this.handleLoginInfoUpdate} />
-                        <input type='password' name='password' placeholder='password' onChange={this.handleLoginInfoUpdate} />
+                        <input type='text' name='email' placeholder='email' value={this.state.email} onChange={this.handleLoginInfoUpdate} />
+                        <input type='password' name='password' placeholder='password' value={this.state.password} onChange={this.handleLoginInfoUpdate} />
                         <button>Login</button> <br/>
                         </form>
                 </div>

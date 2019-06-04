@@ -55,9 +55,11 @@ class CreateQuiz extends Component {
                 })
                 // need to do something with the response... add to the list of quizzes
             })
-        e.target.quiz_title.value = ''
-        e.target.quiz_intro.value = ''
-        e.target.quiz_bg_img.value = ''
+            this.setState({
+                quiz_title: '',
+                quiz_intro: '',
+                quiz_bg_img: ''
+            })
         this.handleQuizAddedToggle();
     }
 
@@ -67,14 +69,16 @@ class CreateQuiz extends Component {
         const { quizDetails, question, remediation, answer, distractor1, distractor2, distractor3 } = this.state;
         axios.post('/api/question', { quizzes_id: quizDetails.id, question, remediation, answer, distractor1, distractor2, distractor3 })
             .then((res) => {
-                console.log(res.data)
+                // console.log(res.data)
             })
-        e.target.question.value = ''
-        e.target.remediation.value = ''
-        e.target.answer.value = ''
-        e.target.distractor1.value = ''
-        e.target.distractor2.value = ''
-        e.target.distractor3.value = ''
+            this.setState({
+                question: '',
+                remediation: '',
+                answer: '',
+                distractor1: '',
+                distractor2: '',
+                distractor3: ''
+            })
         this.handleQuestionAddedToggle();
     }
 
@@ -101,9 +105,9 @@ class CreateQuiz extends Component {
                             <div className='creatorCont'>
                                 <form onSubmit={this.handleAddQuiz}>
                                     <h2>Create New Quiz</h2>
-                                    <div className='creatorFormItems'><h4>Quiz Title:</h4><input type='text' name='quiz_title' placeholder='title' onChange={this.handleInfoUpdate} /></div>
-                                    <div className='creatorFormItems'><h4>Introduction:</h4><input type='text' name='quiz_intro' placeholder='introduction' onChange={this.handleInfoUpdate} /></div>
-                                    <div className='creatorFormItems'><h4>Background Image:</h4><input type='text' name='quiz_bg_img' placeholder='background image url' onChange={this.handleInfoUpdate} /></div>
+                                    <div className='creatorFormItems'><h4>Quiz Title:</h4><input type='text' name='quiz_title' placeholder='title' value={this.state.quiz_title} onChange={this.handleInfoUpdate} /></div>
+                                    <div className='creatorFormItems'><h4>Introduction:</h4><input type='text' name='quiz_intro' placeholder='introduction' value={this.state.quiz_intro} onChange={this.handleInfoUpdate} /></div>
+                                    <div className='creatorFormItems'><h4>Background Image:</h4><input type='text' name='quiz_bg_img' placeholder='background image url' value={this.state.quiz_bg_img} onChange={this.handleInfoUpdate} /></div>
                                     <button>Submit and Add Question</button> <br />
                                 </form>
                             </div>
@@ -111,7 +115,6 @@ class CreateQuiz extends Component {
                             
                             <CreateQuestion
                                 questionInitialized={this.state.questionInitialized}
-                                quiz_title={this.state.quiz_title}
                                 handleAddQuestion={this.handleAddQuestion}
                                 handleInfoUpdate={this.handleInfoUpdate}
                                 handleQuestionAddedToggle={this.handleQuestionAddedToggle}
