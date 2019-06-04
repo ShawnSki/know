@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import CreateQuestion from '../CreateQuestion/CreateQuestion';
 import './CreateQuiz.css';
 
 class CreateQuiz extends Component {
@@ -11,14 +10,15 @@ class CreateQuiz extends Component {
             quiz_intro: '',
             quiz_bg_img: '',
             admin: {},
-            quizzes_id: null,
+            quizDetails: {},
             question: '',
             remediation: '',
             answer: '',
             distractor1: '',
             distractor2: '',
             distractor3: '',
-            quizInitialized: false
+            quizInitialized: false,
+            questionInitialized: false
         }
     }
 
@@ -50,23 +50,23 @@ class CreateQuiz extends Component {
             .then((res) => {
                 // console.log(res.data[0].id)
                 this.setState({
-                    quizzes_id: res.data[0].id
+                    quizDetails: res.data[0]
                 })
                 // need to do something with the response... add to the list of quizzes
             })
-            e.target.quiz_title.value = ''
-            e.target.quiz_intro.value = ''
-            e.target.quiz_bg_img.value = ''
-            this.handleAddQuestionToggle();
+        e.target.quiz_title.value = ''
+        e.target.quiz_intro.value = ''
+        e.target.quiz_bg_img.value = ''
+        this.handleQuizAddedToggle();
     }
 
     handleAddQuestion = (e) => {
         // needs to add new question to db and be ready to add another question
         e.preventDefault();
-        const { quizzes_id, question, remediation, answer, distractor1, distractor2, distractor3 } = this.state;
-        axios.post('/api/question', { quizzes_id, question, remediation, answer, distractor1, distractor2, distractor3 })
+        const { quizDetails, question, remediation, answer, distractor1, distractor2, distractor3 } = this.state;
+        axios.post('/api/question', { quizzes_id: quizDetails.id, question, remediation, answer, distractor1, distractor2, distractor3 })
             .then((res) => {
-            console.log(res.data)
+                console.log(res.data)
             })
         e.target.question.value = ''
         e.target.remediation.value = ''
@@ -74,23 +74,26 @@ class CreateQuiz extends Component {
         e.target.distractor1.value = ''
         e.target.distractor2.value = ''
         e.target.distractor3.value = ''
+        this.handleQuestionAddedToggle();
     }
 
-    handleAddQuestionToggle = () => {
+    handleQuizAddedToggle = () => {
         this.setState({
             quizInitialized: !this.state.quizInitialized
         })
-
     }
 
+    handleQuestionAddedToggle = () => {
+        this.setState({
+            questionInitialized: !this.state.questionInitialized
+        })
+    }
 
     render() {
-        console.log(this.state.question)
         return (
             <div>
-                <h1>Create Quiz</h1>
+                <h1>Create Quiz Page</h1>
                 <button onClick={this.props.handleToggleNewQuiz}>X</button>
-
                 <div className='quizzesCont'>
                     {(this.state.quizInitialized === false)
                         ? (
@@ -105,18 +108,26 @@ class CreateQuiz extends Component {
                             </div>
                         ) : (
                             <div>
-                                <form onSubmit={this.handleAddQuestion}>
-                                    <h2>Add question to quiz: {this.state.quiz_title}</h2>
-                                    <div className='creatorFormItems'><h4>Question:</h4><input type='text' name='question' placeholder='question' onChange={this.handleInfoUpdate} /></div>
-                                    <div className='creatorFormItems'><h4>Remediation:</h4><input type='text' name='remediation' placeholder='remediation' onChange={this.handleInfoUpdate} /></div>
-                                    <div className='creatorFormItems'><h4>Answer:</h4><input type='text' name='answer' placeholder='answer' onChange={this.handleInfoUpdate} /></div>
-                                    <div className='creatorFormItems'><h4>Distractor1:</h4><input type='text' name='distractor1' placeholder='distractor1' onChange={this.handleInfoUpdate} /></div>
-                                    <div className='creatorFormItems'><h4>Distractor2:</h4><input type='text' name='distractor2' placeholder='distractor2' onChange={this.handleInfoUpdate} /></div>
-                                    <div className='creatorFormItems'><h4>Distractor3:</h4><input type='text' name='distractor3' placeholder='distractor3' onChange={this.handleInfoUpdate} /></div>
-                                    <button>Next</button> <br />
-                                </form>
+                                <h2>Add question to quiz: {this.state.quiz_title}</h2>
+                                {(this.state.questionInitialized === false)
+                                    ? (
+                                        <div>
+                                            <form onSubmit={this.handleAddQuestion}>
+                                                <div className='creatorFormItems'><h4>Question:</h4><input type='text' name='question' placeholder='question' onChange={this.handleInfoUpdate} /></div>
+                                                <div className='creatorFormItems'><h4>Remediation:</h4><input type='text' name='remediation' placeholder='remediation' onChange={this.handleInfoUpdate} /></div>
+                                                <div className='creatorFormItems'><h4>Answer:</h4><input type='text' name='answer' placeholder='answer' onChange={this.handleInfoUpdate} /></div>
+                                                <div className='creatorFormItems'><h4>Distractor1:</h4><input type='text' name='distractor1' placeholder='distractor1' onChange={this.handleInfoUpdate} /></div>
+                                                <div className='creatorFormItems'><h4>Distractor2:</h4><input type='text' name='distractor2' placeholder='distractor2' onChange={this.handleInfoUpdate} /></div>
+                                                <div className='creatorFormItems'><h4>Distractor3:</h4><input type='text' name='distractor3' placeholder='distractor3' onChange={this.handleInfoUpdate} /></div>
+                                                <button>Next</button> <br />
+                                            </form>
+                                        </div>
+                                    ) : (
+                                        <div>
+                                            <button onClick={this.handleQuestionAddedToggle}>add another question</button>
+                                        </div>
+                                    )}
                             </div>
-
                         )
                     }
                 </div>

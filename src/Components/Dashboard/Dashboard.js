@@ -14,13 +14,13 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        // axios.get('/auth/dashboard')
-        //     .then((res) => {
-        //         this.props.updateAdmin(res.data)
-        //     })
-        //     .catch((err) => {
-        //         this.props.history.push('/register')
-        //     })
+        axios.get('/auth/dashboard')
+            .then((res) => {
+                this.props.updateAdmin(res.data)
+            })
+            .catch((err) => {
+                this.props.history.push('/register')
+            })
     }
 
     handleAdminLogout = () => {
