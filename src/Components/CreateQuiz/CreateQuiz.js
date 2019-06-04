@@ -8,7 +8,7 @@ class CreateQuiz extends Component {
             quiz_title: '',
             quiz_intro: '',
             quiz_bg_img: '',
-            adminObj: {}
+            admin: {}
 
         }
     }
@@ -21,7 +21,7 @@ class CreateQuiz extends Component {
         axios.get('/auth/admin')
             .then((res) => {
                 this.setState({
-                    adminObj: res.data
+                    admin: res.data
                 })
             })
     }
@@ -34,9 +34,9 @@ class CreateQuiz extends Component {
 
     handleAddQuiz = (e) => {
         e.preventDefault();
-        const { adminObj, quiz_title, quiz_intro, quiz_bg_img } = this.state;
+        const { admin, quiz_title, quiz_intro, quiz_bg_img } = this.state;
         
-        axios.post('/api/quiz', { admins_id: adminObj.id, quiz_title, quiz_intro, quiz_bg_img })
+        axios.post('/api/quiz', { admins_id: admin.id, quiz_title, quiz_intro, quiz_bg_img })
             .then((res) => {
                 // console.log(res.data)
                 // need to do something with the response... add to the list of quizzes
@@ -47,7 +47,7 @@ class CreateQuiz extends Component {
     }
 
     render() {
-        // console.log(this.state.adminObj)
+        console.log(this.state.admin)
         return (
             <div>
                 <h1>Create Quiz</h1>
@@ -57,10 +57,10 @@ class CreateQuiz extends Component {
                         <input type='text' name='quiz_title' placeholder='title' onChange={this.handleInfoUpdate} />
                         <input type='text' name='quiz_intro' placeholder='introduction' onChange={this.handleInfoUpdate} />
                         <input type='text' name='quiz_bg_img' placeholder='background image url' onChange={this.handleInfoUpdate} />
-                        <button>Create Quiz</button> <br />
+                        <button>Create</button> <br />
                     </form>
                 </div>
-                <button onClick={this.props.handleToggleNewQuiz}>JK nevermind</button>
+                <button onClick={this.props.handleToggleNewQuiz}>X</button>
             </div>
         )
     }

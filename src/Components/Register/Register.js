@@ -19,8 +19,8 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <Signup />
                 <Login />
+                <Signup />
             </div>
         )
     }
