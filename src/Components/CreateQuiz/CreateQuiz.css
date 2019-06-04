@@ -1,0 +1,19 @@
+.quizzesCont {
+    background: red;
+    padding: 1em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.creatorCont {
+    background: lightgreen;
+}
+.creatorFormItems {
+    display: flex;
+    flex-direction: column;
+}
+.createQuestion {
+    background: lightseagreen;
+    padding: 2em;
+}

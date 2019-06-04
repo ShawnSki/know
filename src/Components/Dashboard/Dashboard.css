@@ -10,19 +10,14 @@
 
 .createQCont {
     background: #eee;
-    width: 60%;
+    width: 90%;
 }
 
 .listCont {
     background: lightblue;
-    width: 60%;
+    width: 90%;
 }
 
-@media (max-width: 700px) {
-    .createQCont {
-        width: 90%;
-    }
-    .listCont {
-        width: 90%;
-    }
-}
+/* @media (max-width: 700px) {
+    
+} */

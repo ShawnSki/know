@@ -26,9 +26,9 @@ h3 {
   line-height: 1em;
 }
 h4 {
-  font-size: .7em;
-  color: #6d7780;
-  font-weight: 400;
+  font-size: .8em;
+  color: #333e48;
+  font-weight: 700;
   line-height: 1.2em;
 }
 p {
@@ -55,7 +55,7 @@ button {
 input {
     height: 3em;
     border: .1em solid #ccc;
-    margin-top: 1.5em;
+    margin-bottom: 1em;
     color: #333e48;
     text-indent: .5em;
     font-size: .8em;

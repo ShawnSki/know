@@ -33,6 +33,10 @@ CREATE TABLE quiz_questions (
     id SERIAL PRIMARY KEY,
     quizzes_id INTEGER REFERENCES quizzes(id),
     question VARCHAR(1000),
+    answer VARCHAR(500),
+    distractor1 VARCHAR(500),
+    distractor2 VARCHAR(500),
+    distractor3 VARCHAR(500),
     remediation VARCHAR(1000)
 );
 

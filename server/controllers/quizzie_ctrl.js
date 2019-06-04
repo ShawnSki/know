@@ -19,5 +19,18 @@ module.exports = {
             .then(quizzes => {
                 res.status(200).send(quizzes)
             })
+    },
+    addQuestion: (req, res) => {
+        const { question, remediation, answer, distractor1, distractor2, distractor3 } = req.body;
+        req.app.get('db').createQuestion({
+            question,
+            remediation,
+            answer,
+            distractor1,
+            distractor2,
+            distractor3
+        }).then(newQuestion => {
+            res.status(200).send(newQuestion)
+        })
     }
 }
