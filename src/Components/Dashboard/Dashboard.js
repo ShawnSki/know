@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { updateAdmin, clearAdmin } from '../../redux/adminReducer';
+import { updateQuiz, clearQuiz } from '../../redux/quizReducer';
 import { connect } from 'react-redux';
 import CreateQuiz from '../CreateQuiz/CreateQuiz';
 import './Dashboard.css';
@@ -14,21 +15,19 @@ class Dashboard extends Component {
     }
 
     componentDidMount() {
-        axios.get('/auth/dashboard')
-            .then((res) => {
-                this.props.updateAdmin(res.data)
-            })
-            .catch((err) => {
-                this.props.history.push('/register')
-            })
+        this.handleGetAdmin();
     }
 
-    // handleAdminLogout = () => {
-    //     axios.get('/auth/logout').then((res) => {
-    //         this.props.clearAdmin()
-    //         this.props.history.push('/')
-    //     })
-    // }
+    handleGetAdmin = async () => {
+        await axios.get('/auth/dashboard')
+            .then(res => this.props.updateAdmin(res.data))
+            .catch((err) => {
+                console.log(err)
+            })
+        if (!this.props.admin.firstname) {
+            this.props.history.push('/register')
+        }
+    }
 
     handleToggleAddQuiz = () => {
         this.setState({
@@ -37,21 +36,21 @@ class Dashboard extends Component {
     }
 
     render() {
+        console.log(this.props)
         return (
             <div className='dashPageCont'>
                 <div className='dashHeader'><h1>{this.props.firstname}'s Dashboard</h1></div>
-                {/* <button onClick={this.handleAdminLogout}>Logout</button> */}
                 <div className='dashCont'>
                     {(this.state.addQuiz === false)
                         ? (
                             <div className='quizCont'>
                                 <div className='quizBtnCont'>
-                                <h1>Your Quizzes</h1>
+                                    <h1>Your Quizzes</h1>
                                     <p>Click the button below to create a quiz.</p>
                                     <br />
                                     <button onClick={this.handleToggleAddQuiz}>create new quiz</button>
                                 </div>
-                                <div>
+                                <div className='quizList'>
                                     <br />
                                     <p>Quiz List component here</p>
                                     <ul>
@@ -72,21 +71,13 @@ class Dashboard extends Component {
 }
 
 function mapStateToProps(reduxState) {
-    const { firstname, lastname, email, company } = reduxState;
     return {
-        firstname,
-        lastname,
-        email,
-        company
+        admin: reduxState.admin,
+        quizzes: reduxState.quizzes
     }
 }
 
-const mapDispatchToProps = {
-    updateAdmin,
-    clearAdmin
-}
 
 export default connect(
-    mapStateToProps,
-    mapDispatchToProps
+    mapStateToProps, { updateAdmin, clearAdmin, updateQuiz, clearQuiz }
 )(Dashboard)

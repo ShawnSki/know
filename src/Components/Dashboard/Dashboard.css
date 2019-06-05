@@ -18,21 +18,26 @@
     align-items: center;
 }
 .quizBtnCont {
+    background: #fff;
     text-align: center;
     margin-right: 2em;
+    width: 30%;
 }
-.createQCont {
-    background: #eee;
-    width: 90%;
+.quizList {
+    background: #fff;
+    width: 50%;
 }
 
-.listCont {
-    background: lightblue;
-    width: 90%;
-}
 
 @media (max-width: 700px) {
     .quizCont {
         flex-direction: column;
+    }
+    .quizBtnCont {
+        width: 80%;
+        margin: 1em 0;
+    }
+    .quizList {
+        width: 80%;
     }
 }
