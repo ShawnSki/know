@@ -1,5 +1,3 @@
-// import axios from 'axios';
-
 const initialState = {
     firstname: '',
     lastname: '',
@@ -10,13 +8,12 @@ const initialState = {
 const UPDATE_ADMIN = 'UPDATE_ADMIN';
 const CLEAR_ADMIN = 'CLEAR_ADMIN';
 
-export const updateAdmin = (adminObj) => {
+export function updateAdmin(admin) {
     return {
         type: UPDATE_ADMIN,
-        payload: adminObj
+        payload: admin
     }
 }
-
 
 export function clearAdmin() {
     return {
@@ -24,7 +21,7 @@ export function clearAdmin() {
     }
 }
 
-export default function (state = initialState, action) {
+export default function reducer(state = initialState, action) {
     switch (action.type) {
         case UPDATE_ADMIN:
             const { firstname, lastname, email, company } = action.payload
@@ -34,4 +31,4 @@ export default function (state = initialState, action) {
                 default:
                     return state
                 }
-            }       
+            }

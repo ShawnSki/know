@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import { updateAdmin, clearAdmin } from '../../redux/adminReducer';
-import { updateQuiz, clearQuiz } from '../../redux/quizReducer';
 import { connect } from 'react-redux';
 import CreateQuiz from '../CreateQuiz/CreateQuiz';
 import './Dashboard.css';
@@ -24,8 +23,9 @@ class Dashboard extends Component {
             .catch((err) => {
                 console.log(err)
             })
-        if (!this.props.admin.firstname) {
+        if (!this.props.firstname) {
             this.props.history.push('/register')
+            // }
         }
     }
 
@@ -36,10 +36,10 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log(this.props)
         return (
             <div className='dashPageCont'>
                 <div className='dashHeader'><h1>{this.props.firstname}'s Dashboard</h1></div>
+                {/* <button onClick={this.handleAdminLogout}>Logout</button> */}
                 <div className='dashCont'>
                     {(this.state.addQuiz === false)
                         ? (
@@ -50,7 +50,7 @@ class Dashboard extends Component {
                                     <br />
                                     <button onClick={this.handleToggleAddQuiz}>create new quiz</button>
                                 </div>
-                                <div className='quizList'>
+                                <div>
                                     <br />
                                     <p>Quiz List component here</p>
                                     <ul>
@@ -69,15 +69,21 @@ class Dashboard extends Component {
         )
     }
 }
-
+    
 function mapStateToProps(reduxState) {
+    const { firstname, lastname, email, company } = reduxState;
     return {
-        admin: reduxState.admin,
-        quizzes: reduxState.quizzes
+        firstname,
+        lastname,
+        email,
+        company
     }
 }
-
-
+const mapDispatchToProps = {
+    updateAdmin,
+    clearAdmin
+}
 export default connect(
-    mapStateToProps, { updateAdmin, clearAdmin, updateQuiz, clearQuiz }
+    mapStateToProps,
+    mapDispatchToProps
 )(Dashboard)
