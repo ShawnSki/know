@@ -46,12 +46,14 @@ module.exports = {
             const dashboardInfo = await db.get_admin_info({ id: session.admin.id });
             // console.log(dashboardInfo)
             const {
+                id,
                 firstname,
                 lastname,
                 email,
                 company
             } = dashboardInfo[0];
             return res.status(200).send({
+                id,
                 firstname,
                 lastname,
                 email,

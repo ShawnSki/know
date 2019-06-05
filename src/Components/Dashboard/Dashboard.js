@@ -9,12 +9,14 @@ class Dashboard extends Component {
     constructor(props) {
         super(props)
         this.state = {
-            addQuiz: false
+            addQuiz: false,
+            quizzes: []
         }
     }
 
     componentDidMount() {
         this.handleGetAdmin();
+        // this.handleGetQuizzes();
     }
 
     handleGetAdmin = async () => {
@@ -25,8 +27,18 @@ class Dashboard extends Component {
             })
         if (!this.props.firstname) {
             this.props.history.push('/register')
-            // }
+            
         }
+        this.handleGetQuizzes()
+    }
+
+    handleGetQuizzes = () => {
+        axios.get(`/api/quizzes/${this.props.id}`)
+            .then(res => {
+                this.setState({
+                    quizzes: res.data
+                })
+        })
     }
 
     handleToggleAddQuiz = () => {
@@ -36,10 +48,10 @@ class Dashboard extends Component {
     }
 
     render() {
+        console.log(this.state.quizzes)
         return (
             <div className='dashPageCont'>
                 <div className='dashHeader'><h1>{this.props.firstname}'s Dashboard</h1></div>
-                {/* <button onClick={this.handleAdminLogout}>Logout</button> */}
                 <div className='dashCont'>
                     {(this.state.addQuiz === false)
                         ? (
@@ -71,8 +83,9 @@ class Dashboard extends Component {
 }
     
 function mapStateToProps(reduxState) {
-    const { firstname, lastname, email, company } = reduxState;
+    const { id, firstname, lastname, email, company } = reduxState;
     return {
+        id,
         firstname,
         lastname,
         email,

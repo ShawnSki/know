@@ -1,4 +1,5 @@
 const initialState = {
+    id: null,
     firstname: '',
     lastname: '',
     email: '',
@@ -24,8 +25,8 @@ export function clearAdmin() {
 export default function reducer(state = initialState, action) {
     switch (action.type) {
         case UPDATE_ADMIN:
-            const { firstname, lastname, email, company } = action.payload
-            return {...state, firstname, lastname, email, company}
+            const { id, firstname, lastname, email, company } = action.payload
+            return {...state, id, firstname, lastname, email, company}
         case CLEAR_ADMIN:
                 return { ...initialState }
                 default:
