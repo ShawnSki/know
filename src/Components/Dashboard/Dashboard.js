@@ -47,13 +47,15 @@ class Dashboard extends Component {
         })
     }
 
+
     render() {
         // console.log(this.state.quizzes)
         const quizzesMapped = this.state.quizzes.map((quizObj, ind) => {
             return (
                 <QuizItem
                     key={ind}
-                    quizObj={quizObj} />
+                    quizObj={quizObj}
+                    handleGetQuizzes={this.handleGetQuizzes} />
             )
         })
         return (
@@ -72,13 +74,16 @@ class Dashboard extends Component {
                                 <div className='quizList'>
                                     <br />
                                     <ul>
-                                        <div>{quizzesMapped}</div>
+                                        <div>{quizzesMapped.reverse()}</div>
                                     </ul>
                                 </div>
                             </div>
                         ) : (
                             <div>
-                                <CreateQuiz handleToggleNewQuiz={this.handleToggleAddQuiz} />
+                                <CreateQuiz
+                                    handleToggleNewQuiz={this.handleToggleAddQuiz}
+                                    handleGetQuizzes={this.handleGetQuizzes}
+                                />
                             </div>
                         )
                     }

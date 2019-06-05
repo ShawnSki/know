@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import axios from 'axios';
 import './QuizItem.css';
 
 class QuizItem extends Component {
@@ -9,16 +10,20 @@ class QuizItem extends Component {
         }
     }
 
+    handleDeleteQuiz = async () => {
+        await axios.delete(`/api/quiz/${this.props.quizObj.id}`)
+        this.props.handleGetQuizzes()
+    }
 
     render() {
-        console.log(this.props.quizObj)
+        // console.log(this.props.quizObj.id)
         return (
             <div className='quizItemCont'>
                 <h4>{this.props.quizObj.quiz_title}</h4>
                 <div className='quizItembtnCont'>
                     <button>results</button>
                     <button>edit</button>
-                    <button>delete</button>
+                    <button onClick={this.handleDeleteQuiz}>delete</button>
                 </div>
             </div>
         )

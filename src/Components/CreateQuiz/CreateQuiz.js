@@ -42,12 +42,12 @@ class CreateQuiz extends Component {
         })
     }
 
-    handleAddQuiz = (e) => {
+    handleAddQuiz = async (e) => {
         // needs to submit quiz setup and then shows the question adder
         e.preventDefault();
         const { admin, quiz_title, quiz_intro, quiz_bg_img } = this.state;
 
-        axios.post('/api/quiz', { admins_id: admin.id, quiz_title, quiz_intro, quiz_bg_img })
+        await axios.post('/api/quiz', { admins_id: admin.id, quiz_title, quiz_intro, quiz_bg_img })
             .then((res) => {
                 // console.log(res.data[0].id)
                 this.setState({
@@ -55,10 +55,11 @@ class CreateQuiz extends Component {
                 })
                 // need to do something with the response... add to the list of quizzes
             })
-        e.target.quiz_title.value = ''
-        e.target.quiz_intro.value = ''
-        e.target.quiz_bg_img.value = ''
+        // e.target.quiz_title.value = ''
+        // e.target.quiz_intro.value = ''
+        // e.target.quiz_bg_img.value = ''
         this.handleQuizAddedToggle();
+        this.props.handleGetQuizzes()
     }
 
     handleAddQuestion = (e) => {
