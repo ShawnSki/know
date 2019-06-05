@@ -1,13 +1,26 @@
+.dashPageCont {
+    width: 100%;
+}
+.dashHeader {
+    padding: 3em 2em;
+}
 .dashCont {
-    background: #ddd;
-    min-height: 10em;
+    background: #f2f2f2;
+    display: flex;
+    justify-content: center;
+}
+.quizCont {
+    min-height: 15em;
+    margin-top: 2em;
     width: 100%;
     display: flex;
-    flex-direction: column;
     justify-content: center;
     align-items: center;
 }
-
+.quizBtnCont {
+    text-align: center;
+    margin-right: 2em;
+}
 .createQCont {
     background: #eee;
     width: 90%;
@@ -18,6 +31,8 @@
     width: 90%;
 }
 
-/* @media (max-width: 700px) {
-    
-} */
+@media (max-width: 700px) {
+    .quizCont {
+        flex-direction: column;
+    }
+}

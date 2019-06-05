@@ -3,7 +3,7 @@ import axios from 'axios';
 import { updateAdmin } from '../../redux/adminReducer';
 import { connect } from 'react-redux';
 import Signup from './Signup';
-import Login from './Login';
+// import Login from './Login';
 
 class Register extends Component {
     
@@ -19,7 +19,7 @@ class Register extends Component {
     render() {
         return (
             <div>
-                <Login />
+                {/* <Login /> */}
                 <Signup />
             </div>
         )

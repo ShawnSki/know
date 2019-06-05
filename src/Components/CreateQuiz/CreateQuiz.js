@@ -23,7 +23,7 @@ class CreateQuiz extends Component {
         }
     }
 
-    componentDidMount() {
+    componentDidMount = () => {
         this.handleGetAdmin();
     }
 
@@ -55,11 +55,9 @@ class CreateQuiz extends Component {
                 })
                 // need to do something with the response... add to the list of quizzes
             })
-            this.setState({
-                quiz_title: '',
-                quiz_intro: '',
-                quiz_bg_img: ''
-            })
+        e.target.quiz_title.value = ''
+        e.target.quiz_intro.value = ''
+        e.target.quiz_bg_img.value = ''
         this.handleQuizAddedToggle();
     }
 
@@ -115,6 +113,7 @@ class CreateQuiz extends Component {
                             
                             <CreateQuestion
                                 questionInitialized={this.state.questionInitialized}
+                                quiz_title={this.state.quiz_title}
                                 handleAddQuestion={this.handleAddQuestion}
                                 handleInfoUpdate={this.handleInfoUpdate}
                                 handleQuestionAddedToggle={this.handleQuestionAddedToggle}

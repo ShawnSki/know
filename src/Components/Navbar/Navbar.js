@@ -5,7 +5,24 @@ import { connect } from 'react-redux';
 import './Navbar.css';
 
 class Navbar extends Component {
+    constructor() {
+        super()
+        this.state = {
+            loggedToggle: false
+        }
+    }
+    // componentDidMount = () => {
+    //     console.log('here')
+    //     if (this.props.firstname)
+    //         this.handleLoggedToggle();
+    // }
+    // maybe try adding toggle function to App and passing it down????
 
+    handleLoggedToggle = () => {
+        this.setState({
+            loggedToggle: !this.state.loggedToggle
+        })
+    }
 
     render() {
         return (
@@ -16,13 +33,11 @@ class Navbar extends Component {
                 <div className='linksCont'>
                     <ul>
                         <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/register'>Signup</Link></li>
+                        <li><Link to='/register'>Sign Up</Link></li>
                         <li><Link to='/dashboard'>Dashboard</Link></li>
+                        <li><Link to='/login'>Log In</Link></li>
+                        <li><Link to='/account'>{this.props.firstname}</Link></li>
                     </ul>
-                    
-                </div>
-                <div>
-                <p>Account: {this.props.firstname}</p>
                 </div>
             </nav>
         )

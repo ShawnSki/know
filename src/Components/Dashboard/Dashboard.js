@@ -23,12 +23,12 @@ class Dashboard extends Component {
             })
     }
 
-    handleAdminLogout = () => {
-        axios.get('/auth/logout').then((res) => {
-            this.props.clearAdmin()
-            this.props.history.push('/')
-        })
-    }
+    // handleAdminLogout = () => {
+    //     axios.get('/auth/logout').then((res) => {
+    //         this.props.clearAdmin()
+    //         this.props.history.push('/')
+    //     })
+    // }
 
     handleToggleAddQuiz = () => {
         this.setState({
@@ -38,37 +38,33 @@ class Dashboard extends Component {
 
     render() {
         return (
-            <div>
-                <h1>{this.props.firstname}'s Dashboard</h1>
-                <button onClick={this.handleAdminLogout}>Logout</button>
+            <div className='dashPageCont'>
+                <div className='dashHeader'><h1>{this.props.firstname}'s Dashboard</h1></div>
+                {/* <button onClick={this.handleAdminLogout}>Logout</button> */}
                 <div className='dashCont'>
-                    <div className='createQCont'>
-                        {(this.state.addQuiz === false)
-                            ? (
-                                <div>
-                                    <div>
-                                        <h1>Create New Quiz</h1>
-                                        <p>Click the button below to create a quiz.</p>
-                                        <br />
-                                        <button onClick={this.handleToggleAddQuiz}>Add New Quiz</button>
-                                    </div>
-                                    <div className='listCont'>
-                                        <h1>Quiz List</h1>
-                                        <ul>
-                                            <li>Quiz Title here</li>
-                                            <li>Quiz Title here</li>
-                                            <li>Quiz Title here</li>
-                                        </ul>
-                                    </div>
+                    {(this.state.addQuiz === false)
+                        ? (
+                            <div className='quizCont'>
+                                <div className='quizBtnCont'>
+                                <h1>Your Quizzes</h1>
+                                    <p>Click the button below to create a quiz.</p>
+                                    <br />
+                                    <button onClick={this.handleToggleAddQuiz}>create new quiz</button>
                                 </div>
-                            ) : (
                                 <div>
-                                    <CreateQuiz handleToggleNewQuiz={this.handleToggleAddQuiz} />
+                                    <br />
+                                    <p>Quiz List component here</p>
+                                    <ul>
+                                        <li>Quiz Title hereQuiz Title hereQuiz Title here</li>
+                                    </ul>
                                 </div>
-                            )
-                        }
-                    </div>
-
+                            </div>
+                        ) : (
+                            <div>
+                                <CreateQuiz handleToggleNewQuiz={this.handleToggleAddQuiz} />
+                            </div>
+                        )
+                    }
                 </div>
             </div>
         )
