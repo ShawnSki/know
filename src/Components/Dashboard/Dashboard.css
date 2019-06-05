@@ -15,16 +15,16 @@
     width: 100%;
     display: flex;
     justify-content: center;
-    align-items: center;
+    /* align-items: center; */
 }
 .quizBtnCont {
-    background: #fff;
+    /* background: #fff; */
     text-align: center;
     margin-right: 2em;
     width: 30%;
 }
 .quizList {
-    background: #fff;
+    /* background: #fff; */
     width: 50%;
 }
 

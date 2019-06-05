@@ -34,5 +34,14 @@ module.exports = {
         }).then(newQuestion => {
             res.status(200).send(newQuestion)
         })
+    },
+    deleteQuiz: (req, res) => {
+        const { id } = req.params;
+        const db = req.app.get('db');
+        db.delete_quiz({ id })
+            .then(quiz => {
+                res.status(200).send(quiz)
+                // not sure what to send back?????????
+            })
     }
 }

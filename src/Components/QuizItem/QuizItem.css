@@ -1,0 +1,20 @@
+.quizItemCont {
+    padding: .4em;
+    border-bottom: solid .1em #e6e6e6;
+    display: flex;
+    /* flex-direction: column; */
+    align-items: center;
+}
+.quizItemCont:first-child {
+    border-top: solid .1em #e6e6e6;
+}
+.quizItembtnCont {
+    margin-left: .5em;
+}
+.quizItembtnCont button {
+    border-radius: .4em;
+    font-weight: 500;
+    font-size: .8em;
+    padding: .2em .4em;
+    margin-left: .2em;
+}

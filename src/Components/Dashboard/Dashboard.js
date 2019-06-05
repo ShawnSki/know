@@ -3,6 +3,7 @@ import axios from 'axios';
 import { updateAdmin, clearAdmin } from '../../redux/adminReducer';
 import { connect } from 'react-redux';
 import CreateQuiz from '../CreateQuiz/CreateQuiz';
+import QuizItem from '../QuizItem/QuizItem';
 import './Dashboard.css';
 
 class Dashboard extends Component {
@@ -16,7 +17,6 @@ class Dashboard extends Component {
 
     componentDidMount() {
         this.handleGetAdmin();
-        // this.handleGetQuizzes();
     }
 
     handleGetAdmin = async () => {
@@ -48,7 +48,14 @@ class Dashboard extends Component {
     }
 
     render() {
-        console.log(this.state.quizzes)
+        // console.log(this.state.quizzes)
+        const quizzesMapped = this.state.quizzes.map((quizObj, ind) => {
+            return (
+                <QuizItem
+                    key={ind}
+                    quizObj={quizObj} />
+            )
+        })
         return (
             <div className='dashPageCont'>
                 <div className='dashHeader'><h1>{this.props.firstname}'s Dashboard</h1></div>
@@ -62,11 +69,10 @@ class Dashboard extends Component {
                                     <br />
                                     <button onClick={this.handleToggleAddQuiz}>create new quiz</button>
                                 </div>
-                                <div>
+                                <div className='quizList'>
                                     <br />
-                                    <p>Quiz List component here</p>
                                     <ul>
-                                        <li>Quiz Title hereQuiz Title hereQuiz Title here</li>
+                                        <div>{quizzesMapped}</div>
                                     </ul>
                                 </div>
                             </div>

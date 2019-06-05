@@ -1,2 +1,2 @@
 SELECT * FROM quizzes
-where admins_id = ${id};
+WHERE admins_id = ${id};
