@@ -18,13 +18,11 @@
     /* align-items: center; */
 }
 .quizBtnCont {
-    /* background: #fff; */
     text-align: center;
     margin-right: 2em;
     width: 30%;
 }
 .quizList {
-    /* background: #fff; */
     width: 50%;
 }
 
@@ -32,6 +30,7 @@
 @media (max-width: 700px) {
     .quizCont {
         flex-direction: column;
+        align-items: center;
     }
     .quizBtnCont {
         width: 80%;

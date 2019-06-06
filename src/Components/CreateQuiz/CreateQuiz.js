@@ -70,14 +70,14 @@ class CreateQuiz extends Component {
             .then((res) => {
                 // console.log(res.data)
             })
-            this.setState({
-                question: '',
-                remediation: '',
-                answer: '',
-                distractor1: '',
-                distractor2: '',
-                distractor3: ''
-            })
+        this.setState({
+            question: '',
+            remediation: '',
+            answer: '',
+            distractor1: '',
+            distractor2: '',
+            distractor3: ''
+        })
         this.handleQuestionAddedToggle();
     }
 
@@ -95,15 +95,16 @@ class CreateQuiz extends Component {
 
     render() {
         return (
-            <div>
-                <h1>Create Quiz Page</h1>
-                <button onClick={this.props.handleToggleNewQuiz}>X</button>
+            <div className='createQuizCont'>
+                <div className='createQuizHeader'>
+                    <h2>Create a new quiz</h2>
+                    <button onClick={this.props.handleToggleNewQuiz}>X</button>
+                </div>
                 <div className='quizzesCont'>
                     {(this.state.quizInitialized === false)
                         ? (
                             <div className='creatorCont'>
                                 <form onSubmit={this.handleAddQuiz}>
-                                    <h2>Create New Quiz</h2>
                                     <div className='creatorFormItems'><h4>Quiz Title:</h4><input type='text' name='quiz_title' placeholder='title' value={this.state.quiz_title} onChange={this.handleInfoUpdate} /></div>
                                     <div className='creatorFormItems'><h4>Introduction:</h4><input type='text' name='quiz_intro' placeholder='introduction' value={this.state.quiz_intro} onChange={this.handleInfoUpdate} /></div>
                                     <div className='creatorFormItems'><h4>Background Image:</h4><input type='text' name='quiz_bg_img' placeholder='background image url' value={this.state.quiz_bg_img} onChange={this.handleInfoUpdate} /></div>
@@ -111,7 +112,7 @@ class CreateQuiz extends Component {
                                 </form>
                             </div>
                         ) : (
-                            
+
                             <CreateQuestion
                                 questionInitialized={this.state.questionInitialized}
                                 quiz_title={this.state.quiz_title}

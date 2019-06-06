@@ -66,7 +66,7 @@ class Dashboard extends Component {
                         ? (
                             <div className='quizCont'>
                                 <div className='quizBtnCont'>
-                                    <h1>Your Quizzes</h1>
+                                    <h2>Your Quizzes</h2>
                                     <p>Click the button below to create a quiz.</p>
                                     <br />
                                     <button onClick={this.handleToggleAddQuiz}>create new quiz</button>
@@ -79,7 +79,7 @@ class Dashboard extends Component {
                                 </div>
                             </div>
                         ) : (
-                            <div>
+                            <div className='quizCont'>
                                 <CreateQuiz
                                     handleToggleNewQuiz={this.handleToggleAddQuiz}
                                     handleGetQuizzes={this.handleGetQuizzes}
