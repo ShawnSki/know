@@ -9,6 +9,7 @@ class QuizItem extends Component {
 
         }
     }
+    
 
     handleDeleteQuiz = async () => {
         await axios.delete(`/api/quiz/${this.props.quizObj.id}`)

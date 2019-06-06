@@ -1,5 +1,5 @@
 const initialState = {
-    id: null,
+    id: '',
     firstname: '',
     lastname: '',
     email: '',
@@ -32,4 +32,5 @@ export default function reducer(state = initialState, action) {
                 default:
                     return state
                 }
-            }
+}
+            
