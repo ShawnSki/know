@@ -53,5 +53,14 @@ module.exports = {
             .then(updatedQuiz => {
                 res.status(200).send(updatedQuiz)
             })
-    }
+    },
+    // this will get all questions from the db
+    allQuestions: (req, res) => {
+        const { id } = req.params;
+        const db = req.app.get('db');
+        db.get_all_questions({ id })
+        .then(questions => {
+                res.status(200).send(questions)
+            })
+    },
 }

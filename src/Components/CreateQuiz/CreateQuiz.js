@@ -11,14 +11,7 @@ class CreateQuiz extends Component {
             quiz_intro: '',
             quiz_bg_img: '',
             quizDetails: {},
-            question: '',
-            remediation: '',
-            answer: '',
-            distractor1: '',
-            distractor2: '',
-            distractor3: '',
-            quizInitialized: false,
-            questionInitialized: false
+            quizInitialized: false
         }
     }
 
@@ -44,39 +37,13 @@ class CreateQuiz extends Component {
         this.props.handleGetQuizzes()
     }
 
-    handleAddQuestion = (e) => {
-        // needs to add new question to db and be ready to add another question
-        e.preventDefault();
-        const { quizDetails, question, remediation, answer, distractor1, distractor2, distractor3 } = this.state;
-        axios.post('/api/question', { quizzes_id: quizDetails.id, question, remediation, answer, distractor1, distractor2, distractor3 })
-            .then((res) => {
-                // console.log(res.data)
-            })
-        this.setState({
-            question: '',
-            remediation: '',
-            answer: '',
-            distractor1: '',
-            distractor2: '',
-            distractor3: ''
-        })
-        this.handleQuestionAddedToggle();
-    }
-
     handleQuizAddedToggle = () => {
         this.setState({
             quizInitialized: !this.state.quizInitialized
         })
     }
 
-    handleQuestionAddedToggle = () => {
-        this.setState({
-            questionInitialized: !this.state.questionInitialized
-        })
-    }
-
     render() {
-        // console.log(this.props.adminObj.id)
         return (
             <div className='createQuizCont'>
                 <div className='createQuizHeader'>
@@ -97,11 +64,8 @@ class CreateQuiz extends Component {
                         ) : (
 
                             <CreateQuestion
-                                questionInitialized={this.state.questionInitialized}
                                 quiz_title={this.state.quiz_title}
-                                handleAddQuestion={this.handleAddQuestion}
-                                handleInfoUpdate={this.handleInfoUpdate}
-                                handleQuestionAddedToggle={this.handleQuestionAddedToggle}
+                                quizDetails={this.state.quizDetails}
                             />
                         )
                     }
