@@ -18,7 +18,7 @@ module.exports = {
     allQuizzes: (req, res) => {
         const { id } = req.params;
         const db = req.app.get('db');
-        db.get_all_quizzes({id})
+        db.get_all_quizzes({ id })
             .then(quizzes => {
                 res.status(200).send(quizzes)
             })
@@ -37,11 +37,21 @@ module.exports = {
             res.status(200).send(newQuestion)
         })
     },
-    
+
     deleteQuiz: (req, res) => {
         const { id } = req.params;
         const db = req.app.get('db');
         db.delete_quiz({ id })
             .then(res.sendStatus(200))
+    },
+
+    editQuiz: (req, res) => {
+        const { id } = req.params;
+        const { quiz_title, quiz_intro, quiz_bg_img } = req.body;
+        const db = req.app.get('db');
+        db.edit_quiz({ id, quiz_title, quiz_intro, quiz_bg_img })
+            .then(updatedQuiz => {
+                res.status(200).send(updatedQuiz)
+            })
     }
 }
