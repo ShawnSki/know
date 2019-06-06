@@ -65,7 +65,8 @@ class CreateQuestion extends Component {
             return (
                 <QuestionItem
                     key={ind}
-                    questionObj={questionObj} />
+                    questionObj={questionObj}
+                    handleGetQuestions={this.handleGetQuestions}/>
             )
         })
         return (

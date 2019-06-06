@@ -63,4 +63,11 @@ module.exports = {
                 res.status(200).send(questions)
             })
     },
+
+    deleteQuestion: (req, res) => {
+        const { id } = req.params;
+        const db = req.app.get('db');
+        db.delete_question({ id })
+            .then(res.sendStatus(200))
+    }
 }
