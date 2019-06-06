@@ -123,9 +123,6 @@ class CreateQuiz extends Component {
                         )
                     }
                 </div>
-                <div>
-                    <h2>question list here (component)</h2>
-                </div>
             </div>
         )
     }

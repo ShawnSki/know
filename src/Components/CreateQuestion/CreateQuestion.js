@@ -2,7 +2,8 @@ import React from 'react';
 
 const CreateQuestion = props => (
     <div>
-        <h2>Add question to quiz: {props.quiz_title}</h2>
+        <h2>{props.quiz_title}</h2>
+        <p>Next, add questions</p>
         {(props.questionInitialized === false)
             ? (
                 <div>
@@ -21,6 +22,10 @@ const CreateQuestion = props => (
                     <button onClick={props.handleQuestionAddedToggle}>add another question</button>
                 </div>
             )}
+            <div>
+                <h2>question list here (component)</h2>
+            </div>
+        
     </div>
 )
 

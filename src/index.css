@@ -11,7 +11,6 @@ h1 {
   color: #333e48;
   font-weight: 100;
   line-height: 1em;
-  margin-bottom: .3em;
 }
 h2 {
   font-size: 1.7em;
@@ -29,13 +28,13 @@ h4 {
   font-size: .8em;
   color: #333e48;
   font-weight: 700;
-  line-height: 1.2em;
+  line-height: 1.5em;
 }
 p {
   font-size: .8em;
   color: #333e48;
   font-weight: 400;
-  line-height: 1.2em;
+  line-height: 1.5em;
 }
 li {
   font-size: .8em;

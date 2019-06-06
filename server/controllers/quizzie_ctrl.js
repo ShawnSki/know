@@ -3,7 +3,8 @@ module.exports = {
     // creates new quiz
     addQuiz: (req, res) => {
         const { admins_id, quiz_title, quiz_intro, quiz_bg_img } = req.body;
-        req.app.get('db').create_quiz({
+        const db = req.app.get('db');
+        db.quizzie.create_quiz({
             admins_id,
             quiz_title,
             quiz_intro,
@@ -16,14 +17,15 @@ module.exports = {
     allQuizzes: (req, res) => {
         const { id } = req.params;
         const db = req.app.get('db');
-        db.get_all_quizzes({id})
+        db.quizzie.get_all_quizzes({id})
             .then(quizzes => {
                 res.status(200).send(quizzes)
             })
     },
     addQuestion: (req, res) => {
         const { quizzes_id, question, remediation, answer, distractor1, distractor2, distractor3 } = req.body;
-        req.app.get('db').create_question({
+        const db = req.app.get('db');
+        db.quizzie.create_question({
             quizzes_id,
             question,
             remediation,
@@ -38,7 +40,7 @@ module.exports = {
     deleteQuiz: (req, res) => {
         const { id } = req.params;
         const db = req.app.get('db');
-        db.delete_quiz({ id })
+        db.quizzie.delete_quiz({ id })
             .then(res.sendStatus(200))
     }
 }
