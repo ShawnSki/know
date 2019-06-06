@@ -11,7 +11,8 @@ class Dashboard extends Component {
         super(props)
         this.state = {
             addQuiz: false,
-            quizzes: []
+            quizzes: [],
+            admin: {}
         }
     }
 
@@ -21,7 +22,12 @@ class Dashboard extends Component {
 
     handleGetAdmin = async () => {
         await axios.get('/auth/dashboard')
-            .then(res => this.props.updateAdmin(res.data))
+            .then(res => {
+                this.props.updateAdmin(res.data)
+                this.setState({
+                    admin: res.data
+                })
+    })
             .catch((err) => {
                 console.log(err)
             })
@@ -49,7 +55,7 @@ class Dashboard extends Component {
 
 
     render() {
-        // console.log(this.state.quizzes)
+        // console.log(this.state.admin)
         const quizzesMapped = this.state.quizzes.map((quizObj, ind) => {
             return (
                 <QuizItem
@@ -83,6 +89,7 @@ class Dashboard extends Component {
                                 <CreateQuiz
                                     handleToggleNewQuiz={this.handleToggleAddQuiz}
                                     handleGetQuizzes={this.handleGetQuizzes}
+                                    adminObj={this.state.admin}
                                 />
                             </div>
                         )

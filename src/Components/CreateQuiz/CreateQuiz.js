@@ -10,7 +10,6 @@ class CreateQuiz extends Component {
             quiz_title: '',
             quiz_intro: '',
             quiz_bg_img: '',
-            admin: {},
             quizDetails: {},
             question: '',
             remediation: '',
@@ -23,19 +22,6 @@ class CreateQuiz extends Component {
         }
     }
 
-    componentDidMount = () => {
-        this.handleGetAdmin();
-    }
-
-    handleGetAdmin = () => {
-        axios.get('/auth/admin')
-            .then((res) => {
-                this.setState({
-                    admin: res.data
-                })
-            })
-    }
-
     handleInfoUpdate = (e) => {
         this.setState({
             [e.target.name]: e.target.value
@@ -45,19 +31,15 @@ class CreateQuiz extends Component {
     handleAddQuiz = async (e) => {
         // needs to submit quiz setup and then shows the question adder
         e.preventDefault();
-        const { admin, quiz_title, quiz_intro, quiz_bg_img } = this.state;
+        const { quiz_title, quiz_intro, quiz_bg_img } = this.state;
 
-        await axios.post('/api/quiz', { admins_id: admin.id, quiz_title, quiz_intro, quiz_bg_img })
+        await axios.post('/api/quiz', { admins_id: this.props.adminObj.id, quiz_title, quiz_intro, quiz_bg_img })
             .then((res) => {
-                // console.log(res.data[0].id)
                 this.setState({
                     quizDetails: res.data[0]
                 })
                 // need to do something with the response... add to the list of quizzes
             })
-        // e.target.quiz_title.value = ''
-        // e.target.quiz_intro.value = ''
-        // e.target.quiz_bg_img.value = ''
         this.handleQuizAddedToggle();
         this.props.handleGetQuizzes()
     }
@@ -94,6 +76,7 @@ class CreateQuiz extends Component {
     }
 
     render() {
+        // console.log(this.props.adminObj.id)
         return (
             <div className='createQuizCont'>
                 <div className='createQuizHeader'>
