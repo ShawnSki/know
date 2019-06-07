@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import './EditQuiz.css';
 
 class EditQuiz extends Component {
     constructor() {
@@ -8,10 +9,27 @@ class EditQuiz extends Component {
         this.state = {
             quiz_title: '',
             quiz_intro: '',
-            quiz_bg_img: ''
+            quiz_bg_img: '',
+            adminObj: {}
         }
     }
     componentDidMount() {
+        this.handleGetAdmin();
+    }
+
+    handleGetAdmin = async () => {
+        await axios.get('/auth/dashboard')
+            .then(res => 
+                this.setState({
+                    adminObj: res.data
+                })
+                )
+            .catch((err) => {
+                console.log(err)
+            })
+        if (!this.state.adminObj.firstname) {
+            this.props.history.push('/register')
+        }
         this.handleGetQuiz();
     }
 
@@ -24,7 +42,6 @@ class EditQuiz extends Component {
     handleGetQuiz = () => {
         axios.get(`/api/quiz/${this.props.match.params.id}`)
             .then(res => {
-                // console.log(res.data)
                 const { quiz_title, quiz_intro, quiz_bg_img } = res.data[0]
                 this.setState({
                     quiz_title,
@@ -44,10 +61,10 @@ class EditQuiz extends Component {
     }
 
     render() {
-        // console.log(this.state.quiz_title)
+        // console.log(this.state.adminObj)
         return (
-            <div className='EditQuizCont'>
-                <div className='EditQuizHeader'>
+            <div className='editQuizCont'>
+                <div className='editQuizHeader'>
                     <h2>Edit this quiz</h2>
                     <Link to='/dashboard'><button>Back</button></Link>
                 </div>

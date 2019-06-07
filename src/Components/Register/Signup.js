@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import { withRouter } from 'react-router-dom';
+import { withRouter, Link } from 'react-router-dom';
 import './Signup.css';
 
 class Signup extends Component {
@@ -48,7 +48,7 @@ class Signup extends Component {
                 <div className='signupCont'>
                     <form onSubmit={this.handleAdminRegister}>
                         <h1>Create an account</h1>
-                        <p>Already have an account? <a href='/login'> Log in ></a></p>
+                        <p>Already have an account? <Link to='/login'>Log in</Link></p>
                         <input type='text' name='email' placeholder='email' value={this.state.email} onChange={this.handleLoginInfoUpdate} />
                         <input type='password' name='password' placeholder='password' value={this.state.password} onChange={this.handleLoginInfoUpdate} />
                         <div className='inputCont'>

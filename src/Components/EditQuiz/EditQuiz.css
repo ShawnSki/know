@@ -1,0 +1,11 @@
+.editQuizCont {
+    width: 80%;
+}
+.editQuizHeader {
+    height: 4em;
+    margin-bottom: 2em;
+    border-bottom: solid .1em #e6e6e6;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}

@@ -69,7 +69,7 @@ class CreateQuiz extends Component {
             <div className='createQuizCont'>
                 <div className='createQuizHeader'>
                     <h2>Create a new quiz</h2>
-                    <Link to='/dashboard'><button>X</button></Link>
+                    <Link to='/dashboard'><button>Back</button></Link>
                 </div>
                 <div className='quizzesCont'>
                     {(this.state.quizInitialized === false)
