@@ -35,6 +35,8 @@ app.get('/auth/logout', authie_ctrl.logout);
 app.post('/api/quiz', quizzie_ctrl.addQuiz);
 app.get('/api/quizzes/:id', quizzie_ctrl.allQuizzes);
 app.delete('/api/quiz/:id', quizzie_ctrl.deleteQuiz);
+app.get('/api/quiz/:id', quizzie_ctrl.getQuiz);
+
 app.put('/api/quiz/:id', quizzie_ctrl.editQuiz);
 app.post('/api/question', quizzie_ctrl.addQuestion);
 app.delete('/api/question/:id', quizzie_ctrl.deleteQuestion);

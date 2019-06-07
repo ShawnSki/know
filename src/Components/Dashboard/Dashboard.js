@@ -27,13 +27,12 @@ class Dashboard extends Component {
                 this.setState({
                     admin: res.data
                 })
-    })
+            })
             .catch((err) => {
                 console.log(err)
             })
         if (!this.props.firstname) {
             this.props.history.push('/register')
-            
         }
         this.handleGetQuizzes()
     }
@@ -44,7 +43,7 @@ class Dashboard extends Component {
                 this.setState({
                     quizzes: res.data
                 })
-        })
+            })
     }
 
     handleToggleAddQuiz = () => {
@@ -55,7 +54,7 @@ class Dashboard extends Component {
 
 
     render() {
-        // console.log(this.state.admin)
+        // console.log(this.state.editQuiz)
         const quizzesMapped = this.state.quizzes.map((quizObj, ind) => {
             return (
                 <QuizItem
@@ -85,13 +84,12 @@ class Dashboard extends Component {
                                 </div>
                             </div>
                         ) : (
-                            <div className='quizCont'>
-                                <CreateQuiz
-                                    handleToggleNewQuiz={this.handleToggleAddQuiz}
-                                    handleGetQuizzes={this.handleGetQuizzes}
-                                    adminObj={this.state.admin}
-                                />
-                            </div>
+
+                            <CreateQuiz
+                                handleToggleNewQuiz={this.handleToggleAddQuiz}
+                                handleGetQuizzes={this.handleGetQuizzes}
+                                adminObj={this.state.admin}
+                            />
                         )
                     }
                 </div>
@@ -99,7 +97,7 @@ class Dashboard extends Component {
         )
     }
 }
-    
+
 function mapStateToProps(reduxState) {
     const { id, firstname, lastname, email, company } = reduxState;
     return {

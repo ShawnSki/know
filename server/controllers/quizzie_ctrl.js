@@ -23,6 +23,16 @@ module.exports = {
                 res.status(200).send(quizzes)
             })
     },
+
+    getQuiz: (req, res) => {
+        const { id } = req.params;
+        const db = req.app.get('db');
+        db.get_quiz({ id })
+            .then(quiz => {
+                res.status(200).send(quiz)
+            })
+    },
+
     addQuestion: (req, res) => {
         const { quizzes_id, question, remediation, answer, distractor1, distractor2, distractor3 } = req.body;
         req.app.get('db').create_question({

@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import QuestionItem from '../QuestionItem/QuestionItem';
-import { async } from 'q';
 
 class CreateQuestion extends Component {
     constructor(props) {

@@ -1,10 +1,11 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import './QuizItem.css';
 
 class QuizItem extends Component {
-    constructor() {
-        super()
+    constructor(props) {
+        super(props)
         this.state = {
 
         }
@@ -23,7 +24,7 @@ class QuizItem extends Component {
                 <h4>{this.props.quizObj.quiz_title}</h4>
                 <div className='quizItembtnCont'>
                     <button>results</button>
-                    <button>edit</button>
+                    <Link to={`/quiz/${this.props.quizObj.id}`}><button>edit</button></Link>
                     <button onClick={this.handleDeleteQuiz}>delete</button>
                 </div>
             </div>
