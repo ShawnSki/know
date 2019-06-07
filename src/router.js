@@ -6,6 +6,7 @@ import Register from './Components/Register/Register';
 import Account from './Components/Account/Account';
 import Login from './Components/Register/Login';
 import EditQuiz from './Components/EditQuiz/EditQuiz';
+import CreateQuiz from './Components/CreateQuiz/CreateQuiz';
 
 export default (
     <Switch>
@@ -15,5 +16,6 @@ export default (
         <Route path='/account' component={Account} />
         <Route path='/login' component={Login} />
         <Route path='/quiz/:id' component={EditQuiz} />
+        <Route path='/createquiz/:id' component={CreateQuiz} />
     </Switch>
 )

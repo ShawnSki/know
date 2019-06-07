@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+import { Link } from 'react-router-dom';
 import QuestionItem from '../QuestionItem/QuestionItem';
 
 class CreateQuestion extends Component {
@@ -65,33 +66,34 @@ class CreateQuestion extends Component {
                 <QuestionItem
                     key={ind}
                     questionObj={questionObj}
-                    handleGetQuestions={this.handleGetQuestions}/>
+                    handleGetQuestions={this.handleGetQuestions} />
             )
         })
         return (
             <div>
                 <h2>{this.props.quiz_title}</h2>
                 <p>Next, add questions</p>
-                {(this.state.questionInitialized === false)
-                    ? (
-                        <div>
-                            <form onSubmit={this.handleAddQuestion}>
-                                <div className='creatorFormItems'><h4>Question:</h4><input type='text' name='question' placeholder='question' onChange={this.handleInfoUpdate} /></div>
-                                <div className='creatorFormItems'><h4>Remediation:</h4><input type='text' name='remediation' placeholder='remediation' onChange={this.handleInfoUpdate} /></div>
-                                <div className='creatorFormItems'><h4>Answer:</h4><input type='text' name='answer' placeholder='answer' onChange={this.handleInfoUpdate} /></div>
-                                <div className='creatorFormItems'><h4>Distractor1:</h4><input type='text' name='distractor1' placeholder='distractor1' onChange={this.handleInfoUpdate} /></div>
-                                <div className='creatorFormItems'><h4>Distractor2:</h4><input type='text' name='distractor2' placeholder='distractor2' onChange={this.handleInfoUpdate} /></div>
-                                <div className='creatorFormItems'><h4>Distractor3:</h4><input type='text' name='distractor3' placeholder='distractor3' onChange={this.handleInfoUpdate} /></div>
-                                <button>Next</button> <br />
-                            </form>
-                        </div>
-                    ) : (
-                        <div>
-                            <button onClick={this.handleQuestionAddedToggle}>add another question</button>
-                            {questionsMapped}
-                        </div>
-                    )}
-
+                <div>
+                    {(this.state.questionInitialized === false)
+                        ? (
+                            <div>
+                                <form onSubmit={this.handleAddQuestion}>
+                                    <div className='creatorFormItems'><h4>Question:</h4><input type='text' name='question' placeholder='question' onChange={this.handleInfoUpdate} /></div>
+                                    <div className='creatorFormItems'><h4>Remediation:</h4><input type='text' name='remediation' placeholder='remediation' onChange={this.handleInfoUpdate} /></div>
+                                    <div className='creatorFormItems'><h4>Answer:</h4><input type='text' name='answer' placeholder='answer' onChange={this.handleInfoUpdate} /></div>
+                                    <div className='creatorFormItems'><h4>Distractor1:</h4><input type='text' name='distractor1' placeholder='distractor1' onChange={this.handleInfoUpdate} /></div>
+                                    <div className='creatorFormItems'><h4>Distractor2:</h4><input type='text' name='distractor2' placeholder='distractor2' onChange={this.handleInfoUpdate} /></div>
+                                    <div className='creatorFormItems'><h4>Distractor3:</h4><input type='text' name='distractor3' placeholder='distractor3' onChange={this.handleInfoUpdate} /></div>
+                                    <button>Next</button> <br />
+                                </form>
+                            </div>
+                        ) : (
+                            <div>
+                                <button onClick={this.handleQuestionAddedToggle}>add another question</button>
+                                {questionsMapped}
+                            </div>
+                        )}
+                </div>
             </div>
 
         )

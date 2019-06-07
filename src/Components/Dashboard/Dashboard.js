@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { updateAdmin, clearAdmin } from '../../redux/adminReducer';
 import { connect } from 'react-redux';
-import CreateQuiz from '../CreateQuiz/CreateQuiz';
+import { Link } from 'react-router-dom';
 import QuizItem from '../QuizItem/QuizItem';
 import './Dashboard.css';
 
@@ -54,7 +54,7 @@ class Dashboard extends Component {
 
 
     render() {
-        // console.log(this.state.editQuiz)
+        // console.log('this.state.editQuiz')
         const quizzesMapped = this.state.quizzes.map((quizObj, ind) => {
             return (
                 <QuizItem
@@ -67,31 +67,22 @@ class Dashboard extends Component {
             <div className='dashPageCont'>
                 <div className='dashHeader'><h1>{this.props.firstname}'s Dashboard</h1></div>
                 <div className='dashCont'>
-                    {(this.state.addQuiz === false)
-                        ? (
-                            <div className='quizCont'>
-                                <div className='quizBtnCont'>
-                                    <h2>Your Quizzes</h2>
-                                    <p>Click the button below to create a quiz.</p>
-                                    <br />
-                                    <button onClick={this.handleToggleAddQuiz}>create new quiz</button>
-                                </div>
-                                <div className='quizList'>
-                                    <br />
-                                    <ul>
-                                        <div>{quizzesMapped.reverse()}</div>
-                                    </ul>
-                                </div>
-                            </div>
-                        ) : (
-
-                            <CreateQuiz
-                                handleToggleNewQuiz={this.handleToggleAddQuiz}
-                                handleGetQuizzes={this.handleGetQuizzes}
-                                adminObj={this.state.admin}
-                            />
-                        )
-                    }
+                    <div className='quizCont'>
+                        <div className='quizBtnCont'>
+                            <h2>Create a Quiz</h2>
+                            <p>Click the button below to create a quiz.</p>
+                            <br />
+                            <Link to={`/createquiz/${this.state.admin.id}`}>
+                                <button>create new quiz</button>
+                            </Link>
+                        </div>
+                        <div className='quizList'>
+                            <br />
+                            <ul>
+                                <div>{quizzesMapped}</div>
+                            </ul>
+                        </div>
+                    </div>
                 </div>
             </div>
         )
