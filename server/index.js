@@ -41,3 +41,5 @@ app.put('/api/quiz/:id', quizzie_ctrl.editQuiz);
 app.post('/api/question', quizzie_ctrl.addQuestion);
 app.delete('/api/question/:id', quizzie_ctrl.deleteQuestion);
 app.get('/api/questions/:id', quizzie_ctrl.allQuestions);
+app.put('/api/question/:id', quizzie_ctrl.editQuestion);
+app.get('/api/question/:id', quizzie_ctrl.getQuestion);

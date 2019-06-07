@@ -54,7 +54,7 @@ class EditQuiz extends Component {
     handleEditQuiz = (e) => {
         e.preventDefault();
         const { quiz_title, quiz_intro, quiz_bg_img } = this.state;
-        axios.put(`/api/quiz/${this.props.match.params.id}`, { id: this.props.match.params.id, quiz_title, quiz_intro, quiz_bg_img })
+        axios.put(`/api/quiz/${this.props.match.params.id}`, { quiz_title, quiz_intro, quiz_bg_img })
             .then((res) => {
                 this.props.history.push('/dashboard')
             })

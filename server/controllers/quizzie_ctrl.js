@@ -79,5 +79,25 @@ module.exports = {
         const db = req.app.get('db');
         db.delete_question({ id })
             .then(res.sendStatus(200))
-    }
+    },
+    
+    editQuestion: (req, res) => {
+        const { id } = req.params;
+        const { question, remediation, answer, distractor1, distractor2, distractor3 } = req.body;
+        const db = req.app.get('db');
+        db.edit_question({ id, question, remediation, answer, distractor1, distractor2, distractor3 })
+            .then(updatedQuestion => {
+            res.status(200).send(updatedQuestion)
+        })
+    },
+
+    getQuestion: (req, res) => {
+        console.log('hit ctrl')
+        const { id } = req.params;
+        const db = req.app.get('db');
+        db.get_question({ id })
+            .then(question => {
+                res.status(200).send(question)
+            })
+    },
 }
