@@ -72,13 +72,14 @@ class CreateQuestion extends Component {
     }
 
     render() {
-        
+
         const questionsMapped = this.state.questions.map((questionObj, ind) => {
             return (
                 <QuestionItem
                     key={ind}
                     questionObj={questionObj}
                     handleGetQuestions={this.handleGetQuestions}
+                    handleDeleteQuestion={this.handleDeleteQuestion}
                 />
             )
         })

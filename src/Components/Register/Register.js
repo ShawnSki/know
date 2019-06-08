@@ -13,7 +13,7 @@ class Register extends Component {
             this.props.updateAdmin(res.data)
             this.props.history.push('/dashboard')
         })
-        this.props.id && this.props.history.push('/dashboard')
+        // this.props.id && this.props.history.push('/dashboard')
     }
 
     render() {

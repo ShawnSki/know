@@ -26,7 +26,14 @@ class questionItem extends Component {
     }
 
     handleEditToggle = () => {
+        const { question, remediation, answer, distractor1, distractor2, distractor3 } = this.props.questionObj;
         this.setState({
+            question,
+            remediation,
+            answer,
+            distractor1,
+            distractor2,
+            distractor3,
             editToggle: !this.state.editToggle
         })
     }
@@ -38,7 +45,6 @@ class questionItem extends Component {
     }
 
     handleUpdateQuestion = (e) => {
-        console.log('hit here')
         e.preventDefault();
         const { question, remediation, answer, distractor1, distractor2, distractor3 } = this.state;
         axios.put(`/api/question/${this.props.questionObj.id}`, { question, remediation, answer, distractor1, distractor2, distractor3 })
