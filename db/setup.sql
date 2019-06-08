@@ -26,7 +26,10 @@ CREATE TABLE quizzes (
     question_count INTEGER,
     quiz_survey1 VARCHAR(100), 
     quiz_survey2 VARCHAR(100),
-    quiz_survey3 VARCHAR(100)
+    quiz_survey3 VARCHAR(100),
+    survey1_options VARCHAR(100), 
+    survey2_options VARCHAR(100), 
+    survey3_options VARCHAR(100),
 );
 
 CREATE TABLE quiz_questions (

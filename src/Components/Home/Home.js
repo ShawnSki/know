@@ -4,13 +4,16 @@ import './Home.css';
 const Home = () => {
     return (
         <div className='boxCont'>
-            <h1>Title here</h1>
-            <div className='animateText'>
-                <h1>Home1</h1>
-                <h1>Home2</h1>
-                <h1>Home3</h1>
-                <h1>Home4</h1>
+            <div className='titleBeforeCont'><h1>Know what your [</h1></div>
+            <div className='titleMiddleCont'>
+                <div className='animateText'>
+                    <h1>students</h1>
+                    <h1>employees</h1>
+                    <h1>team</h1>
+                    <h1>people</h1>
+                </div>
             </div>
+            <div className='titleAfterCont'><h1>] Know</h1></div>
         </div>
     )
 }

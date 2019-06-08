@@ -4,11 +4,24 @@
     display: flex;
     justify-content: center;
 }
-.boxCont h1 {
+/* .boxCont h1 {
     margin-left: -3em;
+} */
+.titleBeforeCont {
+    /* background: red; */
+    text-align: right;
+}
+.titleMiddleCont {
+    /* background: blue; */
+    width: 12em;
+}
+.titleAfterCont {
+    /* background: red; */
+    text-align: left;
 }
 .animateText h1 {
     margin-left: .3em;
+    color: deeppink;
     position: absolute;
     overflow: hidden;
     opacity: 0;

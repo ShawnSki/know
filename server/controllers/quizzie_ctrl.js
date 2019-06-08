@@ -3,12 +3,14 @@ module.exports = {
     // creates new quiz
     addQuiz: (req, res) => {
         // console.log('hit addQuiz')
-        const { admins_id, quiz_title, quiz_intro, quiz_bg_img } = req.body;
+        const { admins_id, quiz_title, quiz_intro, quiz_bg_img, quiz_survey1, survey1_options } = req.body;
         req.app.get('db').create_quiz({
             admins_id,
             quiz_title,
             quiz_intro,
-            quiz_bg_img
+            quiz_bg_img,
+            quiz_survey1,
+            survey1_options,
         }).then(newQuiz => {
             res.status(200).send(newQuiz)
             // console.log(newQuiz)
@@ -58,9 +60,9 @@ module.exports = {
 
     editQuiz: (req, res) => {
         const { id } = req.params;
-        const { quiz_title, quiz_intro, quiz_bg_img } = req.body;
+        const { quiz_title, quiz_intro, quiz_bg_img, quiz_survey1, survey1_options } = req.body;
         const db = req.app.get('db');
-        db.edit_quiz({ id, quiz_title, quiz_intro, quiz_bg_img })
+        db.edit_quiz({ id, quiz_title, quiz_intro, quiz_bg_img, quiz_survey1, survey1_options })
             .then(updatedQuiz => {
                 res.status(200).send(updatedQuiz)
             })

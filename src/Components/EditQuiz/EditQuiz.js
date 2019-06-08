@@ -11,6 +11,8 @@ class EditQuiz extends Component {
             quiz_title: '',
             quiz_intro: '',
             quiz_bg_img: '',
+            quiz_survey1: '',
+            survey1_options: '',
             quizDetails: {},
             quizInitialized: false,
             adminObj: {}
@@ -46,11 +48,13 @@ class EditQuiz extends Component {
         axios.get(`/api/quiz/${this.props.match.params.id}`)
             .then(res => {
                 // console.log(res.data)
-                const { quiz_title, quiz_intro, quiz_bg_img } = res.data[0]
+                const { quiz_title, quiz_intro, quiz_bg_img, quiz_survey1, survey1_options } = res.data[0]
                 this.setState({
                     quiz_title,
                     quiz_intro,
                     quiz_bg_img,
+                    quiz_survey1,
+                    survey1_options,
                     quizDetails: res.data[0]
                 })
             })
@@ -58,8 +62,8 @@ class EditQuiz extends Component {
    
     handleEditQuiz = (e) => {
         e.preventDefault();
-        const { quiz_title, quiz_intro, quiz_bg_img } = this.state;
-        axios.put(`/api/quiz/${this.props.match.params.id}`, { quiz_title, quiz_intro, quiz_bg_img })
+        const { quiz_title, quiz_intro, quiz_bg_img, quiz_survey1, survey1_options } = this.state;
+        axios.put(`/api/quiz/${this.props.match.params.id}`, { quiz_title, quiz_intro, quiz_bg_img, quiz_survey1, survey1_options })
             .then((res) => {
                 // this.props.history.push('/dashboard')
             })
@@ -89,7 +93,9 @@ class EditQuiz extends Component {
                             <div className='creatorFormItems'><h4>Quiz Title:</h4><input type='text' name='quiz_title' defaultValue={this.state.quiz_title} onChange={this.handleInfoUpdate} /></div>
                             <div className='creatorFormItems'><h4>Introduction:</h4><input type='text' name='quiz_intro' defaultValue={this.state.quiz_intro} onChange={this.handleInfoUpdate} /></div>
                             <div className='creatorFormItems'><h4>Background Image:</h4><input type='text' name='quiz_bg_img' defaultValue={this.state.quiz_bg_img} onChange={this.handleInfoUpdate} /></div>
-                            <button>Submit edits</button> <br />
+                            <div className='creatorFormItems'><h4>Survey Question:</h4><input type='text' name='quiz_survey1' defaultValue={this.state.quiz_survey1} onChange={this.handleInfoUpdate} /></div>
+                            <div className='creatorFormItems'><h4>Survey Options:</h4><input type='text' name='survey1_options' defaultValue={this.state.survey1_options} onChange={this.handleInfoUpdate} /></div>
+                            <button>Submit and edit questions</button> <br />
                         </form>
                     </div>
                         ) : (
