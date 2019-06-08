@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import axios from 'axios';
+import CreateQuestion from '../CreateQuestion/CreateQuestion';
 import './EditQuiz.css';
 
 class EditQuiz extends Component {
@@ -10,6 +11,7 @@ class EditQuiz extends Component {
             quiz_title: '',
             quiz_intro: '',
             quiz_bg_img: '',
+            quizDetails: {},
             adminObj: {}
         }
     }
@@ -42,11 +44,13 @@ class EditQuiz extends Component {
     handleGetQuiz = () => {
         axios.get(`/api/quiz/${this.props.match.params.id}`)
             .then(res => {
+                console.log(res.data)
                 const { quiz_title, quiz_intro, quiz_bg_img } = res.data[0]
                 this.setState({
                     quiz_title,
                     quiz_intro,
-                    quiz_bg_img
+                    quiz_bg_img,
+                    quizDetails: res.data[0]
                 })
             })
     }
@@ -61,7 +65,7 @@ class EditQuiz extends Component {
     }
 
     render() {
-        // console.log(this.state.adminObj)
+        console.log(this.state)
         return (
             <div className='editQuizCont'>
                 <div className='editQuizHeader'>
@@ -77,6 +81,10 @@ class EditQuiz extends Component {
                             <button>Submit edits</button> <br />
                         </form>
                     </div>
+                    <CreateQuestion
+                                quiz_title={this.state.quiz_title}
+                                quizDetails={this.state.quizDetails}
+                            />
                 </div>
             </div>
         )

@@ -81,8 +81,7 @@ class CreateQuiz extends Component {
                                     <div className='creatorFormItems'><h4>Background Image:</h4><input type='text' name='quiz_bg_img' placeholder='background image url' value={this.state.quiz_bg_img} onChange={this.handleInfoUpdate} /></div>
                                     <button>Submit and Add Question</button> <br />
                                 </form>
-                                    <Link to='/dashboard/createquestion'>test create question</Link>
-                            </div>
+                                     </div>
                         ) : (
                             <CreateQuestion
                                 quiz_title={this.state.quiz_title}

@@ -13,9 +13,12 @@ class CreateQuestion extends Component {
             distractor1: '',
             distractor2: '',
             distractor3: '',
-            questionInitialized: false,
+            questionInitialized: true,
             questions: []
         }
+    }
+    componentDidMount() {
+        this.handleGetQuestions();
     }
 
     handleInfoUpdate = (e) => {
@@ -51,16 +54,19 @@ class CreateQuestion extends Component {
     }
 
     handleGetQuestions = () => {
+        console.log('handle',this.props.quizDetails.id)
         axios.get(`/api/questions/${this.props.quizDetails.id}`)
             .then(res => {
+                // console.log('res.data', res.data)
                 this.setState({
                     questions: res.data
                 })
             })
+        // questions need to load on getting here
     }
 
     render() {
-        // console.log(this.state.questions)
+        // console.log('quizID', this.props.quizDetails.id)
         const questionsMapped = this.state.questions.map((questionObj, ind) => {
             return (
                 <QuestionItem
