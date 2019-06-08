@@ -12,6 +12,7 @@ class EditQuiz extends Component {
             quiz_intro: '',
             quiz_bg_img: '',
             quizDetails: {},
+            quizInitialized: false,
             adminObj: {}
         }
     }
@@ -44,7 +45,7 @@ class EditQuiz extends Component {
     handleGetQuiz = () => {
         axios.get(`/api/quiz/${this.props.match.params.id}`)
             .then(res => {
-                console.log(res.data)
+                // console.log(res.data)
                 const { quiz_title, quiz_intro, quiz_bg_img } = res.data[0]
                 this.setState({
                     quiz_title,
@@ -60,12 +61,19 @@ class EditQuiz extends Component {
         const { quiz_title, quiz_intro, quiz_bg_img } = this.state;
         axios.put(`/api/quiz/${this.props.match.params.id}`, { quiz_title, quiz_intro, quiz_bg_img })
             .then((res) => {
-                this.props.history.push('/dashboard')
+                // this.props.history.push('/dashboard')
             })
+            this.handleQuizAddedToggle();
+    }
+
+    handleQuizAddedToggle = () => {
+        this.setState({
+            quizInitialized: !this.state.quizInitialized
+        })
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         return (
             <div className='editQuizCont'>
                 <div className='editQuizHeader'>
@@ -73,6 +81,9 @@ class EditQuiz extends Component {
                     <Link to='/dashboard'><button>Back</button></Link>
                 </div>
                 <div className='quizzesCont'>
+                    {(this.state.quizInitialized === false)
+                        ? (
+                            
                     <div className='creatorCont'>
                         <form onSubmit={this.handleEditQuiz}>
                             <div className='creatorFormItems'><h4>Quiz Title:</h4><input type='text' name='quiz_title' defaultValue={this.state.quiz_title} onChange={this.handleInfoUpdate} /></div>
@@ -81,10 +92,12 @@ class EditQuiz extends Component {
                             <button>Submit edits</button> <br />
                         </form>
                     </div>
+                        ) : (
                     <CreateQuestion
                                 quiz_title={this.state.quiz_title}
                                 quizDetails={this.state.quizDetails}
                             />
+                            )}
                 </div>
             </div>
         )

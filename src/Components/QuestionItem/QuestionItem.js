@@ -38,6 +38,7 @@ class questionItem extends Component {
     }
 
     handleUpdateQuestion = (e) => {
+        console.log('hit here')
         e.preventDefault();
         const { question, remediation, answer, distractor1, distractor2, distractor3 } = this.state;
         axios.put(`/api/question/${this.props.questionObj.id}`, { question, remediation, answer, distractor1, distractor2, distractor3 })
@@ -47,8 +48,8 @@ class questionItem extends Component {
         })
     }
 
-    handleGetQuestion = () => {
-        axios.get(`/api/question/${this.props.questionObj.id}`)
+    handleGetQuestion = async () => {
+        await axios.get(`/api/question/${this.props.questionObj.id}`)
         .then(res => {
                 const { question, remediation, answer, distractor1, distractor2, distractor3 } = res.data[0]
                 this.setState({
@@ -63,7 +64,7 @@ class questionItem extends Component {
     }
 
     render() {
-        console.log(this.state.question)
+        // console.log(this.state.question)
         return (
             <div>
                 {(this.state.editToggle === false)

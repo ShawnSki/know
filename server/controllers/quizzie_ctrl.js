@@ -25,6 +25,7 @@ module.exports = {
     },
 
     getQuiz: (req, res) => {
+        // console.log(req.params)
         const { id } = req.params;
         const db = req.app.get('db');
         db.get_quiz({ id })
@@ -69,7 +70,7 @@ module.exports = {
         const { id } = req.params;
         const db = req.app.get('db');
         db.get_all_questions({ id })
-        .then(questions => {
+            .then(questions => {
                 res.status(200).send(questions)
             })
     },
@@ -92,12 +93,10 @@ module.exports = {
     },
 
     getQuestion: (req, res) => {
-        console.log(req.params)
         const { id } = req.params;
         const db = req.app.get('db');
         db.get_question({ id })
             .then(question => {
-                console.log(question)
                 res.status(200).send(question)
             })
     },

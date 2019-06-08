@@ -13,12 +13,18 @@ class CreateQuestion extends Component {
             distractor1: '',
             distractor2: '',
             distractor3: '',
+            quizDetails: {},
             questionInitialized: true,
             questions: []
         }
     }
     componentDidMount() {
-        this.handleGetQuestions();
+        axios.get(`/api/questions/${this.props.quizDetails.id}`)
+            .then(res => {
+                this.setState({
+                    questions: res.data
+                })
+            })
     }
 
     handleInfoUpdate = (e) => {
@@ -54,7 +60,7 @@ class CreateQuestion extends Component {
     }
 
     handleGetQuestions = () => {
-        console.log('handle',this.props.quizDetails.id)
+        // console.log('handle',this.props.quizDetails.id)
         axios.get(`/api/questions/${this.props.quizDetails.id}`)
             .then(res => {
                 // console.log('res.data', res.data)
@@ -66,13 +72,14 @@ class CreateQuestion extends Component {
     }
 
     render() {
-        // console.log('quizID', this.props.quizDetails.id)
+        
         const questionsMapped = this.state.questions.map((questionObj, ind) => {
             return (
                 <QuestionItem
                     key={ind}
                     questionObj={questionObj}
-                    handleGetQuestions={this.handleGetQuestions} />
+                    handleGetQuestions={this.handleGetQuestions}
+                />
             )
         })
         return (

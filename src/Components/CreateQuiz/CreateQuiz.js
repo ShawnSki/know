@@ -46,7 +46,6 @@ class CreateQuiz extends Component {
         // needs to submit quiz setup and then shows the question adder
         e.preventDefault();
         const { quiz_title, quiz_intro, quiz_bg_img } = this.state;
-
         await axios.post('/api/quiz', { admins_id: this.props.match.params.id, quiz_title, quiz_intro, quiz_bg_img })
             .then((res) => {
                 this.setState({
