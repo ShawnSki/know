@@ -21,11 +21,11 @@
 }
 .animateText h1 {
     margin-left: .3em;
-    color: deeppink;
+    color: #e93792;
     position: absolute;
     overflow: hidden;
     opacity: 0;
-    animation: animate 12s ease-in-out forwards infinite;
+    animation: animate 9s ease-in-out forwards infinite;
     /* animation-fill-mode: initial */
 }
 
@@ -55,7 +55,4 @@
 }
 .animateText h1:nth-child(3) {
     animation-delay: 6s;
-}
-.animateText h1:nth-child(4) {
-    animation-delay: 9s;
 }

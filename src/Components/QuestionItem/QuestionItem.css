@@ -1,13 +1,13 @@
 .questionItemCont {
     padding: .4em;
-    border-bottom: solid .1em #e6e6e6;
+    border-top: solid .1em rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
-.questionItemCont:first-child {
-    border-top: solid .1em #e6e6e6;
-}
+/* .questionItemCont:first-child {
+    border-top: solid .1em rgba(0, 0, 0, 0.2);
+} */
 .questionItembtnCont {
     margin-left: .5em;
 }

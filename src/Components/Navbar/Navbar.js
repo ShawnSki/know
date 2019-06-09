@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import { updateAdmin, clearAdmin } from '../../redux/adminReducer';
 import { connect } from 'react-redux';
 import './Navbar.css';
+var imgLogo = require('../../images/knowwie_logo.png');
 
 class Navbar extends Component {
     constructor() {
@@ -18,24 +19,24 @@ class Navbar extends Component {
     // }
     // maybe try adding toggle function to App and passing it down????
 
-    handleLoggedToggle = () => {
-        this.setState({
-            loggedToggle: !this.state.loggedToggle
-        })
-    }
+    // handleLoggedToggle = () => {
+    //     this.setState({
+    //         loggedToggle: !this.state.loggedToggle
+    //     })
+    // }
 
     render() {
         return (
             <nav>
                 <div>
-                    <h1>NAVBAR</h1>
+                <Link to='/'><img src={imgLogo} alt='knowwie logo' /></Link>
                 </div>
                 <div className='linksCont'>
                     <ul>
-                        <li><Link to='/'>Home</Link></li>
-                        <li><Link to='/register'>Sign Up</Link></li>
+                        {/* <li><Link to='/'>Home</Link></li> */}
                         <li><Link to='/dashboard'>Dashboard</Link></li>
                         <li><Link to='/login'>Log In</Link></li>
+                        <li><Link to='/register'>Sign Up</Link></li>
                         <li><Link to='/account'>{this.props.firstname}</Link></li>
                     </ul>
                 </div>

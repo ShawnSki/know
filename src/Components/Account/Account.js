@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { updateAdmin, clearAdmin } from '../../redux/adminReducer';
 import { connect } from 'react-redux';
+import './Account.css';
 
 class Account extends Component {
 
@@ -16,12 +17,18 @@ class Account extends Component {
     render() {
         // console.log(this.props)
         return (
-            <div>
-                <h1>Account</h1>
-                <p>Name: {this.props.firstname} {this.props.lastname}</p>
-                <p>Email: {this.props.email}</p>
-                <p>Company: {this.props.company}</p>
-                <button onClick={this.handleAdminLogout}>Logout</button>
+            <div className='accountMainCont'>
+                <div className='accountCont'>
+                    <h1>Account Information</h1>
+                    <ul>
+                        <li>First Name:  {this.props.firstname}</li>
+                        <li>Last Name:  {this.props.lastname}</li>
+                        <li>Email:  {this.props.email}</li>
+                        <li>Company:  {this.props.company}</li>
+                    </ul>
+                    <br/>
+                    <div className='acctBtnCont'><button onClick={this.handleAdminLogout}>Logout</button></div>
+                </div>
             </div>
 
         )

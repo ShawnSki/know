@@ -1,7 +1,8 @@
 body {
   margin: 0;
   padding: 0;
-  background: #fff;
+  height: 100vh;
+  background-image: linear-gradient(to bottom right, #fff, #eee);
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -48,7 +49,7 @@ button {
   font-weight: 600;
   font-size: .9em;
   text-transform: uppercase;
-  background: #bfbfbf;
+  background: #e93792;
   padding: .7em 1.5em;
   outline: none;
 }
@@ -63,7 +64,7 @@ button:active {
 }
 input {
     height: 3em;
-    border: .1em solid #ccc;
+    border: .1em solid rgba(0, 0, 0, 0.2);
     margin-bottom: 1em;
     color: #333e48;
     text-indent: .5em;

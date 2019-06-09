@@ -33,22 +33,22 @@ class Signup extends Component {
                 console.log(err)
                 window.alert('This email is already being used.');
             })
-            this.setState({
-                email: '',
-                password: '',
-                firstname: '',
-                lastname: '',
-                company: ''
-            })
+        this.setState({
+            email: '',
+            password: '',
+            firstname: '',
+            lastname: '',
+            company: ''
+        })
     }
 
     render() {
         return (
             <div className='mainCont'>
                 <div className='signupCont'>
+                    <h1>Create an account</h1>
+                    <p>Already have an account? <Link to='/login'>Log in</Link></p>
                     <form onSubmit={this.handleAdminRegister}>
-                        <h1>Create an account</h1>
-                        <p>Already have an account? <Link to='/login'>Log in</Link></p>
                         <input type='text' name='email' placeholder='email' value={this.state.email} onChange={this.handleLoginInfoUpdate} />
                         <input type='password' name='password' placeholder='password' value={this.state.password} onChange={this.handleLoginInfoUpdate} />
                         <div className='inputCont'>
