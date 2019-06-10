@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import './Quiz.css';
+import QuizQuestion from '../QuizQuestion/QuizQuestion';
 
 class Quiz extends Component {
     constructor() {
@@ -20,17 +21,31 @@ class Quiz extends Component {
     handleGetQuiz = () => {
         axios.get(`/api/quiz/${this.props.match.params.id}`)
             .then(res => {
-                const { quiz_title, quiz_bg_img } = res.data[0];
+                const { quiz_title, quiz_bg_img, quiz_survey1, survey1_options } = res.data[0];
                 this.setState({
                     quiz_title,
-                    quiz_bg_img
+                    quiz_bg_img,
+                    quiz_survey1,
+                    survey1_options
                 })
             })
     }
 
+    // handleGetQuestions = () => {
+    //     axios.get(`/api/questions/${this.props.match.params.id}`)
+    //         .then(res => {
+    //             this.setState({
+    //                 questions: res.data,
+    //                 questionCount: res.data.length
+    //             })
+    //         })
+    // }
+
+
 
     render() {
-        const { quiz_title, quiz_intro, quiz_bg_img } = this.state;
+        
+        const { quiz_title, quiz_bg_img, quiz_survey1, survey1_options } = this.state;
         return (
             <div style={{
                 background: `url(${quiz_bg_img}) no-repeat center center fixed`,
@@ -38,27 +53,19 @@ class Quiz extends Component {
                 display: 'flex',
                 flexDirection: 'column',
                 alignItems: 'center'
-            }} >
+            }}>
                 <div className='quizBodyCont'>
                     <div className='quizBodyHeader'>
                         <div className='quizHeaderTitle'><h2>{quiz_title}</h2></div>
-                        <div className='quizHeaderCounter'><h2>1/9</h2></div>
+                        <div className='quizHeaderCounter'><h2>1/22</h2></div>
                     </div>
                     <div className='quizQuestionCont'>
-                        <div className='quizQuestion'>
-                            <p>question here question here question here question here question here question here question here question here question here question here question here quesdsfaf a afsda fas af tion here question here question here question here question here question here question here question here question here question here question here question here question here question here question here question here question hesdf sdf asdf re question here question here question here question here question here question here question here question here question here question here question here question here quest sdfa dfion here question here question here question here question here question here question here question here question here question here question here question here quest asdfa dfion here question here question here question here question here </p>
-                        </div>
-                        <div className='quizAnswers'>
-                            <button>Answer</button>
-                            <button>Distractor stractor stractor stractor stractor stractor stractor stractor stractor stractor stractor stractor stractor stractor stractor stractor stractor </button>
-                            <button>Distractor</button>
-                            <button>Distractor</button>
-                        </div>
+                    <QuizQuestion quizId={this.props.match.params.id} />
+                        </div >
                     </div>
                 </div>
-            </div >
-        )
-    }
-}
-
+                )
+            }
+        }
+        
 export default Quiz;

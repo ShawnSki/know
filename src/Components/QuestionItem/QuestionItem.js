@@ -88,7 +88,7 @@ class questionItem extends Component {
                             <form onSubmit={this.handleUpdateQuestion}>
                                 <div className='creatorFormItems'><h4>Question:</h4><input type='text' name='question' defaultValue={this.state.question} onChange={this.handleInfoUpdate} /></div>
                                 <div className='creatorFormItems'><h4>Remediation:</h4><input type='text' name='remediation' defaultValue={this.state.remediation} onChange={this.handleInfoUpdate} /></div>
-                                <div className='creatorFormItems'><h4>Answer:</h4><input type='text' name='answer' placeholder='answer' onChange={this.handleInfoUpdate} /></div>
+                                <div className='creatorFormItems'><h4>Answer:</h4><input type='text' name='answer' defaultValue={this.state.answer} onChange={this.handleInfoUpdate} /></div>
                                 <div className='creatorFormItems'><h4>Distractor1:</h4><input type='text' name='distractor1' defaultValue={this.state.distractor1} onChange={this.handleInfoUpdate} /></div>
                                 <div className='creatorFormItems'><h4>Distractor2:</h4><input type='text' name='distractor2' defaultValue={this.state.distractor2} onChange={this.handleInfoUpdate} /></div>
                                 <div className='creatorFormItems'><h4>Distractor3:</h4><input type='text' name='distractor3' defaultValue={this.state.distractor3} onChange={this.handleInfoUpdate} /></div>
