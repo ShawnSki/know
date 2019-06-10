@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { updateAdmin, clearAdmin } from '../../redux/adminReducer';
 import { connect } from 'react-redux';
 import './Navbar.css';
-var imgLogo = require('../../images/knowwie_logo.png');
+// var imgLogo = require('../../images/knowwie_logo.png');
 
 class Navbar extends Component {
     constructor() {
@@ -12,28 +12,18 @@ class Navbar extends Component {
             loggedToggle: false
         }
     }
-    // componentDidMount = () => {
-    //     console.log('here')
-    //     if (this.props.firstname)
-    //         this.handleLoggedToggle();
-    // }
-    // maybe try adding toggle function to App and passing it down????
-
-    // handleLoggedToggle = () => {
-    //     this.setState({
-    //         loggedToggle: !this.state.loggedToggle
-    //     })
-    // }
 
     render() {
         return (
             <nav>
                 <div>
-                <Link to='/'><img src={imgLogo} alt='knowwie logo' /></Link>
+                <Link to='/'><h1>home</h1></Link>
+                {/* <Link to='/'><img src={imgLogo} alt='knowwie logo' /></Link> */}
                 </div>
                 <div className='linksCont'>
                     <ul>
                         {/* <li><Link to='/'>Home</Link></li> */}
+                        <li><Link to='/quizlist'>Quizzes</Link></li>
                         <li><Link to='/dashboard'>Dashboard</Link></li>
                         <li><Link to='/login'>Log In</Link></li>
                         <li><Link to='/register'>Sign Up</Link></li>

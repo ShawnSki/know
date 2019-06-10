@@ -17,10 +17,10 @@ module.exports = {
         })
     },
     // this will get all quizzes from the db
-    allQuizzes: (req, res) => {
+    allQuizzesByID: (req, res) => {
         const { id } = req.params;
         const db = req.app.get('db');
-        db.get_all_quizzes({ id })
+        db.get_all_quizzes_byID({ id })
             .then(quizzes => {
                 res.status(200).send(quizzes)
             })
@@ -34,6 +34,14 @@ module.exports = {
             .then(quiz => {
                 res.status(200).send(quiz)
             })
+    },
+
+    allQuizzes: (req, res) => {
+        const db = req.app.get('db');
+        db.get_all_quizzes()
+            .then(quizzes => {
+            res.status(200).send(quizzes)
+        })
     },
 
     addQuestion: (req, res) => {
