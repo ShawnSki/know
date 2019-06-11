@@ -81,7 +81,6 @@ class QuizQuestion extends Component {
     render() {
         const randomAnswers = this.handleRandomizeAnswers()
         const answerButtons = randomAnswers.map((answerChoice, ind) => {
-            // probably need to add an if statement to identify the answer button
             return (
                 <div key={ind} className='quizAnswers'><button value={answerChoice} onClick={this.handleBtnClicked}>{answerChoice}</button></div>
             )

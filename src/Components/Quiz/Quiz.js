@@ -63,7 +63,30 @@ class Quiz extends Component {
         axios.post('/api/user', { username: this.state.username, quizzes_id: this.props.match.params.id })
     }
 
+    handleInfoUpdate = (e) => {
+        this.setState({
+            [e.target.name]: e.target.value
+        })
+    }
+
+    handleSurveyDropdownOptions = () => {
+        var optionArr = this.state.survey1_options.split(',');
+
+        const surveyOptArr = optionArr.map((obj, ind) => {
+            return obj.trim()
+        })
+        return surveyOptArr
+    }
+
+
+
     render() {
+        const surveyOptions = this.handleSurveyDropdownOptions();
+        const surveyOptItem = surveyOptions.map((surveyOpt, ind) => {
+            return (
+                <option key={ind} value='surveyOpt'>{surveyOpt}</option>
+            )
+        })
         const { quiz_title, quiz_bg_img, quiz_survey1, survey1_options, currentNumber, totalNumber } = this.state;
         return (
             <div style={{
@@ -89,7 +112,18 @@ class Quiz extends Component {
                         </div>
                     ) : (
                         <div className='quizBodyCont'>
-                            <div>quiz completed</div>
+                            <div>
+                                <h1>Knowwie Completed</h1>
+                                <p>Submit the following information to view your results and leaderboard.</p>
+                            </div>
+                            <form>
+                                <h4>Username (used for leaderboard):</h4><input type='text' name='username' placeholder='username' value={this.state.username} onChange={this.handleInfoUpdate} />
+                                <h4>{quiz_survey1}:</h4>
+                                <select className='dropdown'>
+                                    <option value=''>- Select an option -</option>
+                                    {surveyOptItem}
+                                </select>
+                            </form>
                         </div>
                     )}
             </div>

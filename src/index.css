@@ -1,3 +1,5 @@
+/* setting defaults for all pages */
+
 body {
   margin: 0;
   padding: 0;
@@ -8,6 +10,10 @@ body {
   font-family: 'Montserrat', sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+}
+code {
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
+    monospace;
 }
 h1 {
   font-size: 2.2em;
@@ -77,13 +83,6 @@ input::placeholder {
   color: #a2a9ae;
   font-weight: 400;
 }
-
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
-    monospace;
-}
-
-/* setting defaults for all pages */
 a:link {
   text-decoration: none;
   color: #1bb8ec;
