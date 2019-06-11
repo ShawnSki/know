@@ -104,7 +104,7 @@ class CreateQuestion extends Component {
                         ) : (
                             <div>
                                 <button onClick={this.handleQuestionAddedToggle}>add question</button>
-                                {questionsMapped}
+                                {questionsMapped.reverse()}
                             </div>
                         )}
                 </div>

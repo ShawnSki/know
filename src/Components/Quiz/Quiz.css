@@ -25,50 +25,8 @@
     padding: .8em;
     text-align: center;
 }
-.quizQuestionCont {
-    min-height: 15em;
-    margin-top: 2em;
-    display: flex;
-}
-.quizQuestion {
-    width: 50%;
-    padding: 1em;
-    display: flex;
-    align-items: center;
-}
-.quizAnswers {
-    padding-left: 1em;
-    border-left: solid .1em rgba(0, 0, 0, 0.2);
-    width: 50%;
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-}
-.quizAnswers button {
-    margin-bottom: .5em;
-    background: #1bb8ec;
-}
-.quizAnswers button:hover {
-    background: #46c9f5;
-}
-.quizAnswers button:active {
-    background: #0fa0d0;
-}
 
 @media (max-width: 700px) {
-    .quizQuestionCont {
-        display: flex;
-        flex-direction: column;
-    }
-    .quizQuestion {
-        padding-left: 0;
-        width: 100%;
-    }
-    .quizAnswers {
-        padding-left: 0;
-        border-left: none;
-        width: 100%;
-    }
     .quizHeaderCounter {
         padding: .8em .2em;
     }
