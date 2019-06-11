@@ -12,7 +12,8 @@ class Quiz extends Component {
             quiz_survey1: '',
             survey1_options: '',
             totalNumber: null,
-            currentNumber: 1
+            currentNumber: 1,
+            username: ''
         }
     }
 
@@ -29,10 +30,12 @@ class Quiz extends Component {
                     quiz_bg_img,
                     quiz_survey1,
                     survey1_options,
-                    completedToggle: false
+                    completedToggle: false,
+                    username: 'Knowwies-a-lot'
                 })
             })
         this.handleGetQuestionCount();
+        this.handleAddUser();
     }
 
     handleGetQuestionCount = async () => {
@@ -54,6 +57,10 @@ class Quiz extends Component {
         this.setState({
             completedToggle: true
         })
+    }
+
+    handleAddUser = () => {
+        axios.post('/api/user', { username: this.state.username, quizzes_id: this.props.match.params.id })
     }
 
     render() {

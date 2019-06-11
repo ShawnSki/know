@@ -4,6 +4,7 @@ const session = require('express-session');
 const massive = require('massive');
 const authie_ctrl = require('./controllers/authie_ctrl');
 const quizzie_ctrl = require('./controllers/quizzie_ctrl');
+const users_ctrl = require('./controllers/users_ctrl');
 const app = express();
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
 
@@ -44,3 +45,5 @@ app.delete('/api/question/:id', quizzie_ctrl.deleteQuestion);
 app.get('/api/questions/:id', quizzie_ctrl.allQuestions);
 app.put('/api/question/:id', quizzie_ctrl.editQuestion);
 app.get('/api/question/:id', quizzie_ctrl.getQuestion);
+
+app.post('/api/user', users_ctrl.addUser);

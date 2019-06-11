@@ -33,7 +33,6 @@ class QuizSetup extends Component {
         e.target.src = 'http://shawnski.com/wp-content/uploads/2017/12/snowbird_ski_photographer-21.jpg'
     }
 
-
     render() {
         const { quiz_title, quiz_intro, quiz_bg_img } = this.state;
         return (

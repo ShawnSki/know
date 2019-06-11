@@ -9,7 +9,8 @@ class QuizQuestion extends Component {
             questions: [],
             question: {},
             questionCount: null,
-            remediationShowing: false
+            remediationShowing: false,
+            score: null
         }
     }
 
@@ -34,13 +35,21 @@ class QuizQuestion extends Component {
         })
     }
 
-    
+    handleBtnClicked = (e) => {
+        if (e.target.value === this.state.question.answer) {
+            this.setState({
+                score: ++this.state.score
+            })
+        }
+        this.handleRemediationToggle();
+    }
+
     handleRemediationToggle = () => {
         this.setState({
             remediationShowing: !this.state.remediationShowing
         })
     }
-    
+
     handleNextQuestion = () => {
         const { questionCount } = this.state;
         if (questionCount !== 1) {
@@ -56,9 +65,29 @@ class QuizQuestion extends Component {
         }
     }
 
+    handleRandomizeAnswers = () => {
+        const { answer, distractor1, distractor2, distractor3 } = this.state.question;
+        const answersArray = [answer, distractor1, distractor2, distractor3];
+        let i = answersArray.length - 1;
+        for (; i > 0; i--) {
+            const j = Math.floor(Math.random() * (i + 1));
+            const temp = answersArray[i];
+            answersArray[i] = answersArray[j];
+            answersArray[j] = temp;
+        }
+        return answersArray
+    }
+
     render() {
-        console.log(this.state.questionCount)
-        const { question, remediation, answer, distractor1, distractor2, distractor3 } = this.state.question
+        const randomAnswers = this.handleRandomizeAnswers()
+        const answerButtons = randomAnswers.map((answerChoice, ind) => {
+            // probably need to add an if statement to identify the answer button
+            return (
+                <div key={ind} className='quizAnswers'><button value={answerChoice} onClick={this.handleBtnClicked}>{answerChoice}</button></div>
+            )
+        })
+
+        const { question, remediation } = this.state.question
         return (
             <div>
                 {(this.state.remediationShowing === false)
@@ -67,29 +96,18 @@ class QuizQuestion extends Component {
                             <div className='quizQuestion'>
                                 <p>{question}</p>
                             </div>
-                            <div className='quizAnswers'>
-                                <button onClick={this.handleRemediationToggle}>{answer}</button>
-                                <button onClick={this.handleRemediationToggle}>{distractor1}</button>
-                                <button onClick={this.handleRemediationToggle}>{distractor2}</button>
-                                <button onClick={this.handleRemediationToggle}>{distractor3}</button>
+                            <div className='quizzieRight'>
+                                {answerButtons}
                             </div>
                         </div>
                     ) : (
-                        <div>
-                            <div className='remediationCont'>
-                                <div className='remediation'>{remediation}</div>
-                                <button onClick={this.handleNextQuestion}>Next</button>
+                        <div className='quizQuestionCont'>
+                            <div className='quizQuestion'>
+                                <p>{question}</p>
                             </div>
-                            <div className='quizQuestionCont'>
-                                <div className='quizQuestion'>
-                                    <p>{question}</p>
-                                </div>
-                                <div className='quizAnswers'>
-                                    <button disabled>{answer}</button>
-                                    <button disabled>{distractor1}</button>
-                                    <button disabled>{distractor2}</button>
-                                    <button disabled>{distractor3}</button>
-                                </div>
+                            <div className='quizzieRight'>
+                                <div className='remediation'><p>{remediation}</p></div>
+                                <button onClick={this.handleNextQuestion}>Next</button>
                             </div>
                         </div>
                     )}
