@@ -47,3 +47,4 @@ app.put('/api/question/:id', quizzie_ctrl.editQuestion);
 app.get('/api/question/:id', quizzie_ctrl.getQuestion);
 
 app.post('/api/user', users_ctrl.addUser);
+app.put('/api/user/:id', users_ctrl.editUser);

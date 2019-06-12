@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import axios from 'axios';
+// import { Link } from 'react-router-dom';
 import './Quiz.css';
 import QuizQuestion from '../QuizQuestion/QuizQuestion';
 
@@ -13,7 +14,8 @@ class Quiz extends Component {
             survey1_options: '',
             totalNumber: null,
             currentNumber: 1,
-            username: ''
+            username: '',
+            survey_response1: ''
         }
     }
 
@@ -31,7 +33,10 @@ class Quiz extends Component {
                     quiz_survey1,
                     survey1_options,
                     completedToggle: false,
-                    username: 'Knowwies-a-lot'
+                    username: 'Knowwies-a-lot',
+                    quiz_points: null,
+                    userId: null,
+                    quiz_points: null
                 })
             })
         this.handleGetQuestionCount();
@@ -53,14 +58,22 @@ class Quiz extends Component {
         })
     }
 
-    handleQuizCompledToggle = () => {
+    handleQuizCompledToggle = (quiz_points) => {
         this.setState({
-            completedToggle: true
+            completedToggle: true,
+            quiz_points
         })
     }
 
     handleAddUser = () => {
         axios.post('/api/user', { username: this.state.username, quizzes_id: this.props.match.params.id })
+            .then(res => {
+                const { id, username } = res.data[0]
+            this.setState({
+                username,
+                userId: id
+            })
+            })
     }
 
     handleInfoUpdate = (e) => {
@@ -78,13 +91,23 @@ class Quiz extends Component {
         return surveyOptArr
     }
 
+    handleSubmitUserResults = (e) => {
+        e.preventDefault();
+        const { userId, username, quiz_points, survey_response1 } = this.state;
+        axios.put(`/api/user/${userId}`, { id: userId, username, quiz_points, survey_response1 })
+            .then((res) => {
+            
+        })
+    }
+
 
 
     render() {
+        console.log('render', this.state)
         const surveyOptions = this.handleSurveyDropdownOptions();
         const surveyOptItem = surveyOptions.map((surveyOpt, ind) => {
             return (
-                <option key={ind} value='surveyOpt'>{surveyOpt}</option>
+                <option key={ind} value={surveyOpt}>{surveyOpt}</option>
             )
         })
         const { quiz_title, quiz_bg_img, quiz_survey1, survey1_options, currentNumber, totalNumber } = this.state;
@@ -113,16 +136,17 @@ class Quiz extends Component {
                     ) : (
                         <div className='quizBodyCont'>
                             <div>
-                                <h1>Knowwie Completed</h1>
+                                <h1>Quiz Completed</h1>
                                 <p>Submit the following information to view your results and leaderboard.</p>
                             </div>
-                            <form>
+                            <form onSubmit={this.handleSubmitUserResults}>
                                 <h4>Username (used for leaderboard):</h4><input type='text' name='username' placeholder='username' value={this.state.username} onChange={this.handleInfoUpdate} />
                                 <h4>{quiz_survey1}:</h4>
-                                <select className='dropdown'>
-                                    <option value=''>- Select an option -</option>
+                                <select className='dropdown' value={this.state.survey_response1} onChange={(e) => this.setState({survey_response1: e.target.value})}>
+                                    <option>- Select an option -</option>
                                     {surveyOptItem}
                                 </select>
+                                <button>See Results</button>
                             </form>
                         </div>
                     )}

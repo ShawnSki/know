@@ -65,7 +65,7 @@ class EditQuiz extends Component {
         const { quiz_title, quiz_intro, quiz_bg_img, quiz_survey1, survey1_options } = this.state;
         axios.put(`/api/quiz/${this.props.match.params.id}`, { quiz_title, quiz_intro, quiz_bg_img, quiz_survey1, survey1_options })
             .then((res) => {
-                // this.props.history.push('/dashboard')
+
             })
             this.handleQuizAddedToggle();
     }
