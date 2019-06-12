@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-// import { Link } from 'react-router-dom';
 import './Quiz.css';
 import QuizQuestion from '../QuizQuestion/QuizQuestion';
+import { async } from 'q';
 
 class Quiz extends Component {
     constructor() {
@@ -15,7 +15,11 @@ class Quiz extends Component {
             totalNumber: null,
             currentNumber: 1,
             username: '',
-            survey_response1: ''
+            survey_response1: '',
+            quiz_points: null,
+            userId: null,
+            username: 'Knowwies-a-lot',
+            completedToggle: false
         }
     }
 
@@ -31,12 +35,7 @@ class Quiz extends Component {
                     quiz_title,
                     quiz_bg_img,
                     quiz_survey1,
-                    survey1_options,
-                    completedToggle: false,
-                    username: 'Knowwies-a-lot',
-                    quiz_points: null,
-                    userId: null,
-                    quiz_points: null
+                    survey1_options
                 })
             })
         this.handleGetQuestionCount();
@@ -58,10 +57,12 @@ class Quiz extends Component {
         })
     }
 
-    handleQuizCompledToggle = (quiz_points) => {
+    handleQuizCompledToggle = (score) => {
+        const { totalNumber } = this.state;
+        const quizPercent = (score / totalNumber) * 100
         this.setState({
             completedToggle: true,
-            quiz_points
+            quiz_points: quizPercent.toFixed(0)
         })
     }
 
@@ -91,26 +92,26 @@ class Quiz extends Component {
         return surveyOptArr
     }
 
-    handleSubmitUserResults = (e) => {
+    handleUpdateUser = async (e) => {
         e.preventDefault();
         const { userId, username, quiz_points, survey_response1 } = this.state;
-        axios.put(`/api/user/${userId}`, { id: userId, username, quiz_points, survey_response1 })
-            .then((res) => {
-            
-        })
+        await axios.put(`/api/user/${userId}`, { id: userId, username, quiz_points, survey_response1 })
+            .then(
+                this.props.history.push(`/leaderboard/${this.props.match.params.id}`)
+        )
     }
 
 
 
     render() {
-        console.log('render', this.state)
+        // console.log('render', this.state.totalNumber)
         const surveyOptions = this.handleSurveyDropdownOptions();
         const surveyOptItem = surveyOptions.map((surveyOpt, ind) => {
             return (
                 <option key={ind} value={surveyOpt}>{surveyOpt}</option>
             )
         })
-        const { quiz_title, quiz_bg_img, quiz_survey1, survey1_options, currentNumber, totalNumber } = this.state;
+        const { quiz_title, quiz_bg_img, quiz_survey1, currentNumber, totalNumber, quiz_points } = this.state;
         return (
             <div style={{
                 background: `url(${quiz_bg_img})no-repeat center center fixed`,
@@ -136,17 +137,17 @@ class Quiz extends Component {
                     ) : (
                         <div className='quizBodyCont'>
                             <div>
-                                <h1>Quiz Completed</h1>
+                                <h1>Your Score: {quiz_points}%</h1>
                                 <p>Submit the following information to view your results and leaderboard.</p>
                             </div>
-                            <form onSubmit={this.handleSubmitUserResults}>
+                            <form onSubmit={this.handleUpdateUser}>
                                 <h4>Username (used for leaderboard):</h4><input type='text' name='username' placeholder='username' value={this.state.username} onChange={this.handleInfoUpdate} />
                                 <h4>{quiz_survey1}:</h4>
                                 <select className='dropdown' value={this.state.survey_response1} onChange={(e) => this.setState({survey_response1: e.target.value})}>
                                     <option>- Select an option -</option>
                                     {surveyOptItem}
                                 </select>
-                                <button>See Results</button>
+                                <button>View leaderboard</button>
                             </form>
                         </div>
                     )}

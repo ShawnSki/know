@@ -19,7 +19,6 @@ CREATE TABLE accounts (
 CREATE TABLE quizzes (
     id SERIAL PRIMARY KEY,
     admins_id INTEGER REFERENCES admins(id),
-    create_date DATE,
     quiz_title VARCHAR(200),
     quiz_intro VARCHAR(500),
     quiz_bg_img VARCHAR(800),
@@ -30,6 +29,7 @@ CREATE TABLE quizzes (
     survey1_options VARCHAR(100), 
     survey2_options VARCHAR(100), 
     survey3_options VARCHAR(100),
+    creation_date DATE DEFAULT CURRENT_DATE
 );
 
 CREATE TABLE quiz_questions (

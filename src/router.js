@@ -10,6 +10,7 @@ import CreateQuiz from './Components/CreateQuiz/CreateQuiz';
 import QuizList from './Components/QuizList/QuizList';
 import QuizSetup from './Components/QuizSetup/QuizSetup';
 import Quiz from './Components/Quiz/Quiz';
+import LeaderBoard from './Components/LeaderBoard/LeaderBoard';
 
 export default (
     <Switch>
@@ -23,5 +24,6 @@ export default (
         <Route path='/quizlist/' component={QuizList} />
         <Route path='/knowwie/:id' component={QuizSetup} />
         <Route path='/knowwiequiz/:id' component={Quiz} />
+        <Route path='/leaderboard/:id' component={LeaderBoard} />
     </Switch>
 )

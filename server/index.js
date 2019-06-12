@@ -5,6 +5,7 @@ const massive = require('massive');
 const authie_ctrl = require('./controllers/authie_ctrl');
 const quizzie_ctrl = require('./controllers/quizzie_ctrl');
 const users_ctrl = require('./controllers/users_ctrl');
+const results_ctrl = require('./controllers/results_ctrl');
 const app = express();
 const { CONNECTION_STRING, SERVER_PORT, SESSION_SECRET } = process.env;
 
@@ -48,3 +49,5 @@ app.get('/api/question/:id', quizzie_ctrl.getQuestion);
 
 app.post('/api/user', users_ctrl.addUser);
 app.put('/api/user/:id', users_ctrl.editUser);
+
+app.get('/results/quiz/:id', results_ctrl.getQuizResults);
