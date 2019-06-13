@@ -51,3 +51,4 @@ app.post('/api/user', users_ctrl.addUser);
 app.put('/api/user/:id', users_ctrl.editUser);
 
 app.get('/results/quiz/:id', results_ctrl.getQuizResults);
+app.get('/results/admin/:id', results_ctrl.getResultsAdmin);

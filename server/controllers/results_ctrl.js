@@ -7,5 +7,14 @@ module.exports = {
             .then(results => {
             res.status(200).send(results)
         })
+    },
+
+    getResultsAdmin: (req, res) => {
+        const { id } = req.params;
+        const db = req.app.get('db');
+        db.results_admin({ id })
+            .then(results => {
+            res.status(200).send(results)
+        })
     }
 }
