@@ -16,7 +16,8 @@ class Quiz extends Component {
             currentNumber: 1,
             username: '',
             survey_response1: '',
-            quiz_points: null,
+            quiz_points: 0,
+            quiz_results: [],
             userId: null,
             username: 'Knowwies-a-lot',
             completedToggle: false
@@ -57,12 +58,15 @@ class Quiz extends Component {
         })
     }
 
-    handleQuizCompledToggle = (score) => {
+    handleQuizCompledToggle = (scoreResults) => {
+        const reducer = (acc, cur) => acc + cur;
+        const scoreAdded = scoreResults.reduce(reducer)
         const { totalNumber } = this.state;
-        const quizPercent = (score / totalNumber) * 100
+        const quizPercent = (scoreAdded / totalNumber) * 100
         this.setState({
             completedToggle: true,
-            quiz_points: quizPercent.toFixed(0)
+            quiz_points: +quizPercent.toFixed(0),
+            quiz_results: scoreResults
         })
     }
 
@@ -104,14 +108,13 @@ class Quiz extends Component {
 
 
     render() {
-        // console.log('render', this.state.totalNumber)
+        const { quiz_title, quiz_bg_img, quiz_survey1, currentNumber, totalNumber, quiz_points } = this.state;
         const surveyOptions = this.handleSurveyDropdownOptions();
         const surveyOptItem = surveyOptions.map((surveyOpt, ind) => {
             return (
                 <option key={ind} value={surveyOpt}>{surveyOpt}</option>
             )
         })
-        const { quiz_title, quiz_bg_img, quiz_survey1, currentNumber, totalNumber, quiz_points } = this.state;
         return (
             <div style={{
                 background: `url(${quiz_bg_img})no-repeat center center fixed`,

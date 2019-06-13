@@ -10,7 +10,7 @@ class QuizQuestion extends Component {
             question: {},
             questionCount: null,
             remediationShowing: false,
-            score: 0
+            scoreResults: []
         }
     }
 
@@ -37,8 +37,14 @@ class QuizQuestion extends Component {
 
     handleBtnClicked = (e) => {
         if (e.target.value === this.state.question.answer) {
+            const addScore = [...this.state.scoreResults, 1]
             this.setState({
-                score: ++this.state.score
+                scoreResults: addScore
+            })
+        } else {
+            const subScore = [...this.state.scoreResults, 0]
+            this.setState({
+                scoreResults: subScore
             })
         }
         this.handleRemediationToggle();
@@ -51,7 +57,7 @@ class QuizQuestion extends Component {
     }
 
     handleNextQuestion = () => {
-        const { score, questionCount } = this.state;
+        const { scoreResults, questionCount } = this.state;
         if (questionCount !== 1) {
             this.setState({
                 questionCount: this.state.questionCount -= 1
@@ -61,7 +67,7 @@ class QuizQuestion extends Component {
             this.props.handleCurrentNumber();
         } else if (questionCount === 1) {
             console.log('quiz completed')
-            this.props.handleQuizCompledToggle(score);
+            this.props.handleQuizCompledToggle(scoreResults);
         }
     }
 
@@ -79,7 +85,7 @@ class QuizQuestion extends Component {
     }
 
     render() {
-        // console.log('qqrend', this.state.questionCount)
+        console.log('scoreArr', this.state.scoreResults)
         const randomAnswers = this.handleRandomizeAnswers()
         const answerButtons = randomAnswers.map((answerChoice, ind) => {
             return (

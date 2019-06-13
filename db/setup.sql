@@ -58,5 +58,7 @@ CREATE TABLE users (
     quiz_points INTEGER,
     survey_response1 VARCHAR(100),
     survey_response2 VARCHAR(100),
-    survey_response3 VARCHAR(100)
+    survey_response3 VARCHAR(100),
+    quiz_results INT[],
+    taken_date DATE DEFAULT CURRENT_DATE
 );

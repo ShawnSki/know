@@ -2,7 +2,7 @@ import React from 'react';
 import './LeaderListing.css';
 
 const LeaderListing = (props) => {
-    
+    console.log('props', props)
         return (
             <div className='listingCont'>
                 <h4>{props.ind+1}</h4>
