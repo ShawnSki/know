@@ -81,7 +81,7 @@ class CreateQuiz extends Component {
                                     <div className='creatorFormItems'><h4>Introduction:</h4><input type='text' name='quiz_intro' placeholder='introduction' value={this.state.quiz_intro} onChange={this.handleInfoUpdate} /></div>
                                     <div className='creatorFormItems'><h4>Background Image:</h4><input type='text' name='quiz_bg_img' placeholder='background image url' value={this.state.quiz_bg_img} onChange={this.handleInfoUpdate} /></div>
                                     <div className='creatorFormItems'><h4>Survey Question:</h4><input type='text' name='quiz_survey1' placeholder='survey question' value={this.state.quiz_survey1} onChange={this.handleInfoUpdate} /></div>
-                                    <div className='creatorFormItems'><h4>Survey Options:</h4><input type='text' name='survey1_options' placeholder='survey options' value={this.state.survey1_optionsg} onChange={this.handleInfoUpdate} /></div>
+                                    <div className='creatorFormItems'><h4>Survey Options:</h4><input type='text' name='survey1_options' placeholder='survey options' value={this.state.survey1_options} onChange={this.handleInfoUpdate} /></div>
                                     <button>Submit and Add Questions</button> <br />
                                 </form>
                                      </div>

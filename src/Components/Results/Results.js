@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import ChartQuestions from '../Charts/ChartQuestions';
+import ChartSurvey1 from '../Charts/ChartSurvey1';
 import './Results.css';
 
 class Results extends Component {
@@ -10,15 +11,27 @@ class Results extends Component {
         this.state = {
             creation_date: '',
             quiz_title: '',
+            quiz_survey1: '',
             quiz_average: null,
             quiz_completes: null,
             quiz_starts: null,
             resultsArr: [],
+            surveyOptArr: [],
             chartData: {
                 labels: [],
                 datasets: [
                     {
                         label: 'Users',
+                        data: [],
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                    }
+                ]
+            },
+            chartData2: {
+                labels: [],
+                datasets: [
+                    {
+                        label: 'Average Score',
                         data: [],
                         backgroundColor: 'rgba(255, 255, 255, 0.1)'
                     }
@@ -34,7 +47,7 @@ class Results extends Component {
     handleGetQuizResults = async () => {
         await axios.get(`/results/admin/${this.props.match.params.id}`)
             .then(res => {
-                const { creation_date, quiz_title } = res.data[0]
+                const { creation_date, quiz_title, quiz_survey1 } = res.data[0]
                 const newDate = creation_date.split('T')
                 const pointsArr = res.data
                     .filter(userObj => { if (userObj.quiz_points !== null || userObj.quiz_points === 0) return userObj })
@@ -44,6 +57,7 @@ class Results extends Component {
                 const quizPercent = (scoreAdded / (pointsArr.length * 100)) * 100
                 this.setState({
                     resultsArr: res.data,
+                    quiz_survey1,
                     creation_date: newDate[0],
                     quiz_title,
                     quiz_average: +quizPercent.toFixed(0),
@@ -52,6 +66,8 @@ class Results extends Component {
                 })
             })
         this.handleChartData();
+        this.handleSurveyOptions(this.state.resultsArr);
+        this.handleUserSurveyOptionsResults(this.state.surveyOptArr, this.state.resultsArr);
     }
 
     handleChartData = () => {
@@ -64,12 +80,10 @@ class Results extends Component {
             {
                 data: percentScores
             }]
-        // console.log('newDatasets', newDatasets)
         this.handleChartLabels(newDatasets[0].data);
         return (
             this.setState({
                 chartData: {
-                    // labels: ,
                     datasets: newDatasets
                 }
             })
@@ -87,10 +101,56 @@ class Results extends Component {
             }
         })
     }
+    // sets survey question options in an array. Use to set labels for chartSurvey1
+    handleSurveyOptions = (arr) => {
+        var optionsArr = arr[0].survey1_options.split(',');
+        const surveyOptArr = optionsArr.map((obj, ind) => {
+            return obj.trim()
+        })
+        this.setState({
+            surveyOptArr: surveyOptArr
+        })
+    }
 
+    handleUserSurveyOptionsResults = (labelsArr, usersArr) => {
+        const totalsArr = labelsArr.map((obj, ind) => 0)
+        const optCntsArr = labelsArr.map((obj, ind) => 0)
+
+        const mappedArr = usersArr.map((obj, ind) => {
+            const indexNum = labelsArr.indexOf(obj.survey_response1);
+            console.log('indexNum', indexNum)
+            if (labelsArr.includes(obj.survey_response1)) {
+                optCntsArr.splice(indexNum, 1, optCntsArr[indexNum] + 1)
+                totalsArr.splice(
+                    indexNum,
+                    1,
+                    (obj.quiz_points + totalsArr[indexNum])
+                )
+            }
+            return totalsArr
+        })
+        const userPercentBySurvey = totalsArr.map((num, ind) => {
+            if (optCntsArr[ind] !== 0) {
+                return (num / optCntsArr[ind]).toFixed(0)
+            } else return 0
+        })
+        // console.log('percent', userPercentBySurvey)
+        const newDatasets = [
+            {
+                data: userPercentBySurvey
+            }]
+        this.setState({
+            chartData2: {
+                labels: labelsArr,
+                datasets: newDatasets
+            }
+        })
+    }
 
     render() {
-        const { creation_date, quiz_title, quiz_average, quiz_completes, quiz_starts, chartData } = this.state;
+        console.log('chart2', this.state.chartData2)
+        console.log('chart', this.state.chartData)
+        const { creation_date, quiz_title, quiz_average, quiz_completes, quiz_starts, chartData, quiz_survey1, chartData2 } = this.state;
         return (
             <div className='resultsPageCont'>
                 <div className='resultsHeader'>
@@ -117,6 +177,11 @@ class Results extends Component {
                 <div className='chartQuestionCont'>
                     <h1>Average Score By Question</h1>
                     <ChartQuestions chartData={chartData} />
+                </div>
+                <div className='chartQuestionCont'>
+                    <h1>Average Score By Survey Question</h1>
+                    <p>{quiz_survey1}</p>
+                    <ChartSurvey1 chartData={chartData2} />
                 </div>
             </div>
         )
