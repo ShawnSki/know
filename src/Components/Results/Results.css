@@ -7,8 +7,8 @@
     justify-content: space-between;
 }
 .resultsSubHeader {
-    /* background: #1bb8ec; */
-    background: #ccc;
+    background: #1bb8ec;
+    /* background: #ccc; */
     display: flex;
 }
 .subHeaderBox {
@@ -24,21 +24,26 @@
 }
 .subHeaderBox h3 {
     color: #fff;
+    font-weight: 400;
 }
 .subHeaderBox h1 {
     color: #fff;
     font-size: 5em;
 }
 .chartQuestionCont {
-    /* background: #2f3032; */
-    background: #bbb;
+    background: #2f3032;
+    /* background: #bbb; */
     padding: 5em 0;
     width: 100%;
     text-align: center;
 }
 .chartQuestionCont h1 {
-    color: rgba(255, 255, 255, 0.4);
+    color: rgba(255, 255, 255, 0.6);
     margin-bottom: 1em;
+}
+.chartQuestionCont h3 {
+    color: rgba(255, 255, 255, 0.6);
+    font-weight: 400;
 }
 
 @media (max-width: 700px) {

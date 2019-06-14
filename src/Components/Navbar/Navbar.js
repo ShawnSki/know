@@ -17,12 +17,11 @@ class Navbar extends Component {
         return (
             <nav>
                 <div>
-                <Link to='/'><h1>home</h1></Link>
-                {/* <Link to='/'><img src={imgLogo} alt='knowwie logo' /></Link> */}
+                {/* <Link to='/'><h1>home</h1></Link> */}
+                <Link to='/'><img src={imgLogo} alt='knowwie logo' /></Link>
                 </div>
                 <div className='linksCont'>
                     <ul>
-                        {/* <li><Link to='/'>Home</Link></li> */}
                         <li><Link to='/quizlist'>Quizzes</Link></li>
                         <li><Link to='/dashboard'>Dashboard</Link></li>
                         <li><Link to='/login'>Log In</Link></li>

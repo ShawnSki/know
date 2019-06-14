@@ -23,7 +23,7 @@ class Results extends Component {
                     {
                         label: 'Users',
                         data: [],
-                        backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                        backgroundColor: 'red'
                     }
                 ]
             },
@@ -33,7 +33,7 @@ class Results extends Component {
                     {
                         label: 'Average Score',
                         data: [],
-                        backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                        backgroundColor: ''
                     }
                 ]
             }
@@ -78,8 +78,10 @@ class Results extends Component {
         const percentScores = combinedScores.map(points => (points / newArr.length) * 100)
         const newDatasets = [
             {
-                data: percentScores
+                data: percentScores,
+                backgroundColor: 'rgba(255, 255, 255, 0.2)'
             }]
+        console.log('here', newDatasets[0].data)
         this.handleChartLabels(newDatasets[0].data);
         return (
             this.setState({
@@ -137,7 +139,8 @@ class Results extends Component {
         // console.log('percent', userPercentBySurvey)
         const newDatasets = [
             {
-                data: userPercentBySurvey
+                data: userPercentBySurvey,
+                backgroundColor: 'rgba(255, 255, 255, 0.2)'
             }]
         this.setState({
             chartData2: {
@@ -148,8 +151,6 @@ class Results extends Component {
     }
 
     render() {
-        console.log('chart2', this.state.chartData2)
-        console.log('chart', this.state.chartData)
         const { creation_date, quiz_title, quiz_average, quiz_completes, quiz_starts, chartData, quiz_survey1, chartData2 } = this.state;
         return (
             <div className='resultsPageCont'>
@@ -180,7 +181,7 @@ class Results extends Component {
                 </div>
                 <div className='chartQuestionCont'>
                     <h1>Average Score By Survey Question</h1>
-                    <p>{quiz_survey1}</p>
+                    <h3>{quiz_survey1}</h3>
                     <ChartSurvey1 chartData={chartData2} />
                 </div>
             </div>
