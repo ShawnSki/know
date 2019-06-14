@@ -8,9 +8,6 @@
     padding: 1em;
     margin: 0 2em;
     border-bottom: solid .1em rgba(0, 0, 0, 0.2);
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
 }
 .leaderList {
     margin: 0 8em;

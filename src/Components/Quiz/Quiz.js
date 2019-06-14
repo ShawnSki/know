@@ -2,7 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import './Quiz.css';
 import QuizQuestion from '../QuizQuestion/QuizQuestion';
-import { async } from 'q';
 
 class Quiz extends Component {
     constructor() {
@@ -19,7 +18,7 @@ class Quiz extends Component {
             quiz_points: 0,
             quiz_results: [],
             userId: null,
-            username: 'Knowwies-a-lot',
+            username: 'Knowwie User',
             completedToggle: false
         }
     }
@@ -73,11 +72,11 @@ class Quiz extends Component {
     handleAddUser = () => {
         axios.post('/api/user', { username: this.state.username, quizzes_id: this.props.match.params.id })
             .then(res => {
-                const { id, username } = res.data[0]
-            this.setState({
-                username,
-                userId: id
-            })
+                const { id, username, quiz_results } = res.data[0]
+                this.setState({
+                    username,
+                    userId: id
+                })
             })
     }
 
@@ -98,11 +97,11 @@ class Quiz extends Component {
 
     handleUpdateUser = async (e) => {
         e.preventDefault();
-        const { userId, username, quiz_points, survey_response1 } = this.state;
-        await axios.put(`/api/user/${userId}`, { id: userId, username, quiz_points, survey_response1 })
+        const { userId, username, quiz_points, survey_response1, quiz_results } = this.state;
+        await axios.put(`/api/user/${userId}`, { id: userId, username, quiz_points, survey_response1, quiz_results })
             .then(
                 this.props.history.push(`/leaderboard/${this.props.match.params.id}`)
-        )
+            )
     }
 
 
@@ -146,7 +145,7 @@ class Quiz extends Component {
                             <form onSubmit={this.handleUpdateUser}>
                                 <h4>Username (used for leaderboard):</h4><input type='text' name='username' placeholder='username' value={this.state.username} onChange={this.handleInfoUpdate} />
                                 <h4>{quiz_survey1}:</h4>
-                                <select className='dropdown' value={this.state.survey_response1} onChange={(e) => this.setState({survey_response1: e.target.value})}>
+                                <select className='dropdown' value={this.state.survey_response1} onChange={(e) => this.setState({ survey_response1: e.target.value })}>
                                     <option>- Select an option -</option>
                                     {surveyOptItem}
                                 </select>

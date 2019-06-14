@@ -58,7 +58,6 @@ class LeaderBoard extends Component {
                 </div>
                 <div className='leaderContHeader'>
                     <h2>Leaderboard</h2>
-                    <p>Created: {creation_date}</p>
                 </div>
                 <div className='leaderList'>{usersMapped}</div>
             </div>

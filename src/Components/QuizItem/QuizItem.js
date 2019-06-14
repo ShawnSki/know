@@ -23,7 +23,7 @@ class QuizItem extends Component {
             <div className='quizItemCont'>
                 <h4>{this.props.quizObj.quiz_title}</h4>
                 <div className='quizItembtnCont'>
-                    <button>results</button>
+                    <Link to={`/results/${this.props.quizObj.id}`}><button>results</button></Link>
                     <Link to={`/quiz/${this.props.quizObj.id}`}><button>edit</button></Link>
                     <button onClick={this.handleDeleteQuiz}>delete</button>
                 </div>
