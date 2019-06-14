@@ -3,7 +3,6 @@ import axios from 'axios';
 import { Link } from 'react-router-dom';
 import ChartQuestions from '../Charts/ChartQuestions';
 import './Results.css';
-import { async } from 'q';
 
 class Results extends Component {
     constructor() {
@@ -14,7 +13,17 @@ class Results extends Component {
             quiz_average: null,
             quiz_completes: null,
             quiz_starts: null,
-            resultsArr: []
+            resultsArr: [],
+            chartData: {
+                labels: [],
+                datasets: [
+                    {
+                        label: 'Users',
+                        data: [],
+                        backgroundColor: 'rgba(255, 255, 255, 0.1)'
+                    }
+                ]
+            }
         }
     }
 
@@ -42,10 +51,46 @@ class Results extends Component {
                     quiz_completes: pointsArr.length
                 })
             })
+        this.handleChartData();
     }
 
+    handleChartData = () => {
+        const newArr = this.state.resultsArr
+            .filter(obj => { if (obj.quiz_results !== null) return obj })
+            .map(obj => obj.quiz_results)
+        const combinedScores = newArr.reduce((r, arr) => arr.map((obj, ind) => (r[ind] || 0) + obj), []);
+        const percentScores = combinedScores.map(points => (points / newArr.length) * 100)
+        const newDatasets = [
+            {
+                data: percentScores
+            }]
+        // console.log('newDatasets', newDatasets)
+        this.handleChartLabels(newDatasets[0].data);
+        return (
+            this.setState({
+                chartData: {
+                    // labels: ,
+                    datasets: newDatasets
+                }
+            })
+        )
+    }
+
+    handleChartLabels = (arr) => {
+        const labelNums = []
+        for (let i = 0; i < arr.length; i++) {
+            labelNums.push('Question: ' + (i + 1))
+        }
+        this.setState({
+            chartData: {
+                labels: labelNums
+            }
+        })
+    }
+
+
     render() {
-        const { creation_date, quiz_title, quiz_average, quiz_completes, quiz_starts, resultsArr } = this.state;
+        const { creation_date, quiz_title, quiz_average, quiz_completes, quiz_starts, chartData } = this.state;
         return (
             <div className='resultsPageCont'>
                 <div className='resultsHeader'>
@@ -71,7 +116,7 @@ class Results extends Component {
                 </div>
                 <div className='chartQuestionCont'>
                     <h1>Average Score By Question</h1>
-                    <ChartQuestions resultsArr={resultsArr} />
+                    <ChartQuestions chartData={chartData} />
                 </div>
             </div>
         )

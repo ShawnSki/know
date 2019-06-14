@@ -3,7 +3,7 @@ import { Link } from 'react-router-dom';
 import { updateAdmin, clearAdmin } from '../../redux/adminReducer';
 import { connect } from 'react-redux';
 import './Navbar.css';
-// var imgLogo = require('../../images/knowwie_logo.png');
+var imgLogo = require('../../images/knowwie_logo.png');
 
 class Navbar extends Component {
     constructor() {
