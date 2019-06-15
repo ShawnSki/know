@@ -16,11 +16,12 @@ class ChartQuestions extends Component {
             <div>
                 <Bar
                     data={this.props.chartData}
-                    height={60}
-                    // width={900}
+                    height={400}
+                    // width={100}
                     options={{
                         responsive: true,
-                        maintainAspectRatio: true,
+                        maintainAspectRatio: false,
+                        tooltips: false,
                         title: {
                             display: true,
                             text: ''

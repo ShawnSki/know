@@ -12,7 +12,8 @@ class LeaderBoard extends Component {
             quiz_title: '',
             guiz_bg_img: '',
             quiz_survey1: '',
-            survey1_options: ''
+            survey1_options: '',
+            chartData: {}
         }
     }
 
@@ -36,17 +37,19 @@ class LeaderBoard extends Component {
             })
     }
 
-
+    
 
     render() {
-        const { results, creation_date, quiz_title, guiz_bg_img, quiz_survey1, survey1_options } = this.state;
+        
+        const { results, creation_date, quiz_title, chartData, guiz_bg_img, quiz_survey1, survey1_options } = this.state;
         const usersMapped = results.map((userObj, ind) => {
             return (
                 <div className='alternateBg'>
                     <LeaderListing
                         key={ind}
                         userObj={userObj}
-                        ind={ind} />
+                        ind={ind}
+                        chartData={chartData}/>
                 </div>
             )
         })

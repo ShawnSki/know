@@ -16,11 +16,12 @@ class ChartSurvey1 extends Component {
             <div className='ChartSurvey1Cont'>
                     <HorizontalBar
                         data={this.props.chartData}
-                        height={70}
-                        // width={900}
+                        height={400}
+                        // width={100}
                         options={{
                             responsive: true,
-                            maintainAspectRatio: true,
+                            maintainAspectRatio: false,
+                            tooltips: false,
                             title: {
                                 display: true,
                                 text: ''

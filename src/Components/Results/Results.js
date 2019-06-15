@@ -22,8 +22,7 @@ class Results extends Component {
                 datasets: [
                     {
                         label: 'Users',
-                        data: [],
-                        backgroundColor: 'red'
+                        data: []
                     }
                 ]
             },
@@ -81,7 +80,7 @@ class Results extends Component {
                 data: percentScores,
                 backgroundColor: 'rgba(255, 255, 255, 0.2)'
             }]
-        console.log('here', newDatasets[0].data)
+        // console.log('here', newDatasets[0].data)
         this.handleChartLabels(newDatasets[0].data);
         return (
             this.setState({
@@ -120,7 +119,7 @@ class Results extends Component {
 
         const mappedArr = usersArr.map((obj, ind) => {
             const indexNum = labelsArr.indexOf(obj.survey_response1);
-            console.log('indexNum', indexNum)
+            // console.log('indexNum', indexNum)
             if (labelsArr.includes(obj.survey_response1)) {
                 optCntsArr.splice(indexNum, 1, optCntsArr[indexNum] + 1)
                 totalsArr.splice(

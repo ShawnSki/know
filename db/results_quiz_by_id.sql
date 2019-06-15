@@ -18,4 +18,4 @@ WHERE quizzes.id = ${id}
 order by 
     users.quiz_points desc nulls last,
     users.created_at desc
-LIMIT 20; 
+LIMIT 10; 

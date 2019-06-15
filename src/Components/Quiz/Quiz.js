@@ -95,13 +95,13 @@ class Quiz extends Component {
         return surveyOptArr
     }
 
-    handleUpdateUser = async (e) => {
+    handleUpdateUser = (e) => {
         e.preventDefault();
         const { userId, username, quiz_points, survey_response1, quiz_results } = this.state;
-        await axios.put(`/api/user/${userId}`, { id: userId, username, quiz_points, survey_response1, quiz_results })
-            .then(
+        axios.put(`/api/user/${userId}`, { id: userId, username, quiz_points, survey_response1, quiz_results })
+            .then(res => {
                 this.props.history.push(`/leaderboard/${this.props.match.params.id}`)
-            )
+            })
     }
 
 

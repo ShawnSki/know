@@ -4,16 +4,16 @@
     display: flex;
     justify-content: center;
 }
-/* .boxCont h1 {
-    margin-left: -3em;
-} */
+.boxCont h1 {
+    font-weight: 700;
+}
 .titleBeforeCont {
     /* background: red; */
     text-align: right;
 }
 .titleMiddleCont {
     /* background: blue; */
-    width: 12em;
+    width: 13em;
 }
 .titleAfterCont {
     /* background: red; */

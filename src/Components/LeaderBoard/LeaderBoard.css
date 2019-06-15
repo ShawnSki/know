@@ -13,8 +13,9 @@
     margin: 0 8em;
     padding: 0 1em;
 }
-.alternateBg:nth-child(even) {
-    background: #eaeaea;
+.alternateBg {
+    border-bottom: solid .1em rgba(0, 0, 0, 0.2);
+    /* background: #eaeaea; */
 }
 
 @media (max-width: 700px) {
