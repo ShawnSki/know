@@ -37,11 +37,14 @@ class LeaderListing extends Component {
 
     render() {
         return (
-            <div>
+            <div className='listingHolder'>
                 <div className='listingCont'>
-                    <h4>{this.props.ind + 1}</h4>
-                    <h4>{this.props.userObj.username}</h4>
-                    <h4>{this.props.userObj.quiz_points}%</h4>
+                    <div className='rankTitle'>
+                        <h2>{this.props.ind + 1}</h2>
+                        <h2>: {this.props.userObj.username}</h2>
+                    </div>
+                    
+                    <h2>{this.props.userObj.quiz_points}%</h2>
                 </div>
                 <div className='listingChart'>
                     <ChartLeaderQuiz

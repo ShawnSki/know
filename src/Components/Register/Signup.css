@@ -1,7 +1,7 @@
 
 .mainCont {
     height: 100vh;
-    /* background: url(../../images/bg_shaper.jpg) no-repeat center center fixed; */
+    /* background: url(../../images/bg_shaper2.jpg) no-repeat center center fixed; */
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -12,7 +12,7 @@
     margin-top: 5em;
     width: 50%;
     padding: 2em;
-    box-shadow: 0 0 2em rgba(0, 0, 0, 0.1);
+    box-shadow: 0 0 2em rgba(0, 0, 0, 0.3);
 }
 
 .signupCont h1 {

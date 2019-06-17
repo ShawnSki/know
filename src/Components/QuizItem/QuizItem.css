@@ -1,20 +1,44 @@
 .quizItemCont {
     padding: .4em;
-    border-bottom: solid .1em rgba(0, 0, 0, 0.2);
+    border-bottom: solid .1em rgba(255, 255, 255, 0.4);
     display: flex;
     justify-content: space-between;
     align-items: center;
 }
 .quizItemCont:first-child {
-    border-top: solid .1em rgba(0, 0, 0, 0.2);
+    border-top: solid .1em rgba(255, 255, 255, 0.4);
+}
+.quizItemCont h4 {
+    color: #fff;
 }
 .quizItembtnCont {
     margin-left: .5em;
+    min-width: 10em;
 }
 .quizItembtnCont button {
-    border-radius: .4em;
+    background: rgba(255, 255, 255, 0);
+    /* border: solid .1em rgba(255, 255, 255, 0.4); */
+    color: rgba(0, 0, 0, 0.2);
     font-weight: 500;
     font-size: .8em;
-    padding: .2em .4em;
-    margin-left: .2em;
+    padding: .4em;
+    margin-left: .1em;
+    
+}
+.quizItembtnCont button:hover {
+    background: rgba(255, 255, 255, 0.2);
+}
+
+.quizItembtnCont :active:hover {
+    background: rgba(255, 255, 255, 0.1);
+}
+
+@media (max-width: 700px) {
+    .quizItemCont {
+        display: flex;
+        flex-direction: column;
+    }
+    .quizItemCont h4 {
+        margin-bottom: .5em;
+    }
 }

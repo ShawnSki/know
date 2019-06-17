@@ -7,12 +7,12 @@
     justify-content: space-between;
 }
 .resultsSubHeader {
-    background: #1bb8ec;
+    background: linear-gradient(to bottom right, #ee314a, #e93792);
     /* background: #ccc; */
     display: flex;
 }
 .subHeaderBox {
-    border-right: .2em solid rgba(255, 255, 255, 0.2);
+    border-right: .1em solid rgba(0, 0, 0, 0.2);
     width: 100%;
     padding: 2em 0;
     display: flex;
@@ -53,7 +53,7 @@
         flex-direction: column;
     }
     .subHeaderBox {
-        border-bottom: .2em solid rgba(255, 255, 255, 0.2);
+        border-bottom: .1em solid rgba(0, 0, 0, 0.2);
         padding: 1em 0;
         flex-direction: row;
         justify-content: center;

@@ -65,7 +65,9 @@ class Dashboard extends Component {
         })
         return (
             <div className='dashPageCont'>
-                <div className='dashHeader'><h1>{this.props.firstname}'s Dashboard</h1></div>
+                <div className='dashHeader'>
+                    <h1>{this.props.firstname}'s Dashboard</h1>
+                </div>
                 <div className='dashCont'>
                     <div className='quizCont'>
                         <div className='quizBtnCont'>
@@ -73,7 +75,7 @@ class Dashboard extends Component {
                             <p>Click the button below to create a quiz.</p>
                             <br />
                             <Link to={`/createquiz/${this.state.admin.id}`}>
-                                <button>create new quiz</button>
+                                <button>Create a new Knowwie</button>
                             </Link>
                         </div>
                         <div className='quizList'>

@@ -18,12 +18,12 @@ class ChartLeaderQuiz extends Component {
                     {
                         label: false,
                         data: [this.props.points],
-                        backgroundColor: 'rgba(0, 0, 0, 0.2)'
+                        backgroundColor: '#1bb8ec'
                     },
                     {
                         label: 'Possible',
                         data: [100],
-                        backgroundColor: 'rgba(0, 0, 0, 0.1)'
+                        backgroundColor: 'rgba(0, 0, 0, 0.2)'
                     },
                 ]
             

@@ -5,38 +5,46 @@
     padding: 3em 2em;
 }
 .dashCont {
-    /* background: #f2f2f2; */
+    background: linear-gradient(to bottom right, #1bb8ec, #125396);
+    height: 100vh;
     display: flex;
     justify-content: center;
 }
 .quizCont {
-    min-height: 15em;
-    margin-top: 2em;
+    margin-top: 3em;
     width: 100%;
     display: flex;
-    justify-content: center;
-    /* align-items: center; */
+    flex-direction: column;
+    align-items: center;
 }
 .quizBtnCont {
     text-align: center;
-    margin-right: 2em;
-    width: 30%;
+    width: 100%;
+}
+.quizBtnCont button {
+    background: rgba(255, 255, 255, 0.9);
+    color: #1bb8ec;
+    margin-bottom: 3em;
+}
+.quizBtnCont button:hover {
+    background: rgba(255, 255, 255, 1);
+}
+.quizBtnCont button:active {
+    background: rgba(255, 255, 255, 0.5);
+}
+.quizBtnCont h2 {
+    color: #fff;
+}
+.quizBtnCont p {
+    color: #fff;
 }
 .quizList {
-    width: 50%;
+    width: 80%;
 }
 
 
-@media (max-width: 700px) {
-    .quizCont {
-        flex-direction: column;
-        align-items: center;
-    }
-    .quizBtnCont {
-        width: 80%;
-        margin: 1em 0;
-    }
-    .quizList {
-        width: 80%;
-    }
+@media (max-width: 700px) {  
+.quizBtnCont button {
+    width: 80%;
+}
 }

@@ -1,6 +1,7 @@
 .boxCont {
+    height: 100vh;
+    background: url(../../images/bg_shaper4.jpg) no-repeat center center fixed;
     position: relative;
-    margin-top: 10em;
     display: flex;
     justify-content: center;
 }
