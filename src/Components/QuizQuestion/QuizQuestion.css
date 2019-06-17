@@ -2,27 +2,45 @@
 
 .quizQuestionCont {
     min-height: 13em;
-    margin-top: 2em;
+    margin: 2em 5em;
     display: flex;
 }
 .quizQuestion {
-    width: 50%;
+    width: 40%;
     padding: 1em;
     display: flex;
     align-items: center;
 }
+.quizQuestion p {
+    color: #fff;
+    font-size: 18px;
+}
 .quizzieRight {
     padding-left: 1em;
-    border-left: solid .1em rgba(0, 0, 0, 0.2);
-    width: 50%;
+    border-left: solid .1em rgba(255, 255, 255, 0.3);
+    width: 60%;
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
+.quizzieRight button {
+    width: 100%;
+    border: solid 2px rgba(255, 255, 255, 0.8);
+    border-radius: 2em;
+    background: #1bb8ec;
+}
+.quizzieRight button:hover {
+    background: #46c9f5;
+}
+.quizzieRight button:active {
+    background: #0fa0d0;
+}
 .quizAnswers button {
     margin-bottom: .5em;
     width: 100%;
-    background: #1bb8ec;
+    border: solid 2px rgba(255, 255, 255, 0.8);
+    border-radius: 2em;
+    background: rgba(255, 255, 255, 0.1);
 }
 .quizAnswers button:hover {
     background: #46c9f5;
@@ -37,6 +55,10 @@
     width: 100%;
     margin-bottom: 1em;
 }
+.remediation p {
+    color: #fff;
+    font-size: 18px;
+}
 
 @media (max-width: 700px) {
     .quizQuestionCont {
@@ -47,7 +69,7 @@
         padding: 0;
         padding-bottom: 1em;
         margin-bottom: 1em;
-        border-bottom: solid .1em rgba(0, 0, 0, 0.2);
+        border-bottom: solid .1em rgba(255, 255, 255, 0.3);
         width: 100%;
     }
     .quizzieRight {

@@ -29,25 +29,21 @@ class QuizSetup extends Component {
             })
     }
 
-    handleDefaultImage(e) {
-        e.target.src = 'http://shawnski.com/wp-content/uploads/2017/12/snowbird_ski_photographer-21.jpg'
-    }
-
     render() {
         const { quiz_title, quiz_intro, quiz_bg_img } = this.state;
         return (
             <div className='setupCont'>
-                <div className='setupLeftCont'>
-                    <img alt='image' src={quiz_bg_img} onError={this.handleDefaultImage} />
-                    <h2>{quiz_title}</h2> <br />
-                    <p>{quiz_intro}</p>
-                    <Link to={`/knowwiequiz/${this.props.match.params.id}`} ><button>start</button></Link>
+                <div className='setupHeader'>
+                    <h1>You've been invited to participate in this Knowwie.</h1>
                 </div>
-                <div className='setupRightCont'>
-                    <div className='setupRight'>
-                        <h1>Wanna know what they know?</h1>
-                        <p>Create and share a knowwie of your own today. </p>
-                        <button>Create a free account</button>
+                <div className='setupQuizCont'>
+                    <div className='setupImg'>
+                        <img alt='image' src={quiz_bg_img} />
+                    </div>
+                    <div className='setupContent'>
+                        <h2>{quiz_title}</h2> <br />
+                        <p>{quiz_intro}</p>
+                        <Link to={`/knowwiequiz/${this.props.match.params.id}`} ><button>start</button></Link>
                     </div>
                 </div>
             </div >

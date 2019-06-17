@@ -1,38 +1,37 @@
 .setupCont {
-    height: 90vh;
-    display: flex;
-    justify-content: center;
+    height: 100vh;
 }
-.setupLeftCont {
-    background: #fff;
-    width: 40%;
+.setupHeader {
+    padding: 3em 2em;
+    border-bottom: solid .1em rgba(0, 0, 0, 0.1);
+
+}
+.setupQuizCont {
+    margin: 4em;
+    display: flex;
+    align-items: center;
+}
+.setupImg {
+    width: 50%;
+}
+.setupImg img {
+    width: 100%;
+}
+.setupContent {
+    margin-left: 2em;
     padding: 2em;
 }
-
-.setupLeftCont img {
-    width: 100%;
+.setupContent p {
     margin-bottom: 1em;
 }
-
-.setupLeftCont button {
-    margin-top: 2em;
-    width: 100%;
-}
-.setupRightCont {
-    background: #ccc;
-    width: 40%;
-    display: flex;
-    align-items: center;
-}
-.setupRight {
-    margin: 2em;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-}
-
 @media (max-width: 700px) {
-    .setupLeftCont {
-        width: 80%;
+    .setupQuizCont {
+        flex-direction: column;
+    }
+    .setupImg {
+        width: 100%;
+    }
+    .setupContent {
+        margin-left: 0;
     }
 }

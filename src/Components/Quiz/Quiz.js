@@ -138,19 +138,21 @@ class Quiz extends Component {
                         </div>
                     ) : (
                         <div className='quizBodyCont'>
-                            <div>
-                                <h1>Your Score: {quiz_points}%</h1>
-                                <p>Submit the following information to view your results and leaderboard.</p>
+                            <div className='quizScoreCont'>
+                                <div>
+                                    <h1>Your Score: {quiz_points}%</h1>
+                                    <p>Submit the following information to view your results and leaderboard.</p>
+                                </div>
+                                <form onSubmit={this.handleUpdateUser}>
+                                    <h4>Username (used for leaderboard):</h4><input type='text' name='username' placeholder='username' value={this.state.username} onChange={this.handleInfoUpdate} />
+                                    <h4>{quiz_survey1}:</h4>
+                                    <select className='dropdown' value={this.state.survey_response1} onChange={(e) => this.setState({ survey_response1: e.target.value })}>
+                                        <option>- Select an option -</option>
+                                        {surveyOptItem}
+                                    </select>
+                                    <div className='quizScoreContBtn'><button>View leaderboard</button></div>
+                                </form>
                             </div>
-                            <form onSubmit={this.handleUpdateUser}>
-                                <h4>Username (used for leaderboard):</h4><input type='text' name='username' placeholder='username' value={this.state.username} onChange={this.handleInfoUpdate} />
-                                <h4>{quiz_survey1}:</h4>
-                                <select className='dropdown' value={this.state.survey_response1} onChange={(e) => this.setState({ survey_response1: e.target.value })}>
-                                    <option>- Select an option -</option>
-                                    {surveyOptItem}
-                                </select>
-                                <button>View leaderboard</button>
-                            </form>
                         </div>
                     )}
             </div>

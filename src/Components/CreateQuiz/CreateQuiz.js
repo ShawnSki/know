@@ -10,7 +10,7 @@ class CreateQuiz extends Component {
         this.state = {
             quiz_title: '',
             quiz_intro: '',
-            quiz_bg_img: '',
+            quiz_bg_img: 'https://yellingyak.com/wp-content/uploads/2019/06/default_bg-2.jpg',
             quiz_survey1: '',
             survey1_options: '',
             quizDetails: {},

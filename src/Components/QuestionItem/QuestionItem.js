@@ -22,9 +22,11 @@ class questionItem extends Component {
         this.handleGetQuestion();
     }
 
-    handleDeleteQuestion = async () => {
-        await axios.delete(`/api/question/${this.props.questionObj.id}`)
-        this.props.handleGetQuestions()
+    handleDeleteQuestion = () => {
+        axios.delete(`/api/question/${this.props.questionObj.id}`)
+            .then(res => {
+                this.props.handleGetQuestions()
+            })
     }
 
     handleEditToggle = () => {
