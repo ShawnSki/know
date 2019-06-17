@@ -71,11 +71,11 @@ class Dashboard extends Component {
                 <div className='dashCont'>
                     <div className='quizCont'>
                         <div className='quizBtnCont'>
-                            <h2>Create a Quiz</h2>
-                            <p>Click the button below to create a quiz.</p>
+                            <h2>Create a new Knowwie</h2>
+                            <p>Click the button below to create a new Knowwie.</p>
                             <br />
                             <Link to={`/createquiz/${this.state.admin.id}`}>
-                                <button>Create a new Knowwie</button>
+                                <button>Create Now</button>
                             </Link>
                         </div>
                         <div className='quizList'>

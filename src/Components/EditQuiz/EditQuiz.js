@@ -82,20 +82,20 @@ class EditQuiz extends Component {
             <div className='editQuizCont'>
                 <div className='editQuizHeader'>
                     <h2>Edit this quiz</h2>
-                    <Link to='/dashboard'><button>Back</button></Link>
+                    <div className='altButton'><Link to='/dashboard'><button>Back</button></Link></div>
                 </div>
-                <div className='quizzesCont'>
+                <div className='quizzesEditCont'>
                     {(this.state.quizInitialized === false)
                         ? (
                             
-                    <div className='creatorCont'>
+                    <div className='editorCont'>
                         <form onSubmit={this.handleEditQuiz}>
-                            <div className='creatorFormItems'><h4>Quiz Title:</h4><input type='text' name='quiz_title' defaultValue={this.state.quiz_title} onChange={this.handleInfoUpdate} /></div>
-                            <div className='creatorFormItems'><h4>Introduction:</h4><input type='text' name='quiz_intro' defaultValue={this.state.quiz_intro} onChange={this.handleInfoUpdate} /></div>
-                            <div className='creatorFormItems'><h4>Background Image:</h4><input type='text' name='quiz_bg_img' defaultValue={this.state.quiz_bg_img} onChange={this.handleInfoUpdate} /></div>
-                            <div className='creatorFormItems'><h4>Survey Question:</h4><input type='text' name='quiz_survey1' defaultValue={this.state.quiz_survey1} onChange={this.handleInfoUpdate} /></div>
-                            <div className='creatorFormItems'><h4>Survey Options:</h4><input type='text' name='survey1_options' defaultValue={this.state.survey1_options} onChange={this.handleInfoUpdate} /></div>
-                            <button>Submit and edit questions</button> <br />
+                            <div className='editorFormItems'><h4>Quiz Title:</h4><input type='text' name='quiz_title' defaultValue={this.state.quiz_title} onChange={this.handleInfoUpdate} /></div>
+                            <div className='editorFormItems'><h4>Introduction:</h4><input type='text' name='quiz_intro' defaultValue={this.state.quiz_intro} onChange={this.handleInfoUpdate} /></div>
+                            <div className='editorFormItems'><h4>Background Image:</h4><input type='text' name='quiz_bg_img' defaultValue={this.state.quiz_bg_img} onChange={this.handleInfoUpdate} /></div>
+                            <div className='editorFormItems'><h4>Survey Question:</h4><input type='text' name='quiz_survey1' defaultValue={this.state.quiz_survey1} onChange={this.handleInfoUpdate} /></div>
+                            <div className='editorFormItems'><h4>Survey Options: (Separate with commas)</h4><input type='text' name='survey1_options' defaultValue={this.state.survey1_options} onChange={this.handleInfoUpdate} /></div>
+                            <div className='creatorContBtnHolder'><button>Submit | edit questions</button></div>
                         </form>
                     </div>
                         ) : (

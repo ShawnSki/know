@@ -66,6 +66,18 @@ button:hover {
 button:active {
   background: #1ba5d2;
 }
+
+
+.altButton button{
+  background: #ccc;
+}
+.altButton button:hover {
+  background: #dadada;
+}
+.altButton button:active {
+  background: #bababa;
+}
+
 input {
     height: 3em;
     border: .1em solid rgba(0, 0, 0, 0.2);

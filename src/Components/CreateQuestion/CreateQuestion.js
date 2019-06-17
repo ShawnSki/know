@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import axios from 'axios';
 // import { Link } from 'react-router-dom';
 import QuestionItem from '../QuestionItem/QuestionItem';
+import './CreateQuestion.css';
 
 class CreateQuestion extends Component {
     constructor(props) {
@@ -85,9 +86,11 @@ class CreateQuestion extends Component {
         })
         return (
             <div>
-                <h2>{this.props.quiz_title}</h2>
-                <p>Next, add questions</p>
-                <div>
+                <div className='createQuestHeader'>
+                    <h2>{this.props.quiz_title}</h2>
+                    <p>Next, add questions</p>
+                </div>
+                <div className='createQuestList'>
                     {(this.state.questionInitialized === false)
                         ? (
                             <div>
@@ -98,12 +101,12 @@ class CreateQuestion extends Component {
                                     <div className='creatorFormItems'><h4>Distractor1:</h4><input type='text' name='distractor1' placeholder='distractor1' onChange={this.handleInfoUpdate} /></div>
                                     <div className='creatorFormItems'><h4>Distractor2:</h4><input type='text' name='distractor2' placeholder='distractor2' onChange={this.handleInfoUpdate} /></div>
                                     <div className='creatorFormItems'><h4>Distractor3:</h4><input type='text' name='distractor3' placeholder='distractor3' onChange={this.handleInfoUpdate} /></div>
-                                    <button>Next</button> <br />
+                                    <div className='createQuestSubmit'><button>Submit Question | Add another</button> <br /></div>
                                 </form>
                             </div>
                         ) : (
                             <div>
-                                <button onClick={this.handleQuestionAddedToggle}>add question</button>
+                                <div className='createQuestBtn'><button onClick={this.handleQuestionAddedToggle}>add question</button></div>
                                 {questionsMapped.reverse()}
                             </div>
                         )}

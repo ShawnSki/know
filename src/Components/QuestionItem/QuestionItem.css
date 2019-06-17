@@ -5,16 +5,36 @@
     justify-content: space-between;
     align-items: center;
 }
-/* .questionItemCont:first-child {
-    border-top: solid .1em rgba(0, 0, 0, 0.2);
-} */
 .questionItembtnCont {
     margin-left: .5em;
 }
+.questionItembtnCont {
+    padding: 0;
+    min-width: 4em;
+    display: flex;
+}
 .questionItembtnCont button {
-    border-radius: .4em;
-    font-weight: 500;
-    font-size: .8em;
-    padding: .2em .4em;
+    padding: 0;
     margin-left: .2em;
+    width: 2em;
+    height: 2em;
+}
+.questionItemEdit {
+    background: #e7e7e7;
+    margin: 1em;
+    padding: 2em;
+}
+.questionItemEdit h3 {
+    text-align: center;
+    margin-bottom: 1em;
+}
+.questionItemEditBtn {
+    display: flex;
+    justify-content: center;
+}
+
+@media (max-width: 700px) {  
+    .questionItemEditBtn button{
+        width: 100%;
+    }
 }

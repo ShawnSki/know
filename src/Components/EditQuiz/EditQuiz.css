@@ -1,11 +1,31 @@
 .editQuizCont {
-    width: 80%;
+    width: 100%;
 }
 .editQuizHeader {
-    height: 4em;
-    margin-bottom: 2em;
+    padding: 3em 2em;
     border-bottom: solid .1em rgba(0, 0, 0, 0.2);
     display: flex;
     justify-content: space-between;
     align-items: center;
+}
+.quizzesEditCont {
+    margin: 2em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+.editorContBtnHolder {
+    margin-top: 1em;
+    display: flex;
+    justify-content: center;
+}
+.editorFormItems {
+    display: flex;
+    flex-direction: column;
+}
+
+@media (max-width: 700px) {  
+    .editorContBtnHolder button {
+        width: 100%;
+    } 
 }

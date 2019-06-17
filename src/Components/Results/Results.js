@@ -158,7 +158,7 @@ class Results extends Component {
                         <h1>Results: {quiz_title}</h1>
                         <p>Created: {creation_date}</p>
                     </div>
-                    <Link to='/dashboard'><button>Back</button></Link>
+                    <div className='altButton'><Link to='/dashboard'><button>Back</button></Link></div>
                 </div>
                 <div className='resultsSubHeader'>
                     <div className='subHeaderBox'>

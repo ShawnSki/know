@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import '../QuestionItem/QuestionItem.css';
+import iconDelete from '../../images/icon_delete.png';
+import iconEdit from '../../images/icon_edit.png';
+import './QuestionItem.css';
 
 class questionItem extends Component {
     constructor() {
@@ -51,12 +53,12 @@ class questionItem extends Component {
             .then((res) => {
                 this.handleEditToggle();
                 this.props.handleGetQuestions();
-        })
+            })
     }
 
     handleGetQuestion = async () => {
         await axios.get(`/api/question/${this.props.questionObj.id}`)
-        .then(res => {
+            .then(res => {
                 const { question, remediation, answer, distractor1, distractor2, distractor3 } = res.data[0]
                 this.setState({
                     question,
@@ -72,19 +74,19 @@ class questionItem extends Component {
     render() {
         // console.log(this.state.question)
         return (
-            <div>
+            <div className='questionItemHolder'>
                 {(this.state.editToggle === false)
                     ? (
                         <div className='questionItemCont'>
                             <h4>{this.props.questionObj.question}</h4>
                             <div className='questionItembtnCont'>
-                                <button onClick={this.handleEditToggle}>edit</button>
-                                <button onClick={this.handleDeleteQuestion}>delete</button>
+                                <div className='altButton'><button onClick={this.handleEditToggle}><img src={iconEdit} alt='edit' /></button></div>
+                                <div className='altButton'><button onClick={this.handleDeleteQuestion}><img src={iconDelete} alt='delete' /></button></div>
                             </div>
                         </div>
                     ) : (
-                        <div>
-                            <h1>edit toggle</h1>
+                        <div className='questionItemEdit'>
+                            <h3>Edit Question</h3>
                             <form onSubmit={this.handleUpdateQuestion}>
                                 <div className='creatorFormItems'><h4>Question:</h4><input type='text' name='question' defaultValue={this.state.question} onChange={this.handleInfoUpdate} /></div>
                                 <div className='creatorFormItems'><h4>Remediation:</h4><input type='text' name='remediation' defaultValue={this.state.remediation} onChange={this.handleInfoUpdate} /></div>
@@ -92,7 +94,7 @@ class questionItem extends Component {
                                 <div className='creatorFormItems'><h4>Distractor1:</h4><input type='text' name='distractor1' defaultValue={this.state.distractor1} onChange={this.handleInfoUpdate} /></div>
                                 <div className='creatorFormItems'><h4>Distractor2:</h4><input type='text' name='distractor2' defaultValue={this.state.distractor2} onChange={this.handleInfoUpdate} /></div>
                                 <div className='creatorFormItems'><h4>Distractor3:</h4><input type='text' name='distractor3' defaultValue={this.state.distractor3} onChange={this.handleInfoUpdate} /></div>
-                                <button>Next</button> <br />
+                                <div className='questionItemEditBtn'><button>Submit Changes</button> <br /></div>
                             </form>
                         </div>
                     )}
