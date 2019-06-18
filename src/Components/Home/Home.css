@@ -9,7 +9,7 @@
     justify-content: center;
 }
 .heroTextCont {
-    width: 80%;
+    width: 90%;
     margin: 5em 0;
     display: flex;
     flex-direction: column;
@@ -21,7 +21,23 @@
     justify-content: center;
 }
 .heroBtns button {
-    margin: .5em;
+    margin: 2em 2em;
+    padding: 1em 4em;
+    box-shadow: 0 0 1em rgba(0, 0, 0, 0.3);
+    font-size: 16px;
+    font-weight: 700;
+}
+.heroBtnAlt button {
+    background: rgba(255, 255, 255, 0.8);
+    color: #223657;
+    font-size: 16px;
+    font-weight: 700;
+}
+.heroBtnAlt button:hover {
+    background: rgba(255, 255, 255, .9);
+}
+.heroBtnAlt button:active {
+    background: rgba(255, 255, 255, .6);
 }
 
 .heroCont h1 {
@@ -30,13 +46,12 @@
     font-weight: 900;
 }
 .heroCont h2 {
-    /* font-size: 80px; */
     color: #fff;
     font-weight: 900;
     margin: 1em 0;
 }
 .heroContBold h1 {
-    font-size: 250px;
+    font-size: 350px;
     color: #fff;
     font-weight: 900;
 }
@@ -99,10 +114,30 @@
     text-align: center;
 }
 
-@media (max-width: 700px) {  
+@media (max-width: 700px) { 
+    
+    .heroTextCont {
+        padding: 1em;
+    }
     .feature1Cont {
         display: flex;
         flex-direction: column;
+    }
+    .heroCont h1 {
+        font-size: 50px;
+    }
+    .heroContBold h1 {
+        font-size: 150px;
+    }
+    .heroCont h2 {
+        font-size: 20px;
+    }
+    .heroBtns {
+        flex-direction: column;
+    }
+    .heroBtns button {
+        margin: .5em 0;
+        width: 100%;
     }
     .feature1ImgCont img {
         margin-bottom: 2em;

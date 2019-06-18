@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import './Home.css';
 
 const Home = () => {
@@ -13,8 +14,8 @@ const Home = () => {
                         <h2>Make better decisions through analytic based knowledge assessments.</h2>
                     </div>
                     <div className='heroBtns'>
-                        <button>Get Started</button>
-                        <button>See Example</button>
+                        <Link to='/dashboard'><button>Get Started</button></Link>
+                        <div className='heroBtnAlt'><Link to='/quizlist'><button>See Example</button></Link></div>
                     </div>
                 </div>
 
