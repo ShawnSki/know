@@ -1,0 +1,30 @@
+.navDrawerCont {
+    height: 100%;
+    background: #fff;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 80%;
+}
+
+.navDrawerCont ul {
+    height: 100%;
+    width: 100%;
+    padding: 1em;
+    background: red;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
+.navDrawerCont li {
+    border-bottom: solid .2em #000;
+    padding: 1em;
+    margin: .5em 0;
+}
+
+@media (min-width: 701px) {  
+    .navDrawerCont {
+        display: none;
+    }
+}

@@ -1,0 +1,23 @@
+.toggleBtn {
+    height: 2em;
+    background: transparent;
+    padding: .2em;
+    margin-right: 2em;
+    border: none;
+    cursor: pointer;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+.toggleBtn:focus{
+    outline: none;
+}
+.toggleBtn:hover {
+    border: solid .2em rgba(255,255,255,0.2);
+    background: none;
+}
+.toggleBtnLine {
+    width: 2em;
+    height: .24em;
+    background: rgba(255,255,255,0.6);
+}

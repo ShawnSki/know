@@ -32,7 +32,6 @@ class ChartSurvey1 extends Component {
                             scales: {
                                 yAxes:
                                     [{
-                                        ticks: { beginAtZero: true, },
                                         gridLines: {
                                             display: true,
                                             color: 'rgba(0, 0, 0, 0.1)'
@@ -40,6 +39,7 @@ class ChartSurvey1 extends Component {
                                     }],
                                 xAxes:
                                     [{
+                                        ticks: { beginAtZero: true, max: 100 },
                                         gridLines: {
                                             display: true,
                                             color: 'rgba(0, 0, 0, 0.1)'

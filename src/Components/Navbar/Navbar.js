@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { updateAdmin, clearAdmin } from '../../redux/adminReducer';
 import { connect } from 'react-redux';
+import DrawerToggleBtn from '../NavDrawer/DrawerToggleBtn';
 import './Navbar.css';
 var imgLogo = require('../../images/knowwie_logo.png');
 
@@ -17,17 +18,20 @@ class Navbar extends Component {
         return (
             <nav>
                 <div>
-                {/* <Link to='/'><h1>home</h1></Link> */}
-                <Link to='/'><img src={imgLogo} alt='knowwie logo' /></Link>
+                    {/* <Link to='/'><h1>home</h1></Link> */}
+                    <Link to='/'><img src={imgLogo} alt='knowwie logo' /></Link>
                 </div>
                 <div className='linksCont'>
                     <ul>
-                        <li><Link to='/quizlist'>Quizzes</Link></li>
+                        <li><Link to='/quizlist'>Knowwies</Link></li>
                         <li><Link to='/dashboard'>Dashboard</Link></li>
                         <li><Link to='/login'>Log In</Link></li>
                         <li><Link to='/register'>Sign Up</Link></li>
                         <li><Link to='/account'>{this.props.firstname}</Link></li>
                     </ul>
+                </div>
+                <div className='drawerBtnCont'>
+                    <DrawerToggleBtn handleDrawerToggle={this.props.handleDrawerToggle} />
                 </div>
             </nav>
         )

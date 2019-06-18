@@ -28,3 +28,17 @@ nav {
 .linksCont li a:hover {
     color: #d1d1d1;
 }
+
+@media (max-width: 700px) {  
+    .linksCont {
+        display: none;
+    }
+}
+@media (min-width: 701px) {
+    .navDrawerCont button {
+        display: none;
+    }
+    .drawerBtnCont {
+        display: none;
+    }
+}

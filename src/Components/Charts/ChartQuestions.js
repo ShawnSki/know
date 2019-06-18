@@ -32,7 +32,7 @@ class ChartQuestions extends Component {
                         scales: {
                             yAxes:
                                 [{
-                                    ticks: { beginAtZero: true, },
+                                    ticks: { beginAtZero: true, max: 100 },
                                     gridLines: {
                                         display: true,
                                         color: 'rgba(0, 0, 0, 0.1)'

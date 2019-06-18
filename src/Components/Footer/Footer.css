@@ -1,11 +1,11 @@
 .footerCont {
+    padding: 2em;
     background: #e6e6e6;
     display: flex;
     justify-content: space-between;
 }
 .footerZoneBig {
     padding: 1em;
-    border-left: solid .1em rgba(0, 0, 0, 0.1);
 }
 .footerZoneBig h4 {
     color: rgba(0, 0, 0, 0.7);
@@ -45,6 +45,9 @@
 
 
 @media (max-width: 700px) {  
+    .footerCont {
+        padding: 1em 0;
+    }
     .footerZoneCont {
         display: flex;
         flex-direction: column;
