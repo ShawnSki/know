@@ -115,7 +115,9 @@
 }
 
 @media (max-width: 700px) { 
-    
+    .heroCont {
+        background-image: linear-gradient(to bottom right, #ee314a, #e93792);
+    }
     .heroTextCont {
         padding: 1em;
     }
