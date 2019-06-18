@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import axios from 'axios';
 import { Link } from 'react-router-dom';
 import './QuizItem.css';
-var iconShare = require('../../images/icon_share.png');
-var iconDelete = require('../../images/icon_delete.png');
-var iconEdit = require('../../images/icon_edit.png');
-var iconResults = require('../../images/icon_results.png');
 
 class QuizItem extends Component {
     constructor(props) {
@@ -29,10 +25,10 @@ class QuizItem extends Component {
             <div className='quizItemCont'>
                 <h4>{this.props.quizObj.quiz_title}</h4>
                 <div className='quizItembtnCont'>
-                    <Link to={`/results/${this.props.quizObj.id}`}><button><img src={iconResults} alt='results' /></button></Link>
-                    <Link to={`/quiz/${this.props.quizObj.id}`}><button><img src={iconEdit} alt='edit' /></button></Link>
-                    <button onClick={this.handleDeleteQuiz}><img src={iconDelete} alt='delete' /></button>
-                    <button ><img src={iconShare} alt='share' /></button>
+                    <Link to={`/results/${this.props.quizObj.id}`}><button><img src='https://yellingyak.com/wp-content/uploads/2019/06/icon_results.png' alt='results' /></button></Link>
+                    <Link to={`/quiz/${this.props.quizObj.id}`}><button><img src='https://yellingyak.com/wp-content/uploads/2019/06/icon_edit.png' alt='edit' /></button></Link>
+                    <button onClick={this.handleDeleteQuiz}><img src='https://yellingyak.com/wp-content/uploads/2019/06/icon_delete.png' alt='delete' /></button>
+                    <button ><img src='https://yellingyak.com/wp-content/uploads/2019/06/icon_share.png' alt='share' /></button>
                 </div>
             </div>
         )

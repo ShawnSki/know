@@ -1,7 +1,5 @@
 import React, { Component } from 'react';
 import axios from 'axios';
-import iconDelete from '../../images/icon_delete.png';
-import iconEdit from '../../images/icon_edit.png';
 import './QuestionItem.css';
 
 class questionItem extends Component {
@@ -82,8 +80,8 @@ class questionItem extends Component {
                         <div className='questionItemCont'>
                             <h4>{this.props.questionObj.question}</h4>
                             <div className='questionItembtnCont'>
-                                <div className='altButton'><button onClick={this.handleEditToggle}><img src={iconEdit} alt='edit' /></button></div>
-                                <div className='altButton'><button onClick={this.handleDeleteQuestion}><img src={iconDelete} alt='delete' /></button></div>
+                                <div className='altButton'><button onClick={this.handleEditToggle}><img src='https://yellingyak.com/wp-content/uploads/2019/06/icon_edit.png' alt='edit' /></button></div>
+                                <div className='altButton'><button onClick={this.handleDeleteQuestion}><img src='https://yellingyak.com/wp-content/uploads/2019/06/icon_delete.png' alt='delete' /></button></div>
                             </div>
                         </div>
                     ) : (
