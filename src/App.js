@@ -9,7 +9,7 @@ import NavDrawer from './Components/NavDrawer/NavDrawer';
 
 class App extends Component {
   state = {
-    drawerOpen: true
+    drawerOpen: false
   }
 
   handleDrawerToggle = () => {

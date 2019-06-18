@@ -5,7 +5,25 @@
 .heroCont {
     background: url('https://yellingyak.com/wp-content/uploads/2019/06/bg_shaper2.jpg') no-repeat center center fixed;
     min-height: 80vh;
+    display: flex;
+    justify-content: center;
 }
+.heroTextCont {
+    width: 80%;
+    margin: 5em 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+.heroBtns {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.heroBtns button {
+    margin: .5em;
+}
+
 .heroCont h1 {
     font-size: 80px;
     color: #fff;
@@ -18,7 +36,7 @@
     margin: 1em 0;
 }
 .heroContBold h1 {
-    font-size: 180px;
+    font-size: 250px;
     color: #fff;
     font-weight: 900;
 }
