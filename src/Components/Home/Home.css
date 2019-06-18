@@ -6,6 +6,22 @@
     background: url('https://yellingyak.com/wp-content/uploads/2019/06/bg_shaper2.jpg') no-repeat center center fixed;
     min-height: 80vh;
 }
+.heroCont h1 {
+    font-size: 80px;
+    color: #fff;
+    font-weight: 900;
+}
+.heroCont h2 {
+    /* font-size: 80px; */
+    color: #fff;
+    font-weight: 900;
+    margin: 1em 0;
+}
+.heroContBold h1 {
+    font-size: 180px;
+    color: #fff;
+    font-weight: 900;
+}
 .feature1Cont {
     padding: 6em 0;
     min-height: 30em;

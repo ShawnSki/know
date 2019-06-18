@@ -5,9 +5,12 @@ const Home = () => {
     return (
         <div className='homeCont'>
             <div className='heroCont'>
-                <h1>Know what THEY Know!</h1>
-                <h2>Knowledge assessments with annalytics!</h2>
-                <button>Action</button>
+                <h1>know what</h1>
+                <span className='heroContBold'><h1>they</h1></span>
+                <h1>know!</h1>
+                <h2>Make better decisions through analytic based knowledge assessments.</h2>
+                <button>Get Started</button>
+                <button>See Example</button>
             </div>
             <div className='feature1Cont'>
                 <div className='feature1ImgCont'>
