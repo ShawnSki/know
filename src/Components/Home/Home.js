@@ -15,7 +15,7 @@ const Home = () => {
                     </div>
                     <div className='heroBtns'>
                         <Link to='/dashboard'><button>Get Started</button></Link>
-                        <div className='heroBtnAlt'><Link to='/quizlist'><button>See Example</button></Link></div>
+                        <div className='heroBtnAlt'><Link to='/knowwie/506'><button>See Example</button></Link></div>
                     </div>
                 </div>
 
