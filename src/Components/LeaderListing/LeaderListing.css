@@ -1,7 +1,7 @@
 .listingHolder {
     margin: .5em 0;
     padding: 1em 0;
-    border-bottom: solid .1em rgba(0, 0, 0, 0.2);
+    /* border-bottom: solid .1em rgba(0, 0, 0, 0.2); */
 }
 .listingCont {
     padding: .8em;

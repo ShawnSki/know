@@ -4,7 +4,6 @@ import { updateAdmin, clearAdmin } from '../../redux/adminReducer';
 import { connect } from 'react-redux';
 import DrawerToggleBtn from '../NavDrawer/DrawerToggleBtn';
 import './Navbar.css';
-var imgLogo = require('../../images/knowwie_logo.png');
 
 class Navbar extends Component {
     constructor() {
@@ -19,7 +18,7 @@ class Navbar extends Component {
             <nav>
                 <div>
                     {/* <Link to='/'><h1>home</h1></Link> */}
-                    <Link to='/'><img src={imgLogo} alt='knowwie logo' /></Link>
+                    <Link to='/'><img src={'https://yellingyak.com/wp-content/uploads/2019/06/knowwie_logo.png'} alt='knowwie logo' /></Link>
                 </div>
                 <div className='linksCont'>
                     <ul>

@@ -13,11 +13,11 @@
     outline: none;
 }
 .toggleBtn:hover {
-    border: solid .2em rgba(255,255,255,0.2);
+    border: solid .2em rgba(255,255,255,0.5);
     background: none;
 }
 .toggleBtnLine {
     width: 2em;
     height: .24em;
-    background: rgba(255,255,255,0.6);
+    background: rgba(255,255,255,0.3);
 }

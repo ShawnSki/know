@@ -6,7 +6,7 @@
 }
 .dashCont {
     background: linear-gradient(to bottom right, #1bb8ec, #125396);
-    height: 100%;
+    min-height: 50vh;
     padding-bottom: 10em;
     display: flex;
     justify-content: center;

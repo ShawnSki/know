@@ -21,7 +21,7 @@ const Home = () => {
             </div>
             <div className='feature2Cont'>
                 <div className='feature2Text'>
-                    <h1>Questions With Meaning</h1>
+                    <h1>Assessments With Purpose</h1>
                     <p>YNow we can begin working on lots of happy little things. Everybody's different. Trees are different.</p>
                 </div>
                 <div className='feature2ImgCont'>

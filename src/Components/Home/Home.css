@@ -3,7 +3,7 @@
     flex-direction: column;
 }
 .heroCont {
-    background: url(../../images/bg_shaper2.jpg) no-repeat center center fixed;
+    background: url('https://yellingyak.com/wp-content/uploads/2019/06/bg_shaper2.jpg') no-repeat center center fixed;
     min-height: 80vh;
 }
 .feature1Cont {

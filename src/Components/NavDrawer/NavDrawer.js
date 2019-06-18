@@ -6,10 +6,10 @@ const NavDrawer = (props) => {
     return (
         <nav className='navDrawerCont'>
             <ul onClick={props.handleDrawerToggle}>
-                <li><Link to='/quizlist'>Knowwies</Link></li>
-                <li><Link to='/dashboard'>Dashboard</Link></li>
-                <li><Link to='/login'>Log In</Link></li>
-                <li><Link to='/register'>Sign Up</Link></li>
+                <Link to='/quizlist'><li>Knowwies</li></Link>
+                <Link to='/dashboard'><li>Dashboard</li></Link>
+                <Link to='/login'><li>Log In</li></Link>
+                <Link to='/register'><li>Sign Up</li></Link>
             </ul>
         </nav>
     )

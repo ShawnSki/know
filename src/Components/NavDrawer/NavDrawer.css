@@ -11,16 +11,23 @@
     height: 100%;
     width: 100%;
     padding: 1em;
-    background: red;
+    background: linear-gradient(to bottom right, #ee314a, #e93792);
+    box-shadow: 0 0 4em rgba(0, 0, 0, 0.6);
     display: flex;
     flex-direction: column;
     justify-content: center;
 }
 
 .navDrawerCont li {
-    border-bottom: solid .2em #000;
+    font-size: 25px;
+    color: #fff;
+    background: rgba(255,255,255,.2);
     padding: 1em;
-    margin: .5em 0;
+    margin: .25em 0;
+}
+
+.navDrawerCont li:hover {
+    background: rgba(255,255,255,.5);
 }
 
 @media (min-width: 701px) {  
