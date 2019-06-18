@@ -1,59 +1,82 @@
-.boxCont {
-    height: 100vh;
-    background: url(../../images/bg_shaper4.jpg) no-repeat center center fixed;
-    position: relative;
+.homeCont {
     display: flex;
+    flex-direction: column;
+}
+.heroCont {
+    background: url(../../images/bg_shaper2.jpg) no-repeat center center fixed;
+    min-height: 80vh;
+}
+.feature1Cont {
+    padding: 6em 0;
+    min-height: 30em;
+    background-image: linear-gradient(to bottom right, #fff, #eee);
+    display: flex;
+}
+.feature1ImgCont {
+    min-width: 50%;
+}
+.feature1ImgCont img {
+    width: 100%;
+}
+.feature1Text {
+    margin: 0 3em;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+.feature1Text h1 {
+    font-size: 50px;
+    text-align: center;
+    margin-bottom: .3em;
+}
+.feature1Text p {
+    margin-bottom: 1.5em;
+}
+.feature2Cont {
+    padding: 6em 0 0 0;
+    width: 100%;
+    min-height: 40em;
+    background-image: linear-gradient(to bottom right, #1bb8ec, #a2c943);
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    align-items: center;
+}
+.feature2ImgCont {
+    min-width: 80%;
+}
+.feature2ImgCont img {
+    width: 100%;
+}
+.feature2Text {
+    display: flex;
+    flex-direction: column;
     justify-content: center;
 }
-.boxCont h1 {
-    font-weight: 700;
+.feature2Text h1 {
+    color: #fff;
+    text-align: center;
+    font-size: 50px;
+    margin: .3em 0;
 }
-.titleBeforeCont {
-    /* background: red; */
-    text-align: right;
-}
-.titleMiddleCont {
-    /* background: blue; */
-    width: 13em;
-}
-.titleAfterCont {
-    /* background: red; */
-    text-align: left;
-}
-.animateText h1 {
-    margin-left: .3em;
-    color: #e93792;
-    position: absolute;
-    overflow: hidden;
-    opacity: 0;
-    animation: animate 9s ease-in-out forwards infinite;
-    /* animation-fill-mode: initial */
+.feature2Text p {
+    color: #fff;
+    text-align: center;
 }
 
-@keyframes animate {
-    0% {
-        opacity: 0;
-        transform: translateY(-50px);
+@media (max-width: 700px) {  
+    .feature1Cont {
+        display: flex;
+        flex-direction: column;
     }
-    20% {
-        opacity: 1;
-        transform: translateY(0px);
+    .feature1ImgCont img {
+        margin-bottom: 2em;
     }
-    26% {
-        opacity: 1;
-        transform: translateY(0px);
+    .feature1Text button {
+        width: 100%;
     }
-    40% {  
-        opacity: 0;
-        transform: translateY(50px);
+    .feature2Cont {
+        min-height: 20em;
     }
-}
-.animateText h1:nth-child(1) {
-    animation-delay: 0s;
-}
-.animateText h1:nth-child(2) {
-    animation-delay: 3s;
-}
-.animateText h1:nth-child(3) {
-    animation-delay: 6s;
 }

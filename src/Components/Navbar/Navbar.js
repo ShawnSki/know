@@ -17,8 +17,8 @@ class Navbar extends Component {
         return (
             <nav>
                 <div>
-                <Link to='/'><h1>home</h1></Link>
-                {/* <Link to='/'><img src={imgLogo} alt='knowwie logo' /></Link> */}
+                {/* <Link to='/'><h1>home</h1></Link> */}
+                <Link to='/'><img src={imgLogo} alt='knowwie logo' /></Link>
                 </div>
                 <div className='linksCont'>
                     <ul>

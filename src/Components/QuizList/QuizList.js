@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import axios from 'axios';
 import QuizListItem from '../QuizListItem/QuizListItem';
+import './QuizList.css';
 
 class QuizList extends Component {
     constructor() {
@@ -20,7 +21,7 @@ class QuizList extends Component {
                 this.setState({
                     quizzes: res.data
                 })
-        })
+            })
     }
 
     render() {
@@ -32,9 +33,14 @@ class QuizList extends Component {
             )
         })
         return (
-            <div>
-                <h4>Quiz List</h4>
-                {quizzesMapped}
+            <div className='listPageCont'>
+                <div className='listHeader'>
+                    <h1>Knowwie's</h1>
+                    <p>Participate in a publically hosted Knowwie.</p>
+                </div>
+                <div className='listListings'>
+                    {quizzesMapped}
+                </div>
             </div>
         )
     }
