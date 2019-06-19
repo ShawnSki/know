@@ -18,7 +18,7 @@ class Quiz extends Component {
             quiz_points: 0,
             quiz_results: [],
             userId: null,
-            username: 'Knowwie User',
+            username: 'Big-Daddy-Cheetah',
             completedToggle: false
         }
     }

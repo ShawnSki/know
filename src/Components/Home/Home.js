@@ -8,14 +8,14 @@ const Home = () => {
             <div className='heroCont'>
                 <div className='heroTextCont'>
                     <div>
-                        <h1>know what</h1>
-                        <span className='heroContBold'><h1>they</h1></span>
-                        <h1>know!</h1>
+                        <h1>know what they</h1>
+                        <span className='heroContBold'><h1>know</h1></span>
+                        {/* <h1>know!</h1> */}
                         <h2>Make better decisions through analytic based knowledge assessments.</h2>
                     </div>
                     <div className='heroBtns'>
                         <Link to='/dashboard'><button>Get Started</button></Link>
-                        <div className='heroBtnAlt'><Link to='/knowwie/506'><button>See Example</button></Link></div>
+                        <div className='heroBtnAlt'><Link to='/knowwie/512'><button>See Example</button></Link></div>
                     </div>
                 </div>
 
